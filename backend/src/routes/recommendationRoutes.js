@@ -4,6 +4,8 @@ const {
   getCourseRecommendations,
   getCareerRecommendations,
   getResourceRecommendations,
+  getAiOverview,
+  simulateAiOverview,
 } = require("../controllers/recommendationController");
 const { authenticate } = require("../middlewares/auth");
 
@@ -14,5 +16,8 @@ router.get("/streams", getStreamRecommendations);
 router.get("/courses", getCourseRecommendations);
 router.get("/careers", getCareerRecommendations);
 router.get("/resources", getResourceRecommendations);
+router.get("/ai-overview", getAiOverview);
+router.post("/ai-overview/simulate", simulateAiOverview);
 
 module.exports = router;
+

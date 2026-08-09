@@ -5,10 +5,13 @@ function validateRequest(req, res, next) {
   const result = validationResult(req);
 
   if (!result.isEmpty()) {
-    return next(new ApiError(422, "Validation failed", result.array()));
+    const errorArray = result.array();
+    const firstMessage = errorArray[0]?.msg || "Validation failed.";
+    return next(new ApiError(422, firstMessage, errorArray));
   }
 
   next();
 }
 
 module.exports = { validateRequest };
+

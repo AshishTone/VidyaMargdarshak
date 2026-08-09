@@ -12,10 +12,16 @@ const questionSchema = new mongoose.Schema(
       required: true,
       enum: ["logic", "science", "commerce", "creativity", "social", "practical"],
     },
+    classLevel: {
+      type: String,
+      enum: ["10", "12", "all"],
+      default: "all",
+    },
     order: {
       type: Number,
       required: true,
     },
+
     options: [
       {
         label: { type: String, required: true },

@@ -17,18 +17,41 @@ export default function SignupPage() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoading(true);
     setError("");
 
+    const name = form.name.trim();
+    const email = form.email.trim();
+    const password = form.password;
+
+    if (!name || !email || !password) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      await register(form);
+      await register({
+        name,
+        email,
+        password,
+        classLevel: form.classLevel,
+      });
       navigate("/profile");
     } catch (err) {
-      setError(err.response?.data?.message || "Unable to create your account.");
+      const details = err.response?.data?.details;
+      const firstErrorMsg = Array.isArray(details) && details.length > 0 ? details[0].msg : null;
+      setError(firstErrorMsg || err.response?.data?.message || "Unable to create your account.");
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <div className="flex min-h-screen items-center justify-center px-4 py-8">

@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api/v1";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001/api/v1";
+
 const ACCESS_KEY = "vm_access_token";
 const REFRESH_KEY = "vm_refresh_token";
 
@@ -35,10 +36,17 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
+    const requestUrl = originalRequest?.url || "";
+
+    const isAuthEndpoint =
+      requestUrl.includes("/auth/login") ||
+      requestUrl.includes("/auth/register") ||
+      requestUrl.includes("/auth/refresh");
 
     if (
       error.response?.status === 401 &&
       !originalRequest?._retry &&
+      !isAuthEndpoint &&
       tokenStore.getRefreshToken()
     ) {
       originalRequest._retry = true;
@@ -59,5 +67,6 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
 
 export default api;

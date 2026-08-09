@@ -4,6 +4,7 @@ const Resource = require("../models/Resource");
 const { asyncHandler } = require("../utils/asyncHandler");
 const { ApiError } = require("../utils/ApiError");
 const { buildRecommendation } = require("../services/recommendationService");
+const { generateAiOverview } = require("../services/aiOverviewService");
 
 async function getLatestForUser(userId) {
   const assessment = await Assessment.findOne({ userId }).sort({ createdAt: -1 });
@@ -65,9 +66,43 @@ const getResourceRecommendations = asyncHandler(async (req, res) => {
   res.json({ resources });
 });
 
+const getAiOverview = asyncHandler(async (req, res) => {
+  let assessmentScores = {};
+  try {
+    const assessment = await Assessment.findOne({ userId: req.user._id }).sort({ createdAt: -1 });
+    if (assessment) {
+      assessmentScores = assessment.scoreProfile || {};
+    }
+  } catch {
+    // optional assessment
+  }
+
+  const aiOverview = generateAiOverview(req.user, assessmentScores);
+  res.json({ aiOverview });
+});
+
+const simulateAiOverview = asyncHandler(async (req, res) => {
+  const customSubjects = req.body.subjectScores || {};
+  let assessmentScores = {};
+  try {
+    const assessment = await Assessment.findOne({ userId: req.user._id }).sort({ createdAt: -1 });
+    if (assessment) {
+      assessmentScores = assessment.scoreProfile || {};
+    }
+  } catch {
+    // optional assessment
+  }
+
+  const aiOverview = generateAiOverview(req.user, assessmentScores, customSubjects);
+  res.json({ aiOverview });
+});
+
 module.exports = {
   getStreamRecommendations,
   getCourseRecommendations,
   getCareerRecommendations,
   getResourceRecommendations,
+  getAiOverview,
+  simulateAiOverview,
 };
+
