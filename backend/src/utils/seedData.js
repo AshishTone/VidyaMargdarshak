@@ -1,4 +1,6 @@
 const { connectDatabase } = require("../config/db");
+const bcrypt = require("bcryptjs");
+const User = require("../models/User");
 const Question = require("../models/Question");
 const Course = require("../models/Course");
 const College = require("../models/College");
@@ -7,6 +9,7 @@ const Resource = require("../models/Resource");
 const RoadmapNode = require("../models/RoadmapNode");
 const RoadmapEdge = require("../models/RoadmapEdge");
 
+
 const obsoleteCollegeSlugs = [
   "skyline-institute-of-technology",
   "riverdale-commerce-management-college",
@@ -14,69 +17,167 @@ const obsoleteCollegeSlugs = [
   "craftbridge-vocational-academy",
 ];
 
+const createLikertOptions = (keyPrefix, weights, reverseWeights = {}) => [
+  {
+    label: "Strongly Agree",
+    value: `${keyPrefix}-strongly-agree`,
+    weights: {
+      science: weights.science || 0,
+      commerce: weights.commerce || 0,
+      arts: weights.arts || 0,
+      vocational: weights.vocational || 0,
+    },
+  },
+  {
+    label: "Agree",
+    value: `${keyPrefix}-agree`,
+    weights: {
+      science: Math.round((weights.science || 0) * 0.65),
+      commerce: Math.round((weights.commerce || 0) * 0.65),
+      arts: Math.round((weights.arts || 0) * 0.65),
+      vocational: Math.round((weights.vocational || 0) * 0.65),
+    },
+  },
+  {
+    label: "Neutral",
+    value: `${keyPrefix}-neutral`,
+    weights: { science: 1, commerce: 1, arts: 1, vocational: 1 },
+  },
+  {
+    label: "Disagree",
+    value: `${keyPrefix}-disagree`,
+    weights: {
+      science: reverseWeights.science || 0,
+      commerce: reverseWeights.commerce || 0,
+      arts: reverseWeights.arts || 0,
+      vocational: reverseWeights.vocational || 0,
+    },
+  },
+  {
+    label: "Strongly Disagree",
+    value: `${keyPrefix}-strongly-disagree`,
+    weights: {
+      science: Math.round((reverseWeights.science || 0) * 1.5),
+      commerce: Math.round((reverseWeights.commerce || 0) * 1.5),
+      arts: Math.round((reverseWeights.arts || 0) * 1.5),
+      vocational: Math.round((reverseWeights.vocational || 0) * 1.5),
+    },
+  },
+];
+
 const sampleQuestions = [
   {
     order: 1,
-    category: "science",
-    question: "Do you enjoy mathematics and numerical problem solving?",
-    options: [
-      { label: "Very much", value: "math-high", weights: { science: 5, commerce: 3, arts: 0, vocational: 1 } },
-      { label: "Somewhat", value: "math-medium", weights: { science: 3, commerce: 2, arts: 1, vocational: 1 } },
-      { label: "Not really", value: "math-low", weights: { science: 0, commerce: 1, arts: 2, vocational: 2 } },
-    ],
+    classLevel: "10",
+    category: "logic",
+    question: "I enjoy solving complex mathematical equations, numerical problems, and logical puzzles.",
+    options: createLikertOptions(
+      "q1-math",
+      { science: 6, commerce: 4, arts: 0, vocational: 1 },
+      { science: 0, commerce: 1, arts: 3, vocational: 2 }
+    ),
   },
   {
     order: 2,
-    category: "creativity",
-    question: "Do you like designing things, visuals, or user experiences?",
-    options: [
-      { label: "Yes, a lot", value: "design-high", weights: { science: 1, commerce: 1, arts: 4, vocational: 5 } },
-      { label: "A little", value: "design-medium", weights: { science: 1, commerce: 1, arts: 3, vocational: 3 } },
-      { label: "Not much", value: "design-low", weights: { science: 3, commerce: 3, arts: 0, vocational: 1 } },
-    ],
+    classLevel: "10",
+    category: "science",
+    question: "I find scientific experiments, physics principles, and chemical reactions intriguing.",
+    options: createLikertOptions(
+      "q2-physics-chem",
+      { science: 6, commerce: 0, arts: 0, vocational: 1 },
+      { science: 0, commerce: 2, arts: 3, vocational: 2 }
+    ),
   },
   {
     order: 3,
-    category: "social",
-    question: "Do you enjoy helping people through guidance, healthcare, or communication?",
-    options: [
-      { label: "Yes", value: "people-high", weights: { science: 3, commerce: 1, arts: 5, vocational: 2 } },
-      { label: "Sometimes", value: "people-medium", weights: { science: 2, commerce: 1, arts: 3, vocational: 2 } },
-      { label: "Rarely", value: "people-low", weights: { science: 2, commerce: 3, arts: 1, vocational: 2 } },
-    ],
+    classLevel: "10",
+    category: "science",
+    question: "I am interested in biological sciences, plant/animal physiology, and healthcare systems.",
+    options: createLikertOptions(
+      "q3-bio-med",
+      { science: 6, commerce: 0, arts: 1, vocational: 1 },
+      { science: 0, commerce: 2, arts: 3, vocational: 1 }
+    ),
   },
   {
     order: 4,
+    classLevel: "10",
     category: "logic",
-    question: "Do you like computers, software, or technology-driven work?",
-    options: [
-      { label: "Yes, strongly", value: "tech-high", weights: { science: 5, commerce: 2, arts: 0, vocational: 2 } },
-      { label: "Somewhat", value: "tech-medium", weights: { science: 3, commerce: 2, arts: 1, vocational: 2 } },
-      { label: "Not really", value: "tech-low", weights: { science: 0, commerce: 2, arts: 2, vocational: 1 } },
-    ],
+    question: "I like computers, coding, software applications, and understanding technological innovations.",
+    options: createLikertOptions(
+      "q4-tech-code",
+      { science: 6, commerce: 2, arts: 0, vocational: 3 },
+      { science: 0, commerce: 2, arts: 3, vocational: 1 }
+    ),
   },
   {
     order: 5,
-    category: "practical",
-    question: "Do you prefer office-based work or field / hands-on work?",
-    options: [
-      { label: "Mostly office-based", value: "office", weights: { science: 2, commerce: 4, arts: 2, vocational: 1 } },
-      { label: "A mix of both", value: "mixed", weights: { science: 3, commerce: 2, arts: 2, vocational: 3 } },
-      { label: "Mostly field or hands-on", value: "field", weights: { science: 2, commerce: 1, arts: 1, vocational: 5 } },
-    ],
+    classLevel: "10",
+    category: "commerce",
+    question: "I am interested in how companies make profits, stock markets, accounting, and financial management.",
+    options: createLikertOptions(
+      "q5-commerce-finance",
+      { science: 0, commerce: 6, arts: 1, vocational: 1 },
+      { science: 3, commerce: 0, arts: 2, vocational: 2 }
+    ),
   },
   {
     order: 6,
+    classLevel: "10",
     category: "commerce",
-    question: "Which future sounds most exciting to you right now?",
-    options: [
-      { label: "Engineer, software professional, or researcher", value: "future-tech", weights: { science: 5, commerce: 1, arts: 0, vocational: 1 } },
-      { label: "Business leader, analyst, or finance expert", value: "future-business", weights: { science: 1, commerce: 5, arts: 0, vocational: 1 } },
-      { label: "Law, media, psychology, or civil services", value: "future-arts", weights: { science: 0, commerce: 1, arts: 5, vocational: 1 } },
-      { label: "Design, hospitality, or technical skilled work", value: "future-vocational", weights: { science: 1, commerce: 1, arts: 1, vocational: 5 } },
-    ],
+    question: "I would like to start my own commercial business, manage corporate teams, or analyze market trends.",
+    options: createLikertOptions(
+      "q6-business-mgmt",
+      { science: 1, commerce: 6, arts: 1, vocational: 2 },
+      { science: 2, commerce: 0, arts: 2, vocational: 2 }
+    ),
+  },
+  {
+    order: 7,
+    classLevel: "10",
+    category: "creativity",
+    question: "I love creative expression, literature, painting, creative writing, or visual design.",
+    options: createLikertOptions(
+      "q7-arts-creative",
+      { science: 0, commerce: 1, arts: 6, vocational: 2 },
+      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 8,
+    classLevel: "10",
+    category: "social",
+    question: "I am enthusiastic about history, geography, psychology, and understanding societal changes.",
+    options: createLikertOptions(
+      "q8-humanities-soc",
+      { science: 1, commerce: 1, arts: 6, vocational: 1 },
+      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 9,
+    classLevel: "10",
+    category: "practical",
+    question: "I prefer hands-on practical work (assembling electronics, crafting, workshop tools) over pure textbook memorization.",
+    options: createLikertOptions(
+      "q9-practical-voc",
+      { science: 2, commerce: 1, arts: 2, vocational: 6 },
+      { science: 3, commerce: 3, arts: 2, vocational: 0 }
+    ),
+  },
+  {
+    order: 10,
+    classLevel: "10",
+    category: "social",
+    question: "I enjoy public speaking, debating ethical issues, policy analysis, and legal systems.",
+    options: createLikertOptions(
+      "q10-law-debate",
+      { science: 0, commerce: 2, arts: 6, vocational: 1 },
+      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
   },
 ];
+
 
 const sampleCourses = [
   {
@@ -490,17 +591,17 @@ const roadmapEdges = [
 ];
 
 async function upsertMany(model, docs, key) {
-  await Promise.all(
-    docs.map((doc) =>
-      model.findOneAndReplace({ [key]: doc[key] }, doc, {
-        upsert: true,
-        returnDocument: "after",
-        runValidators: true,
-        setDefaultsOnInsert: true,
-      })
-    )
-  );
+  if (!docs || !docs.length) return;
+  const operations = docs.map((doc) => ({
+    updateOne: {
+      filter: { [key]: doc[key] },
+      update: { $set: doc },
+      upsert: true,
+    },
+  }));
+  await model.bulkWrite(operations, { ordered: false });
 }
+
 
 async function seedDatabase() {
   await College.deleteMany({ slug: { $in: obsoleteCollegeSlugs } });
@@ -676,7 +777,44 @@ async function seedDatabase() {
   ];
 
   await upsertMany(College, colleges, "slug");
+
+  const demoStudentPassword = await bcrypt.hash("password123", 10);
+  const demoAdminPassword = await bcrypt.hash("admin123", 10);
+
+  const sampleUsers = [
+    {
+      name: "Demo Student",
+      email: "student@example.com",
+      phone: "9876543210",
+      passwordHash: demoStudentPassword,
+      role: "student",
+      classLevel: "12",
+      board: "CBSE",
+      location: { state: "Maharashtra", city: "Pune" },
+      language: "English",
+      currentMarks: 85,
+      interests: ["Computer Science", "Artificial Intelligence", "Mathematics"],
+      strengths: ["Problem Solving", "Logical Reasoning"],
+    },
+    {
+      name: "Demo Admin",
+      email: "admin@example.com",
+      phone: "9876543211",
+      passwordHash: demoAdminPassword,
+      role: "admin",
+      classLevel: "graduate",
+      board: "CBSE",
+      location: { state: "Delhi", city: "New Delhi" },
+      language: "English",
+      currentMarks: 90,
+      interests: ["Management", "Education"],
+      strengths: ["Leadership", "Coordination"],
+    },
+  ];
+
+  await upsertMany(User, sampleUsers, "email");
 }
+
 
 async function runSeed() {
   await connectDatabase();

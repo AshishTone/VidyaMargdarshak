@@ -13,16 +13,35 @@ export default function LoginPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
+    setLoading(false);
+
+    const email = form.email.trim();
+    const password = form.password;
+
+    if (!email || !password) {
+      setError("Please provide both email and password.");
+      return;
+    }
+
     setLoading(true);
 
     try {
-      const loggedInUser = await login(form);
+      const loggedInUser = await login({ email, password });
       navigate(loggedInUser.profileCompleted ? "/dashboard" : "/profile");
     } catch (err) {
-      setError(err.response?.data?.message || "Unable to login right now.");
+      const details = err.response?.data?.details;
+      const firstErrorMsg = Array.isArray(details) && details.length > 0 ? details[0].msg : null;
+      setError(
+        firstErrorMsg ||
+        err.response?.data?.message ||
+        (err.message === "Network Error"
+          ? "Cannot connect to backend server on port 5000. Please ensure the backend is running."
+          : "Invalid email or password.")
+      );
     } finally {
       setLoading(false);
     }
+
   };
 
   return (
@@ -40,6 +59,8 @@ export default function LoginPage() {
             type="email"
             value={form.email}
             onChange={(event) => setForm({ ...form, email: event.target.value })}
+            autoComplete="email"
+            required
           />
           <input
             className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-blue-400"
@@ -47,8 +68,10 @@ export default function LoginPage() {
             type="password"
             value={form.password}
             onChange={(event) => setForm({ ...form, password: event.target.value })}
+            autoComplete="current-password"
+            required
           />
-          {error ? <p className="text-sm text-rose-600">{error}</p> : null}
+          {error ? <p className="text-sm font-medium text-rose-600 bg-rose-50 p-3 rounded-xl border border-rose-100">{error}</p> : null}
           <Button className="w-full py-3" type="submit" disabled={loading}>
             {loading ? "Signing in..." : "Login"}
           </Button>

@@ -1,9 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Download } from "lucide-react";
 import SectionCard from "../components/ui/SectionCard";
 import Button from "../components/ui/Button";
 import useAuth from "../hooks/useAuth";
 import { interestOptions, strengthOptions } from "../utils/constants";
+import {
+  fetchDeadlines,
+  fetchRecommendedCareers,
+  fetchRecommendedCourses,
+  fetchRecommendedResources,
+  fetchStreamRecommendation,
+} from "../services/platformService";
+import { exportUserReportPdf } from "../utils/pdfExport";
 
 export default function ProfilePage() {
   const navigate = useNavigate();
@@ -22,6 +31,7 @@ export default function ProfilePage() {
     strengths: user?.strengths || [],
   });
   const [status, setStatus] = useState("");
+  const [exporting, setExporting] = useState(false);
 
   const toggleArrayValue = (field, value) => {
     setForm((current) => ({
@@ -30,6 +40,30 @@ export default function ProfilePage() {
         ? current[field].filter((item) => item !== value)
         : [...current[field], value],
     }));
+  };
+
+  const handleExportPdf = async () => {
+    setExporting(true);
+    try {
+      const [rec, crs, car, res, ddl] = await Promise.all([
+        fetchStreamRecommendation().catch(() => null),
+        fetchRecommendedCourses().catch(() => []),
+        fetchRecommendedCareers().catch(() => []),
+        fetchRecommendedResources().catch(() => []),
+        fetchDeadlines().catch(() => []),
+      ]);
+
+      exportUserReportPdf({
+        user: { ...user, ...form },
+        recommendation: rec,
+        courses: crs,
+        careers: car,
+        resources: res,
+        deadlines: ddl,
+      });
+    } finally {
+      setTimeout(() => setExporting(false), 1000);
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -46,17 +80,30 @@ export default function ProfilePage() {
 
   return (
     <SectionCard>
-      <div className="mb-6">
-        <p className="section-title">Student Profile</p>
-        <p className="mt-2 text-sm text-slate-600">
-          This is mandatory and is the foundation for personalized guidance, course suggestions, and your roadmap.
-        </p>
-        {!user?.profileCompleted ? (
-          <p className="mt-3 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-800">
-            Complete every section below to unlock the dashboard, personalized recommendations, and roadmap view.
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <p className="section-title">Student Profile</p>
+          <p className="mt-2 text-sm text-slate-600">
+            This is mandatory and is the foundation for personalized guidance, course suggestions, and your roadmap.
           </p>
-        ) : null}
+        </div>
+        <Button
+          type="button"
+          onClick={handleExportPdf}
+          disabled={exporting}
+          variant="ghost"
+          className="flex items-center gap-2 border border-blue-200 text-blue-900 bg-blue-50/60 hover:bg-blue-100 font-semibold px-4 py-2.5 rounded-xl self-start sm:self-auto"
+        >
+          <Download className="h-4 w-4" />
+          {exporting ? "Generating..." : "Export Report (PDF)"}
+        </Button>
       </div>
+      {!user?.profileCompleted ? (
+        <p className="mb-6 rounded-2xl bg-amber-50 px-4 py-3 text-sm text-amber-800">
+          Complete every section below to unlock the dashboard, personalized recommendations, and roadmap view.
+        </p>
+      ) : null}
+
 
       <form className="grid gap-6" onSubmit={handleSubmit}>
         <div className="grid gap-4 md:grid-cols-2">

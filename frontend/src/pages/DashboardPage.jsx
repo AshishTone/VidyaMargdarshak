@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, BookOpen, ClipboardList, Map, School, Sparkles } from "lucide-react";
+import { ArrowRight, BookOpen, ClipboardList, Download, Map, School, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Button from "../components/ui/Button";
@@ -7,20 +7,48 @@ import SectionCard from "../components/ui/SectionCard";
 import {
   fetchColleges,
   fetchDeadlines,
+  fetchRecommendedCareers,
+  fetchRecommendedCourses,
+  fetchRecommendedResources,
   fetchStreamRecommendation,
 } from "../services/platformService";
+import { exportUserReportPdf } from "../utils/pdfExport";
 
 export default function DashboardPage() {
   const { user } = useAuth();
   const [recommendation, setRecommendation] = useState(null);
   const [deadlines, setDeadlines] = useState([]);
   const [colleges, setColleges] = useState([]);
+  const [courses, setCourses] = useState([]);
+  const [careers, setCareers] = useState([]);
+  const [resources, setResources] = useState([]);
+  const [exporting, setExporting] = useState(false);
 
   useEffect(() => {
     fetchStreamRecommendation().then(setRecommendation).catch(() => null);
     fetchDeadlines().then((items) => setDeadlines(items.slice(0, 3))).catch(() => null);
     fetchColleges().then((items) => setColleges(items.slice(0, 3))).catch(() => null);
+    fetchRecommendedCourses().then(setCourses).catch(() => []);
+    fetchRecommendedCareers().then(setCareers).catch(() => []);
+    fetchRecommendedResources().then(setResources).catch(() => []);
   }, []);
+
+  const handleExportPdf = () => {
+    setExporting(true);
+    try {
+      exportUserReportPdf({
+        user,
+        recommendation,
+        courses,
+        careers,
+        resources,
+        deadlines,
+      });
+    } finally {
+      setTimeout(() => setExporting(false), 1000);
+    }
+  };
+
 
   return (
     <div className="space-y-6">
@@ -42,6 +70,15 @@ export default function DashboardPage() {
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
+              <Button
+                onClick={handleExportPdf}
+                disabled={exporting}
+                variant="ghost"
+                className="bg-white/20 text-white hover:bg-white/30 gap-2 font-semibold"
+              >
+                <Download className="h-4 w-4" />
+                {exporting ? "Preparing PDF..." : "Export Report (PDF)"}
+              </Button>
               <Link to="/roadmaps">
                 <Button variant="ghost" className="bg-blue-500/20 text-white hover:bg-blue-500/30">
                   Explore roadmaps
@@ -53,6 +90,7 @@ export default function DashboardPage() {
                 </Button>
               </Link>
             </div>
+
           </div>
 
           <div className="rounded-[1.8rem] border border-white/20 bg-white/10 p-5">

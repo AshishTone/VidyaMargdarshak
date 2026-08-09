@@ -2,7 +2,9 @@ import api from "./api";
 
 export const fetchProfile = async () => (await api.get("/me")).data.user;
 export const updateProfile = async (payload) => (await api.put("/me", payload)).data.user;
-export const fetchQuestions = async () => (await api.get("/assessments/questions")).data.questions;
+export const fetchQuestions = async (params = {}) =>
+  (await api.get("/assessments/questions", { params })).data.questions;
+
 export const submitAssessment = async (payload) =>
   (await api.post("/assessments", payload)).data;
 export const fetchStreamRecommendation = async () =>
@@ -24,3 +26,7 @@ export const saveCollege = async (collegeId) => api.post(`/me/saved/colleges/${c
 export const fetchPublicRoadmap = async () => (await api.get("/roadmaps/public")).data;
 export const fetchPersonalizedRoadmap = async () =>
   (await api.get("/roadmaps/personalized")).data;
+export const fetchAiOverview = async () => (await api.get("/recommendations/ai-overview")).data.aiOverview;
+export const simulateAiOverview = async (payload) =>
+  (await api.post("/recommendations/ai-overview/simulate", payload)).data.aiOverview;
+

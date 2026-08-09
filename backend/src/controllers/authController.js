@@ -46,7 +46,8 @@ async function issueTokens(user) {
 }
 
 const register = asyncHandler(async (req, res) => {
-  const existingUser = await User.findOne({ email: req.body.email.toLowerCase() });
+  const email = String(req.body.email || "").trim().toLowerCase();
+  const existingUser = await User.findOne({ email });
 
   if (existingUser) {
     throw new ApiError(409, "An account with this email already exists.");
@@ -55,9 +56,9 @@ const register = asyncHandler(async (req, res) => {
   const passwordHash = await bcrypt.hash(req.body.password, 10);
 
   const user = await User.create({
-    name: req.body.name,
-    email: req.body.email.toLowerCase(),
-    phone: req.body.phone,
+    name: String(req.body.name || "").trim(),
+    email,
+    phone: req.body.phone ? String(req.body.phone).trim() : undefined,
     passwordHash,
     classLevel: req.body.classLevel || "10",
   });
@@ -72,7 +73,8 @@ const register = asyncHandler(async (req, res) => {
 });
 
 const login = asyncHandler(async (req, res) => {
-  const user = await User.findOne({ email: req.body.email.toLowerCase() });
+  const email = String(req.body.email || "").trim().toLowerCase();
+  const user = await User.findOne({ email });
 
   if (!user) {
     throw new ApiError(401, "Invalid email or password.");

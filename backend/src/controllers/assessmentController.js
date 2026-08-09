@@ -6,9 +6,23 @@ const { ApiError } = require("../utils/ApiError");
 const { buildRecommendation } = require("../services/recommendationService");
 
 const getQuestions = asyncHandler(async (req, res) => {
-  const questions = await Question.find().sort({ order: 1 });
+  const userClass = req.query.classLevel || req.user?.classLevel || "10";
+  let filter = {};
+
+  if (userClass === "10") {
+    filter = { classLevel: { $in: ["10", "all"] } };
+  } else if (userClass === "12") {
+    filter = { classLevel: { $in: ["12", "all"] } };
+  }
+
+  let questions = await Question.find(filter).sort({ order: 1 });
+  if (!questions.length) {
+    questions = await Question.find().sort({ order: 1 });
+  }
+
   res.json({ questions });
 });
+
 
 const submitAssessment = asyncHandler(async (req, res) => {
   const questions = await Question.find({
