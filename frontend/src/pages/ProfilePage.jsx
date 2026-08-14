@@ -4,7 +4,6 @@ import { Download } from "lucide-react";
 import SectionCard from "../components/ui/SectionCard";
 import Button from "../components/ui/Button";
 import useAuth from "../hooks/useAuth";
-import { interestOptions, strengthOptions } from "../utils/constants";
 import {
   fetchDeadlines,
   fetchRecommendedCareers,
@@ -27,20 +26,9 @@ export default function ProfilePage() {
       state: user?.location?.state || "",
       city: user?.location?.city || "",
     },
-    interests: user?.interests || [],
-    strengths: user?.strengths || [],
   });
   const [status, setStatus] = useState("");
   const [exporting, setExporting] = useState(false);
-
-  const toggleArrayValue = (field, value) => {
-    setForm((current) => ({
-      ...current,
-      [field]: current[field].includes(value)
-        ? current[field].filter((item) => item !== value)
-        : [...current[field], value],
-    }));
-  };
 
   const handleExportPdf = async () => {
     setExporting(true);
@@ -162,46 +150,6 @@ export default function ProfilePage() {
             value={form.currentMarks}
             onChange={(event) => setForm({ ...form, currentMarks: event.target.value })}
           />
-        </div>
-
-        <div>
-          <p className="mb-3 text-sm font-semibold text-slate-900">Interests</p>
-          <div className="flex flex-wrap gap-2">
-            {interestOptions.map((interest) => (
-              <button
-                key={interest}
-                type="button"
-                onClick={() => toggleArrayValue("interests", interest)}
-                className={`rounded-full px-4 py-2 text-sm transition ${
-                  form.interests.includes(interest)
-                    ? "bg-blue-900 text-white"
-                    : "bg-slate-100 text-slate-700"
-                }`}
-              >
-                {interest}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <p className="mb-3 text-sm font-semibold text-slate-900">Strengths</p>
-          <div className="flex flex-wrap gap-2">
-            {strengthOptions.map((strength) => (
-              <button
-                key={strength}
-                type="button"
-                onClick={() => toggleArrayValue("strengths", strength)}
-                className={`rounded-full px-4 py-2 text-sm transition ${
-                  form.strengths.includes(strength)
-                    ? "bg-[var(--vm-accent)] text-white"
-                    : "bg-slate-100 text-slate-700"
-                }`}
-              >
-                {strength}
-              </button>
-            ))}
-          </div>
         </div>
 
         {status ? <p className="text-sm text-emerald-600">{status}</p> : null}
