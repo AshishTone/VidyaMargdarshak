@@ -85,12 +85,14 @@ export default function AppShell() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="hidden items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 sm:flex">
-              <User2 className="h-4 w-4 text-blue-800" />
-              <span className="text-sm text-slate-700">
-                {user?.classLevel}th / {user?.language}
-              </span>
-            </div>
+            {user?.profileCompleted ? (
+              <div className="hidden items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 sm:flex">
+                <User2 className="h-4 w-4 text-blue-800" />
+                <span className="text-sm text-slate-700">
+                  {user.classLevel === "10" ? "10th" : "12th"}
+                </span>
+              </div>
+            ) : null}
             <Button variant="secondary" className="gap-2" onClick={logout}>
               <LogOut className="h-4 w-4" />
               Logout

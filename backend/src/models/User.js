@@ -36,8 +36,46 @@ const userSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    dateOfBirth: Date,
+    gender: {
+      type: String,
+      enum: ["female", "male"],
+    },
+    tenthBoard: {
+      type: String,
+      trim: true,
+    },
+    tenthSchool: {
+      type: String,
+      trim: true,
+    },
+    tenthPassingYear: Number,
+    tenthPassingDate: Date,
+    tenthOverallPercentage: {
+      type: Number,
+      min: 0,
+      max: 100,
+    },
+    subjectMarks: {
+      mathematics: { type: Number, min: 0, max: 100 },
+      science: { type: Number, min: 0, max: 100 },
+      english: { type: Number, min: 0, max: 100 },
+      socialScience: { type: Number, min: 0, max: 100 },
+    },
+    twelfthBoard: { type: String, trim: true },
+    twelfthSchool: { type: String, trim: true },
+    twelfthPassingDate: Date,
+    twelfthStream: { type: String, enum: ["PCM", "PCB"] },
+    twelfthOverallPercentage: { type: Number, min: 0, max: 100 },
+    twelfthSubjectMarks: {
+      physics: { type: Number, min: 0, max: 100 },
+      chemistry: { type: Number, min: 0, max: 100 },
+      mathematics: { type: Number, min: 0, max: 100 },
+      biology: { type: Number, min: 0, max: 100 },
+    },
     location: {
       state: String,
+      district: String,
       city: String,
     },
     language: {

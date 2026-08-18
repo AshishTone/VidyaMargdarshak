@@ -1,13 +1,18 @@
 function getMissingProfileFields(user) {
   const missing = [];
 
-  if (!user.board?.trim()) missing.push("board");
-  if (!user.location?.state?.trim()) missing.push("state");
-  if (!user.location?.city?.trim()) missing.push("city");
-  if (!user.language?.trim()) missing.push("language");
-  if (!Array.isArray(user.interests) || !user.interests.length) missing.push("interests");
-  if (!Array.isArray(user.strengths) || !user.strengths.length) missing.push("strengths");
-  if (user.currentMarks === undefined || user.currentMarks === null) missing.push("marks");
+  if (!user.name?.trim()) missing.push("name");
+  if (!user.dateOfBirth) missing.push("dateOfBirth");
+  if (user.classLevel === "10") {
+    if (!user.tenthBoard?.trim()) missing.push("tenthBoard");
+    if (!user.tenthPassingDate && !user.tenthPassingYear) missing.push("tenthPassingDate");
+  }
+  if (user.classLevel === "12") {
+    if (!user.twelfthBoard?.trim()) missing.push("twelfthBoard");
+    if (!user.twelfthPassingDate) missing.push("twelfthPassingDate");
+    if (!user.twelfthStream) missing.push("twelfthStream");
+  }
+  if (!user.location?.district?.trim()) missing.push("district");
 
   return missing;
 }

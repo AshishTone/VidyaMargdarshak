@@ -10,7 +10,6 @@ export default function SignupPage() {
     name: "",
     email: "",
     password: "",
-    classLevel: "10",
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -61,15 +60,6 @@ export default function SignupPage() {
             value={form.password}
             onChange={(event) => setForm({ ...form, password: event.target.value })}
           />
-          <select
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-blue-400"
-            value={form.classLevel}
-            onChange={(event) => setForm({ ...form, classLevel: event.target.value })}
-          >
-            <option value="10">Class 10</option>
-            <option value="12">Class 12</option>
-            <option value="graduate">Graduate</option>
-          </select>
           {error ? <p className="text-sm text-rose-600">{error}</p> : null}
           <Button className="w-full py-3" type="submit" disabled={loading}>
             {loading ? "Creating account..." : "Create account"}
