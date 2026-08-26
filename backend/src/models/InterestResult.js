@@ -1,0 +1,3 @@
+const mongoose = require("mongoose");
+const schema = new mongoose.Schema({ attemptId: { type: mongoose.Schema.Types.ObjectId, ref: "AssessmentAttempt", required: true, unique: true }, studentId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true }, results: [{ categoryId: String, rawScore: Number, minScore: Number, maxScore: Number, interestIndex: Number, unsureCount: Number, uncertaintyRate: Number, rank: Number }], topCategories: [String], calculationVersion: String, generatedAt: Date }, { timestamps: true, versionKey: false, collection: "interest_results" });
+module.exports = mongoose.model("InterestResult", schema);

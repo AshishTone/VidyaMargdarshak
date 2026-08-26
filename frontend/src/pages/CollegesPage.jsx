@@ -31,7 +31,8 @@ function loadGoogleMapsScript(callback) {
 
 export default function CollegesPage() {
   const { refreshUser } = useAuth();
-  const [filters, setFilters] = useState({ city: "", course: "", stage: "" });
+  const [filters, setFilters] = useState({ name: "", city: "", course: "", stage: "" });
+  const [submittedFilters, setSubmittedFilters] = useState(null);
   const [colleges, setColleges] = useState([]);
   
   const mapRef = useRef(null);
@@ -49,12 +50,14 @@ export default function CollegesPage() {
   }, [hasApiKey]);
 
   useEffect(() => {
+    if (!submittedFilters) { setColleges([]); return; }
     const query = {};
-    if (filters.city) query.city = filters.city;
-    if (filters.course) query.course = filters.course;
+    if (submittedFilters.name) query.name = submittedFilters.name;
+    if (submittedFilters.city) query.city = submittedFilters.city;
+    if (submittedFilters.course) query.course = submittedFilters.course;
 
     fetchColleges(query).then(setColleges);
-  }, [filters.city, filters.course]);
+  }, [submittedFilters]);
 
   const displayedColleges = useMemo(() => {
     return colleges.filter((college) => {
@@ -149,7 +152,13 @@ export default function CollegesPage() {
             </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-3 w-full lg:w-auto">
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4 w-full lg:w-auto">
+            <input
+              className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-blue-400 text-sm"
+              placeholder="College name"
+              value={filters.name}
+              onChange={(event) => setFilters({ ...filters, name: event.target.value })}
+            />
             <input
               className="rounded-2xl border border-slate-200 bg-white px-4 py-3 outline-none focus:border-blue-400 text-sm"
               placeholder="Filter by city / location"
@@ -171,6 +180,7 @@ export default function CollegesPage() {
               <option value="10">After 10th Std (Diplomas)</option>
               <option value="12">After 12th Std (Degrees)</option>
             </select>
+            <Button type="button" onClick={() => setSubmittedFilters({ ...filters })}>Search</Button>
           </div>
         </div>
       </SectionCard>
@@ -239,9 +249,9 @@ export default function CollegesPage() {
             </div>
           </SectionCard>
         ))}
-        {displayedColleges.length === 0 ? (
+        {submittedFilters && displayedColleges.length === 0 ? (
           <div className="col-span-full py-8 text-center text-slate-500 bg-white rounded-3xl border border-slate-100">
-            No colleges match your location or stage filters.
+            No verified colleges match your search.
           </div>
         ) : null}
       </div>

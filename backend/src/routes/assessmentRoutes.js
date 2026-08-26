@@ -10,7 +10,7 @@ const { validateRequest } = require("../middlewares/validateRequest");
 
 const router = express.Router();
 
-router.get("/questions", getQuestions);
+router.get("/questions", authenticate, getQuestions);
 router.post("/", authenticate, assessmentValidator, validateRequest, submitAssessment);
 router.get("/latest", authenticate, getLatestAssessment);
 

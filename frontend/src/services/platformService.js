@@ -2,9 +2,10 @@ import api from "./api";
 
 export const fetchProfile = async () => (await api.get("/me")).data.user;
 export const updateProfile = async (payload) => (await api.put("/me", payload)).data.user;
-export const fetchQuestions = async () => (await api.get("/assessments/questions")).data.questions;
+export const fetchAssessmentForm = async () => (await api.get("/assessments/questions")).data;
 export const submitAssessment = async (payload) =>
   (await api.post("/assessments", payload)).data;
+export const fetchLatestAssessment = async () => (await api.get("/assessments/latest")).data;
 export const fetchStreamRecommendation = async () =>
   (await api.get("/recommendations/streams")).data;
 export const fetchRecommendedCourses = async () =>

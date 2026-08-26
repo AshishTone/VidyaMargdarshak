@@ -36,8 +36,7 @@ const updateMe = asyncHandler(async (req, res) => {
     "location",
     "language",
     "currentMarks",
-    "interests",
-    "strengths",
+    "resultStatus",
   ];
 
   allowedFields.forEach((field) => {

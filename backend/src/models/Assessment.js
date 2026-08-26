@@ -43,6 +43,12 @@ const assessmentSchema = new mongoose.Schema(
       type: [String],
       default: [],
     },
+    formId: { type: String, default: "AFTER10_V1" },
+    interestResponses: [{ questionId: String, category: String, value: Number, isUnsure: Boolean }],
+    profileResponses: [{ questionId: String, values: [String] }],
+    interestProfile: [{ category: String, interestScore: Number, unsureCount: Number, uncertaintyRate: Number, needsExploration: Boolean }],
+    preferenceProfile: { type: mongoose.Schema.Types.Mixed, default: {} },
+    pathways: [{ name: String, match: String, explanation: String }],
   },
   {
     timestamps: true,

@@ -12,6 +12,9 @@ const listColleges = asyncHandler(async (req, res) => {
   if (req.query.city) {
     filter["location.city"] = new RegExp(req.query.city, "i");
   }
+  if (req.query.name) {
+    filter.name = new RegExp(req.query.name.trim(), "i");
+  }
 
   if (req.query.hostel === "true") {
     filter.hostel = true;

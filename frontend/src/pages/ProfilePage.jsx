@@ -47,6 +47,7 @@ export default function ProfilePage() {
     tenthBoard: user?.tenthBoard || user?.board || "",
     tenthPassingDate: dateValue(user?.tenthPassingDate || user?.tenthPassingYear),
     tenthOverallPercentage: user?.tenthOverallPercentage ?? "",
+    resultStatus: user?.resultStatus || "DECLARED",
     subjectMarks: {
       mathematics: user?.subjectMarks?.mathematics ?? "",
       science: user?.subjectMarks?.science ?? "",
@@ -67,6 +68,7 @@ export default function ProfilePage() {
     location: {
       state: user?.location?.state || "",
       district: user?.location?.district || "",
+      city: user?.location?.city || "",
     },
   });
   const [status, setStatus] = useState("");
@@ -88,7 +90,7 @@ export default function ProfilePage() {
     );
     const profile = removeEmptyValues({
       ...form,
-      tenthOverallPercentage: form.tenthOverallPercentage === "" ? undefined : Number(form.tenthOverallPercentage),
+      tenthOverallPercentage: form.resultStatus === "NOT_DECLARED" ? null : (form.tenthOverallPercentage === "" ? undefined : Number(form.tenthOverallPercentage)),
       twelfthOverallPercentage: form.twelfthOverallPercentage === "" ? undefined : Number(form.twelfthOverallPercentage),
       subjectMarks: toNumbers(form.subjectMarks),
       twelfthSubjectMarks: toNumbers(form.twelfthSubjectMarks),
@@ -164,7 +166,7 @@ export default function ProfilePage() {
               </label>
               <label className="grid gap-1 text-sm text-slate-700">
                 {passingLabel}
-                <input className="rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-400" type="date" required value={isTenth ? form.tenthPassingDate : form.twelfthPassingDate} onChange={(event) => setForm({ ...form, [isTenth ? "tenthPassingDate" : "twelfthPassingDate"]: event.target.value })} />
+                <input className="rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-400" type="date" required value={isTenth ? form.tenthPassingDate : form.twelfthPassingDate} onClick={(event) => event.currentTarget.showPicker?.()} onChange={(event) => setForm({ ...form, [isTenth ? "tenthPassingDate" : "twelfthPassingDate"]: event.target.value })} />
               </label>
               {selectedBoard === "Maharashtra" ? (
                 <label className="grid gap-1 text-sm text-slate-700">
@@ -177,6 +179,7 @@ export default function ProfilePage() {
               ) : selectedBoard ? (
                 <label className="grid gap-1 text-sm text-slate-700">District<input className="rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-400" required value={form.location.district} onChange={(event) => setForm({ ...form, location: { ...form.location, district: event.target.value } })} /></label>
               ) : null}
+              {selectedBoard ? <label className="grid gap-1 text-sm text-slate-700">City / Taluka<input className="rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-blue-400" required value={form.location.city} onChange={(event) => setForm({ ...form, location: { ...form.location, city: event.target.value } })} /></label> : null}
             </div>
           ) : null}
         </section>
@@ -189,7 +192,7 @@ export default function ProfilePage() {
               <p className="mt-1 text-sm text-slate-600">These details are optional while you are waiting for your result.</p>
             </div>
             {isTenth ? (
-              <MarksSection title="10th marks" note="" marks={form.subjectMarks} subjects={[["mathematics", "Mathematics"], ["science", "Science"], ["english", "English"], ["socialScience", "Social Science"]]} overall={form.tenthOverallPercentage} onOverallChange={(value) => setForm({ ...form, tenthOverallPercentage: value })} onMarkChange={(subject, value) => updateMarks("subjectMarks", subject, value)} />
+              <><label className="flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" checked={form.resultStatus === "NOT_DECLARED"} onChange={(event) => setForm({ ...form, resultStatus: event.target.checked ? "NOT_DECLARED" : "DECLARED" })} /> My 10th result has not been declared yet</label>{form.resultStatus === "NOT_DECLARED" ? <p className="rounded-xl bg-blue-50 p-3 text-sm text-blue-900">You can take the assessment now. Add marks after your result is declared.</p> : <MarksSection title="10th marks" note="" marks={form.subjectMarks} subjects={[["mathematics", "Mathematics"], ["science", "Science"], ["english", "English"], ["socialScience", "Social Science"]]} overall={form.tenthOverallPercentage} onOverallChange={(value) => setForm({ ...form, tenthOverallPercentage: value })} onMarkChange={(subject, value) => updateMarks("subjectMarks", subject, value)} />}</>
             ) : (
               <div className="grid gap-4">
                 <label className="grid gap-1 text-sm text-slate-700">

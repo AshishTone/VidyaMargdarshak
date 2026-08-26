@@ -2,6 +2,7 @@ import { ArrowRight, BookOpen, ClipboardList, School, Sparkles, X } from "lucide
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/ui/Button";
+import useAuth from "../hooks/useAuth";
 
 const featureCards = [
   {
@@ -29,6 +30,7 @@ const featureCards = [
 
 export default function LandingPage() {
   const [activeFeature, setActiveFeature] = useState(null);
+  const { user } = useAuth();
 
   return (
     <div className="min-h-screen px-3 py-5 sm:px-8">
@@ -50,7 +52,7 @@ export default function LandingPage() {
 
       <div className="mx-auto max-w-[96%] xl:max-w-[115rem]">
         <header className="flex items-center justify-between rounded-3xl border border-white/60 bg-white/70 px-5 py-4 shadow-sm backdrop-blur">
-          <div className="flex items-center gap-4">
+          <Link to="/" className="flex items-center gap-4">
             <img src="/logo.png" alt="VidyaMargdarshak logo" className="h-12 w-auto" />
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-blue-800">
@@ -58,25 +60,26 @@ export default function LandingPage() {
               </p>
               <h1 className="text-xl font-bold text-slate-900">Career & Education Advisor</h1>
             </div>
-          </div>
+          </Link>
 
           <div className="flex gap-3">
+            {user ? <Link to="/dashboard"><Button>Dashboard</Button></Link> : null}
             <Link to="/roadmaps/public">
               <Button variant="secondary">Public roadmap</Button>
             </Link>
-            <Link to="/login">
+            {!user ? <Link to="/login">
               <Button variant="secondary">Login</Button>
-            </Link>
-            <Link to="/signup">
+            </Link> : null}
+            {!user ? <Link to="/signup">
               <Button>Sign up</Button>
-            </Link>
+            </Link> : null}
           </div>
         </header>
 
         <section className="grid gap-10 px-2 py-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
             <p className="mb-4 inline-flex rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-900">
-              Built for students and parents, not as a government portal
+              Built for students and parents
             </p>
             <h2 className="max-w-3xl text-5xl font-black tracking-tight text-slate-950 sm:text-6xl">
               Find your right career path with clarity, not confusion.
@@ -102,16 +105,16 @@ export default function LandingPage() {
 
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
               <div className="panel rounded-3xl p-5">
-                <p className="text-3xl font-bold text-blue-900">5-in-1</p>
-                <p className="mt-2 text-sm text-slate-600">Profile, assessment, recommendations, roadmaps, and colleges.</p>
+                <p className="text-3xl font-bold text-blue-900">Personalized</p>
+                <p className="mt-2 text-sm text-slate-600">Guidance that adapts to your education level and profile.</p>
               </div>
               <div className="panel rounded-3xl p-5">
                 <p className="text-3xl font-bold text-blue-900">Explainable</p>
                 <p className="mt-2 text-sm text-slate-600">Rule-based recommendations students can actually understand.</p>
               </div>
               <div className="panel rounded-3xl p-5">
-                <p className="text-3xl font-bold text-blue-900">Demo-ready</p>
-                <p className="mt-2 text-sm text-slate-600">Sample colleges, source labels, deadlines, and charts included.</p>
+                <p className="text-3xl font-bold text-blue-900">Practical</p>
+                <p className="mt-2 text-sm text-slate-600">Explore pathways, courses, and next steps with confidence.</p>
               </div>
             </div>
           </div>

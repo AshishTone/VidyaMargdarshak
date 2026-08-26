@@ -2,105 +2,20 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/ui/Button";
 import SectionCard from "../components/ui/SectionCard";
-import { fetchQuestions, submitAssessment } from "../services/platformService";
+import { fetchAssessmentForm, submitAssessment } from "../services/platformService";
 
+const shuffle = (items) => {
+  const next = [...items];
+  for (let index = next.length - 1; index > 0; index -= 1) { const pick = Math.floor(Math.random() * (index + 1)); [next[index], next[pick]] = [next[pick], next[index]]; }
+  return next;
+};
 export default function AssessmentPage() {
-  const navigate = useNavigate();
-  const [questions, setQuestions] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [submitting, setSubmitting] = useState(false);
-
-  useEffect(() => {
-    fetchQuestions()
-      .then(setQuestions)
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (loading) {
-    return <SectionCard>Loading assessment questions...</SectionCard>;
-  }
-
-  const currentQuestion = questions[currentIndex];
-  const progress = ((currentIndex + 1) / questions.length) * 100;
-
-  const handleSubmit = async () => {
-    const payload = {
-      answers: questions.map((question) => ({
-        questionId: question._id,
-        optionValue: answers[question._id],
-      })),
-    };
-
-    setSubmitting(true);
-    await submitAssessment(payload);
-    navigate("/results");
-  };
-
-  return (
-    <SectionCard>
-      <div className="mb-6 flex items-center justify-between gap-4">
-        <div>
-          <p className="section-title">Aptitude & Interest Assessment</p>
-          <p className="mt-2 text-sm text-slate-600">One question at a time, simple and focused.</p>
-        </div>
-        <p className="text-sm font-semibold text-blue-900">
-          Question {currentIndex + 1} of {questions.length}
-        </p>
-      </div>
-
-      <div className="mb-8 h-3 rounded-full bg-slate-100">
-        <div
-          className="h-full rounded-full bg-[linear-gradient(90deg,#1e3a8a,#60a5fa)] transition-all"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
-
-      <div className="rounded-[1.8rem] bg-slate-50 p-6">
-        <p className="text-lg font-bold text-slate-900">{currentQuestion.question}</p>
-        <div className="mt-5 grid gap-3">
-          {currentQuestion.options.map((option) => (
-            <button
-              key={option.value}
-              type="button"
-              onClick={() => setAnswers({ ...answers, [currentQuestion._id]: option.value })}
-              className={`rounded-2xl border px-4 py-4 text-left text-sm transition ${
-                answers[currentQuestion._id] === option.value
-                  ? "border-blue-700 bg-blue-900 text-white"
-                  : "border-slate-200 bg-white text-slate-700 hover:border-blue-300"
-              }`}
-            >
-              {option.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-8 flex flex-wrap justify-between gap-3">
-        <Button
-          variant="secondary"
-          type="button"
-          disabled={currentIndex === 0}
-          onClick={() => setCurrentIndex((value) => value - 1)}
-        >
-          Previous
-        </Button>
-
-        {currentIndex < questions.length - 1 ? (
-          <Button
-            type="button"
-            disabled={!answers[currentQuestion._id]}
-            onClick={() => setCurrentIndex((value) => value + 1)}
-          >
-            Next
-          </Button>
-        ) : (
-          <Button type="button" disabled={!answers[currentQuestion._id] || submitting} onClick={handleSubmit}>
-            {submitting ? "Submitting..." : "See results"}
-          </Button>
-        )}
-      </div>
-    </SectionCard>
-  );
+  const navigate = useNavigate(); const [data, setData] = useState(null); const [section, setSection] = useState("intro"); const [index, setIndex] = useState(0); const [language, setLanguage] = useState("en"); const [interest, setInterest] = useState({}); const [profile, setProfile] = useState({}); const [submitting, setSubmitting] = useState(false); const [error, setError] = useState("");
+  useEffect(() => { fetchAssessmentForm().then(payload => { setData({ ...payload, shuffledQuestions: shuffle(payload.form.questions) }); if (payload.alreadyAttempted) setTimeout(() => navigate("/results"), 3000); }).catch(() => setError("Unable to load the assessment.")); }, [navigate]);
+  if (error) return <SectionCard>{error}</SectionCard>; if (!data) return <SectionCard>Loading assessment...</SectionCard>; if (data.alreadyAttempted) return <SectionCard><p className="section-title">Assessment already completed</p><p className="mt-2 text-sm text-slate-600">Redirecting to your report in 3 seconds...</p></SectionCard>;
+  const questions = section === "interest" ? data.shuffledQuestions : data.profileQuestions; const question = questions[index]; const isInterest = section === "interest"; const currentAnswer = isInterest ? interest[question?.questionId] : profile[question?.questionId]; const answered = isInterest ? currentAnswer !== undefined : Array.isArray(currentAnswer) && currentAnswer.length > 0;
+  const chooseProfile = value => { const current = profile[question.questionId] || []; const multiple = question.questionType === "MULTIPLE_SELECT"; setProfile({ ...profile, [question.questionId]: multiple ? (current.includes(value) ? current.filter(item => item !== value) : [...current, value]) : [value] }); };
+  const finish = async () => { setSubmitting(true); setError(""); try { await submitAssessment({ language, interestResponses: data.form.questions.map(questionItem => ({ questionId: questionItem.questionId, value: interest[questionItem.questionId] })), profileResponses: data.profileQuestions.map(questionItem => ({ questionId: questionItem.questionId, values: profile[questionItem.questionId] })) }); navigate("/results"); } catch (requestError) { setError(requestError.response?.data?.message || "Unable to save the assessment. Please try again."); } finally { setSubmitting(false); } };
+  if (section === "intro") return <SectionCard><p className="section-title">After-10th Assessment</p><p className="mt-3 text-sm text-slate-600">Choose your starting language. You can switch it again on every question.</p><div className="mt-6 grid max-w-md gap-3 sm:grid-cols-2"><Button variant={language === "en" ? "primary" : "secondary"} onClick={() => setLanguage("en")}>English</Button><Button variant={language === "mr" ? "primary" : "secondary"} onClick={() => setLanguage("mr")}>मराठी</Button></div><Button className="mt-6" onClick={() => setSection("interest")}>Begin assessment</Button></SectionCard>;
+  return <SectionCard><div className="flex items-start justify-between gap-4"><div><p className="section-title">{isInterest ? "Interest Assessment" : "Academic & Learning Profile"}</p><p className="mt-1 text-sm text-slate-600">Question {index + 1} of {questions.length}</p></div><Button variant="secondary" onClick={() => setLanguage(language === "en" ? "mr" : "en")}>{language === "en" ? "मराठी" : "English"}</Button></div><div className="mt-5 h-2 rounded-full bg-slate-100"><div className="h-full rounded-full bg-blue-800" style={{ width: `${((index + 1) / questions.length) * 100}%` }} /></div><div className="mt-7 rounded-3xl bg-slate-50 p-6"><p className="text-lg font-bold text-slate-900">{question.text[language] || question.text.en}</p><div className="mt-5 grid gap-3">{(isInterest ? data.form.responseScale : question.options).map(option => { const selected = isInterest ? interest[question.questionId] === option.value : (profile[question.questionId] || []).includes(option.value); return <button key={option.value} type="button" onClick={() => isInterest ? setInterest({ ...interest, [question.questionId]: option.value }) : chooseProfile(option.value)} className={`rounded-2xl border px-4 py-3 text-left text-sm ${selected ? "border-blue-800 bg-blue-900 text-white" : "border-slate-200 bg-white"}`}>{option.label[language] || option.label.en}</button>; })}</div></div>{error ? <p className="mt-4 text-sm text-rose-600">{error}</p> : null}<div className="mt-7 flex justify-between"><Button variant="secondary" disabled={index === 0} onClick={() => setIndex(index - 1)}>Previous</Button>{index < questions.length - 1 ? <Button disabled={!answered} onClick={() => setIndex(index + 1)}>Next</Button> : isInterest ? <Button disabled={!answered} onClick={() => { setSection("profile"); setIndex(0); }}>Continue to profile</Button> : <Button disabled={!answered || submitting} onClick={finish}>{submitting ? "Saving..." : "Finish assessment"}</Button>}</div></SectionCard>;
 }

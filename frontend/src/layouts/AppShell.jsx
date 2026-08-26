@@ -1,5 +1,5 @@
-import { LogOut, Menu, User2, X, Lock } from "lucide-react";
-import { NavLink, Outlet } from "react-router-dom";
+import { LogOut, Menu, User2, X, Lock, ArrowLeft } from "lucide-react";
+import { Link, NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import Button from "../components/ui/Button";
@@ -7,6 +7,8 @@ import { sidebarLinks } from "../utils/constants";
 
 export default function AppShell() {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -75,7 +77,7 @@ export default function AppShell() {
             >
               <Menu className="h-5 w-5" />
             </button>
-            <img src="/logo.png" alt="VidyaMargdarshak logo" className="h-10 w-auto" />
+            <Link to="/" className="flex items-center gap-2"><img src="/logo.png" alt="VidyaMargdarshak logo" className="h-10 w-auto" /><span className="hidden font-bold text-slate-900 sm:inline">VidyaMargdarshak</span></Link>
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-blue-800">
                 Welcome back
@@ -85,6 +87,7 @@ export default function AppShell() {
           </div>
 
           <div className="flex items-center gap-3">
+            {location.pathname !== "/dashboard" ? <Button variant="secondary" className="gap-2" onClick={() => navigate(-1)}><ArrowLeft className="h-4 w-4" />Back</Button> : null}
             {user?.profileCompleted ? (
               <div className="hidden items-center gap-2 rounded-2xl border border-slate-200 bg-white px-4 py-2 sm:flex">
                 <User2 className="h-4 w-4 text-blue-800" />

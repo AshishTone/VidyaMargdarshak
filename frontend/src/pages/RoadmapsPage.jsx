@@ -7,11 +7,13 @@ import useAuth from "../hooks/useAuth";
 import {
   fetchPersonalizedRoadmap,
   fetchPublicRoadmap,
+  fetchLatestAssessment,
 } from "../services/platformService";
 
 export default function RoadmapsPage({ publicOnly = false }) {
   const { user } = useAuth();
-  const [activeTab, setActiveTab] = useState("public");
+  const [activeTab, setActiveTab] = useState(user && !publicOnly ? "personalized" : "public");
+  const [assessmentDone, setAssessmentDone] = useState(false);
   const [publicRoadmap, setPublicRoadmap] = useState(null);
   const [personalizedRoadmap, setPersonalizedRoadmap] = useState(null);
   const [selectedNode, setSelectedNode] = useState(null);
@@ -24,6 +26,8 @@ export default function RoadmapsPage({ publicOnly = false }) {
       setSelectedNode(data.nodes?.[0] || null);
     });
   }, []);
+
+  useEffect(() => { if (user && !publicOnly) fetchLatestAssessment().then(() => setAssessmentDone(true)).catch(() => setAssessmentDone(false)); }, [user, publicOnly]);
 
   useEffect(() => {
     if (!user || publicOnly) return;
@@ -63,17 +67,15 @@ export default function RoadmapsPage({ publicOnly = false }) {
               Explore education pathways as a real knowledge graph.
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-blue-100">
-              Use the public roadmap to explore all possible routes after 10th and 12th. Once
-              your profile and assessment are complete, unlock a personalized roadmap with
-              confidence-based path recommendations.
+              {user ? `Explore education routes appropriate after ${user.classLevel}th, with a personalized roadmap based on your profile.` : "Use the public roadmap to explore education routes after 10th and 12th."}
             </p>
           </div>
 
           <div className="rounded-[1.8rem] border border-white/20 bg-white/10 p-5">
-            <p className="text-sm font-semibold text-blue-100">Modes</p>
-            <p className="mt-3 text-2xl font-bold">Public + Personalized</p>
+            <p className="text-sm font-semibold text-blue-100">Mode</p>
+            <p className="mt-3 text-2xl font-bold">{user ? "Personalized" : "Public"}</p>
             <p className="mt-3 text-sm text-blue-100">
-              Public works without login. Personalized activates only after onboarding and assessment completion.
+              {assessmentDone ? "Your assessment is complete; your roadmap can use your saved profile and results." : "Complete your profile and assessment to unlock personalized pathing."}
             </p>
           </div>
         </div>

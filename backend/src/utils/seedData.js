@@ -507,7 +507,7 @@ async function seedDatabase() {
 
   await upsertMany(Question, sampleQuestions, "order");
   await upsertMany(Course, sampleCourses, "slug");
-  await upsertMany(Deadline, sampleDeadlines, "title");
+  await Deadline.deleteMany({ title: { $in: sampleDeadlines.map((deadline) => deadline.title) } });
   await upsertMany(RoadmapNode, roadmapNodes, "nodeId");
   await upsertMany(RoadmapEdge, roadmapEdges, "edgeId");
 

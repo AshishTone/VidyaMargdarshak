@@ -87,13 +87,10 @@ const userSchema = new mongoose.Schema(
       min: 0,
       max: 100,
     },
-    interests: {
-      type: [String],
-      default: [],
-    },
-    strengths: {
-      type: [String],
-      default: [],
+    resultStatus: {
+      type: String,
+      enum: ["DECLARED", "NOT_DECLARED"],
+      default: "DECLARED",
     },
     savedCourses: [
       {
