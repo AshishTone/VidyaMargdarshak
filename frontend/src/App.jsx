@@ -15,6 +15,7 @@ import AssessmentPage from "./pages/AssessmentPage.jsx";
 import ResultsPage from "./pages/ResultsPage.jsx";
 import SavedPage from "./pages/SavedPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
+import PersonalizedRoadmapPage from "./pages/PersonalizedRoadmapPage.jsx";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/assessment" element={<AssessmentPage />} />
         <Route path="/results" element={<ResultsPage />} />
+        <Route path="/my-roadmap" element={<PersonalizedRoadmapPage />} />
         <Route path="/roadmaps" element={<RoadmapsPage />} />
         <Route path="/courses" element={<CoursesPage />} />
         <Route path="/courses/:id" element={<CourseDetailsPage />} />

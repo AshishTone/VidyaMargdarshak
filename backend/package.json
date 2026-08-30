@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node ./node_modules/nodemon/bin/nodemon.js src/server.js",
     "start": "node ./src/server.js",
-    "seed": "node ./src/utils/seedData.js"
+    "seed": "node ./src/utils/seedData.js",
+    "upload:after12": "node ./src/scripts/uploadAfter12Forms.js"
   },
   "keywords": [],
   "author": "",

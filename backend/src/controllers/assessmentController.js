@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const AssessmentForm = require("../models/AssessmentForm");
 const ProfileQuestion = require("../models/AssessmentStudentProfileQuestion");
 const AssessmentAttempt = require("../models/AssessmentAttempt");
@@ -5,80 +6,30 @@ const AssessmentResponse = require("../models/AssessmentResponse");
 const InterestResult = require("../models/InterestResult");
 const ExplorationTopic = require("../models/ExplorationTopic");
 const Recommendation = require("../models/Recommendation");
-const { asyncHandler } = require("../utils/asyncHandler");
-const { ApiError } = require("../utils/ApiError");
-const { buildStructuredRecommendations } = require("../services/after10MatchingService");
-const { explainRecommendations } = require("../services/geminiExplanationService");
+const { asyncHandler } = require("../utils/asyncHandler"); const { ApiError } = require("../utils/ApiError");
+const { buildStructuredRecommendations } = require("../services/after10MatchingService"); const { buildAfter12Recommendations } = require("../services/after12RecommendationService"); const { explainRecommendations } = require("../services/geminiExplanationService"); const { buildRoadmap } = require("../services/personalizedRoadmapService");
+const key = value => String(value); const profiles = values => Object.fromEntries(values.map(x => [key(x.questionId).replace(/^PROFILE:/, ""), x.responseValues])); const after12 = user => user.classLevel === "12";
 
-const activeForm = () => AssessmentForm.findOne({ formId: "AFTER10_V1", status: "ACTIVE" }).lean();
-const questionKey = value => String(value);
-const profileAnswers = responses => Object.fromEntries(responses.map(item => [questionKey(item.questionId).replace(/^PROFILE:/, ""), item.responseValues]));
+async function definition(user) {
+  if (!after12(user)) return { form: await AssessmentForm.findOne({ formId: "AFTER10_V1", status: "ACTIVE" }).lean(), profileQuestions: await ProfileQuestion.find({ active: true, version: 1 }).sort({ questionId: 1 }).lean(), after12: false };
+  if (!user.twelfthStream || !["PCM", "PCB"].includes(user.twelfthStream)) throw new ApiError(400, "Complete your Class-12 stream in your profile before taking this assessment.");
+  return { form: await mongoose.connection.db.collection(`Assessment_Forms_${user.twelfthStream}`).findOne({ formId: `AFTER12_${user.twelfthStream}_V1`, status: "ACTIVE" }), profileQuestions: [], after12: true };
+}
+async function latest(user) { const { form } = await definition(user); if (!form) throw new ApiError(404, "The active assessment form was not found."); return AssessmentAttempt.findOne({ studentId: user._id, assessmentFormId: form.formId, status: "COMPLETED" }).sort({ completedAt: -1 }).lean(); }
 
-const getQuestions = asyncHandler(async (req, res) => {
-  const [form, profileQuestions, priorAttempt] = await Promise.all([activeForm(), ProfileQuestion.find({ active: true, version: 1 }).sort({ questionId: 1 }).lean(), AssessmentAttempt.findOne({ studentId: req.user._id, assessmentFormId: "AFTER10_V1", status: "COMPLETED" }).lean()]);
-  if (!form) throw new ApiError(404, "The active After-10th assessment form was not found.");
-  if (!Array.isArray(form.questions) || form.questions.length !== form.questionCount) throw new ApiError(500, "The configured assessment form does not contain its expected questions.");
-  const priorResult = priorAttempt ? await InterestResult.exists({ attemptId: priorAttempt._id }) : null;
-  res.json({ form: { ...form, responseScale: form.responseScale?.options || form.responseScale }, profileQuestions, alreadyAttempted: Boolean(priorResult) });
-});
+const getQuestions = asyncHandler(async (req, res) => { const setup = await definition(req.user); if (!setup.form) throw new ApiError(404, "The active assessment form was not found."); if (!Array.isArray(setup.form.questions) || setup.form.questions.length !== setup.form.questionCount) throw new ApiError(500, "The configured assessment form does not contain its expected questions."); const attempt = await AssessmentAttempt.findOne({ studentId: req.user._id, assessmentFormId: setup.form.formId, status: "COMPLETED" }).lean(); const completed = attempt && await InterestResult.exists({ attemptId: attempt._id }); res.json({ form: { ...setup.form, responseScale: setup.form.responseScale?.options || setup.form.responseScale }, profileQuestions: setup.profileQuestions, alreadyAttempted: Boolean(completed), assessmentType: setup.after12 ? "AFTER12" : "AFTER10" }); });
 
 const submitAssessment = asyncHandler(async (req, res) => {
-  const existing = await AssessmentAttempt.findOne({ studentId: req.user._id, assessmentFormId: "AFTER10_V1", status: "COMPLETED" });
-  if (existing) {
-    const existingResult = await InterestResult.exists({ attemptId: existing._id });
-    if (existingResult) throw new ApiError(409, "You have already completed this assessment.");
-    await AssessmentResponse.deleteMany({ attemptId: existing._id });
-    await AssessmentAttempt.deleteOne({ _id: existing._id });
-  }
-  const [form, profileQuestions] = await Promise.all([activeForm(), ProfileQuestion.find({ active: true, version: 1 }).lean()]);
-  if (!form) throw new ApiError(404, "The active After-10th assessment form was not found.");
-  const questions = form.questions || [];
-  const questionMap = new Map(questions.map(question => [questionKey(question.questionId), question]));
-  if (questions.length !== form.questionCount || req.body.interestResponses.length !== questions.length) throw new ApiError(400, "Please answer every interest question.");
-  const allowedValues = new Set((form.responseScale?.options || form.responseScale || []).map(option => Number(option.value)));
-  const interest = req.body.interestResponses.map(answer => {
-    const question = questionMap.get(questionKey(answer.questionId)); const responseValue = Number(answer.value);
-    if (!question || !allowedValues.has(responseValue)) throw new ApiError(400, "An interest response is invalid.");
-    return { questionId: question.questionId, categoryId: question.categoryId || question.category, responseValue, uncertaintyFlag: responseValue === 3, responseType: "INTEREST", answeredAt: new Date() };
-  });
-  if (new Set(interest.map(answer => questionKey(answer.questionId))).size !== questions.length) throw new ApiError(400, "Each interest question must be answered once.");
-  const profileMap = new Map(profileQuestions.map(question => [questionKey(question.questionId), question]));
-  if (req.body.profileResponses.length !== profileQuestions.length) throw new ApiError(400, "Please answer every profile question.");
-  const profile = req.body.profileResponses.map(answer => {
-    const question = profileMap.get(questionKey(answer.questionId)); const responseValues = answer.values || [];
-    if (!question || !responseValues.length || responseValues.some(value => !question.options.some(option => option.value === value))) throw new ApiError(400, "A profile response is invalid.");
-    if (question.questionType !== "MULTIPLE_SELECT" && responseValues.length !== 1) throw new ApiError(400, "This profile question accepts one answer.");
-    return { questionId: `PROFILE:${question.questionId}`, responseValues, responseType: "PROFILE", answeredAt: new Date() };
-  });
-  const now = new Date();
-  let attempt;
-  try { attempt = await AssessmentAttempt.create({ studentId: req.user._id, assessmentFormId: form.formId, targetLevel: form.targetLevel, language: req.body.language || "en", status: "COMPLETED", startedAt: now, completedAt: now, questionCount: interest.length + profile.length, answeredCount: interest.length + profile.length, unsureCount: interest.filter(item => item.uncertaintyFlag).length, completionPercentage: 100 }); } catch (error) { if (error.code === 11000) throw new ApiError(409, "You have already completed this assessment."); throw error; }
-  try {
-    await AssessmentResponse.insertMany([...interest, ...profile].map(response => ({ ...response, attemptId: attempt._id })));
-  } catch (error) {
-    await AssessmentResponse.deleteMany({ attemptId: attempt._id });
-    await AssessmentAttempt.deleteOne({ _id: attempt._id });
-    throw error;
-  }
-  const min = Number(form.responseScale?.min || form.scoring?.minResponse || 1); const max = Number(form.responseScale?.max || form.scoring?.maxResponse || 5);
-  const categoryResults = [...new Set(interest.map(item => item.categoryId))].map(categoryId => { const items = interest.filter(item => item.categoryId === categoryId); const rawScore = items.reduce((sum, item) => sum + item.responseValue, 0); const minScore = min * items.length; const maxScore = max * items.length; const unsureCount = items.filter(item => item.uncertaintyFlag).length; return { categoryId, rawScore, minScore, maxScore, interestIndex: ((rawScore - minScore) / (maxScore - minScore)) * 100, unsureCount, uncertaintyRate: (unsureCount / items.length) * 100 }; }).sort((a, b) => b.interestIndex - a.interestIndex).map((item, index) => ({ ...item, rank: index + 1 }));
-  const result = await InterestResult.create({ attemptId: attempt._id, studentId: req.user._id, results: categoryResults, topCategories: categoryResults.slice(0, 3).map(item => item.categoryId), calculationVersion: "SCORE_V1", generatedAt: now });
-  res.status(201).json({ attempt, result, profile: profileAnswers(profile) });
+  const setup = await definition(req.user); const { form, profileQuestions } = setup; if (!form) throw new ApiError(404, "The active assessment form was not found.");
+  const existing = await AssessmentAttempt.findOne({ studentId: req.user._id, assessmentFormId: form.formId, status: "COMPLETED" }); if (existing && await InterestResult.exists({ attemptId: existing._id })) throw new ApiError(409, "You have already completed this assessment."); if (existing) { await AssessmentResponse.deleteMany({ attemptId: existing._id }); await AssessmentAttempt.deleteOne({ _id: existing._id }); }
+  const questions = form.questions || []; const submitted = req.body.interestResponses || []; const questionMap = new Map(questions.map(q => [key(q.questionId), q])); if (questions.length !== form.questionCount || submitted.length !== questions.length) throw new ApiError(400, "Please answer every interest question."); const valid = new Set((form.responseScale?.options || form.responseScale || []).map(x => Number(x.value)));
+  const interest = submitted.map(answer => { const question = questionMap.get(key(answer.questionId)); const value = Number(answer.value); if (!question || !valid.has(value)) throw new ApiError(400, "An interest response is invalid."); return { questionId: question.questionId, categoryId: question.categoryId || question.category, responseValue: value, uncertaintyFlag: value === 3, responseType: "INTEREST", answeredAt: new Date() }; }); if (new Set(interest.map(x => key(x.questionId))).size !== questions.length) throw new ApiError(400, "Each interest question must be answered once.");
+  const submittedProfile = req.body.profileResponses || []; if (setup.after12 && submittedProfile.length) throw new ApiError(400, "This assessment does not accept separate profile responses."); if (!setup.after12 && submittedProfile.length !== profileQuestions.length) throw new ApiError(400, "Please answer every profile question."); const profileMap = new Map(profileQuestions.map(q => [key(q.questionId), q])); const profile = submittedProfile.map(answer => { const question = profileMap.get(key(answer.questionId)); const values = answer.values || []; if (!question || !values.length || values.some(v => !question.options.some(x => x.value === v))) throw new ApiError(400, "A profile response is invalid."); if (question.questionType !== "MULTIPLE_SELECT" && values.length !== 1) throw new ApiError(400, "This profile question accepts one answer."); return { questionId: `PROFILE:${question.questionId}`, responseValues: values, responseType: "PROFILE", answeredAt: new Date() }; });
+  const now = new Date(); let attempt; try { attempt = await AssessmentAttempt.create({ studentId: req.user._id, assessmentFormId: form.formId, targetLevel: form.targetLevel, language: req.body.language || "en", status: "COMPLETED", startedAt: now, completedAt: now, questionCount: interest.length + profile.length, answeredCount: interest.length + profile.length, unsureCount: interest.filter(x => x.uncertaintyFlag).length, completionPercentage: 100 }); } catch (error) { if (error.code === 11000) throw new ApiError(409, "You have already completed this assessment."); throw error; }
+  try { await AssessmentResponse.insertMany([...interest, ...profile].map(x => ({ ...x, attemptId: attempt._id }))); } catch (error) { await AssessmentResponse.deleteMany({ attemptId: attempt._id }); await AssessmentAttempt.deleteOne({ _id: attempt._id }); throw error; }
+  const min = Number(form.responseScale?.min || form.scoring?.minResponse || 1); const max = Number(form.responseScale?.max || form.scoring?.maxResponse || 5); const results = [...new Set(interest.map(x => x.categoryId))].map(categoryId => { const items = interest.filter(x => x.categoryId === categoryId); const rawScore = items.reduce((sum, x) => sum + x.responseValue, 0); const unsureCount = items.filter(x => x.uncertaintyFlag).length; return { categoryId, rawScore, minScore: min * items.length, maxScore: max * items.length, interestIndex: ((rawScore - min * items.length) / ((max - min) * items.length)) * 100, unsureCount, uncertaintyRate: unsureCount / items.length * 100 }; }).sort((a, b) => b.interestIndex - a.interestIndex).map((x, i) => ({ ...x, rank: i + 1 })); const result = await InterestResult.create({ attemptId: attempt._id, studentId: req.user._id, results, topCategories: results.slice(0, 3).map(x => x.categoryId), calculationVersion: setup.after12 ? "AFTER12_SCORE_V1" : "SCORE_V1", generatedAt: now }); res.status(201).json({ attempt, result, profile: profiles(profile) });
 });
 
-const getLatestAssessment = asyncHandler(async (req, res) => {
-  const attempt = await AssessmentAttempt.findOne({ studentId: req.user._id, assessmentFormId: "AFTER10_V1", status: "COMPLETED" }).sort({ completedAt: -1 }).lean();
-  if (!attempt) throw new ApiError(404, "No assessment found for this user.");
-  const [result, responses] = await Promise.all([InterestResult.findOne({ attemptId: attempt._id }).lean(), AssessmentResponse.find({ attemptId: attempt._id, responseType: "PROFILE" }).lean()]);
-  const topIds = result?.topCategories || [];
-  const [explorationTopics, rules] = await Promise.all([ExplorationTopic.find({ active: true, categoryId: { $in: topIds } }).lean(), Recommendation.find({ active: true, categoryId: { $in: topIds } }).sort({ priority: 1 }).lean()]);
-  const scores = new Map((result?.results || []).map(item => [item.categoryId, item.interestIndex]));
-  const recommendations = rules.filter(rule => scores.get(rule.categoryId) >= Number(rule.conditions?.minimumInterestIndex || 0)).map(rule => ({ categoryId: rule.categoryId, pathways: rule.recommendedPathways, priority: rule.priority }));
-  const profile = profileAnswers(responses);
-  const structuredRecommendations = buildStructuredRecommendations({ user: req.user, interestResult: result, profile });
-  let aiExplanation = null;
-  let aiExplanationError = null;
-  try { aiExplanation = await explainRecommendations(structuredRecommendations); } catch (error) { aiExplanationError = "AI explanation is temporarily unavailable; your calculated recommendations are still shown."; }
-  res.json({ attempt, result, profile, explorationTopics, recommendations, structuredRecommendations, aiExplanation, aiExplanationError });
-});
-module.exports = { getQuestions, submitAssessment, getLatestAssessment };
+const getLatestAssessment = asyncHandler(async (req, res) => { const attempt = await latest(req.user); if (!attempt) throw new ApiError(404, "No assessment found for this user."); const [result, responseRows] = await Promise.all([InterestResult.findOne({ attemptId: attempt._id }).lean(), AssessmentResponse.find({ attemptId: attempt._id, responseType: "PROFILE" }).lean()]); const profile = profiles(responseRows); const currentAfter12 = attempt.assessmentFormId.startsWith("AFTER12_"); const structuredRecommendations = result.structuredRecommendations || (currentAfter12 ? buildAfter12Recommendations({ user: req.user, result, profile }) : buildStructuredRecommendations({ user: req.user, interestResult: result, profile })); if (!result.structuredRecommendations) await InterestResult.updateOne({ _id: result._id }, { $set: { structuredRecommendations } }); let aiExplanation = result.aiExplanation || null; let aiExplanationError = null; if (!aiExplanation && result.aiExplanationStatus !== "UNAVAILABLE") try { aiExplanation = await explainRecommendations(structuredRecommendations); await InterestResult.updateOne({ _id: result._id }, { $set: aiExplanation ? { aiExplanation, aiExplanationStatus: "GENERATED", aiGeneratedAt: new Date() } : { aiExplanationStatus: "UNAVAILABLE" } }); } catch { aiExplanationError = "AI explanation is temporarily unavailable; your calculated recommendations are still shown."; await InterestResult.updateOne({ _id: result._id }, { $set: { aiExplanationStatus: "UNAVAILABLE" } }); } const topIds = result.topCategories || []; const [explorationTopics, recommendations] = currentAfter12 ? [[], []] : await Promise.all([ExplorationTopic.find({ active: true, categoryId: { $in: topIds } }).lean(), Recommendation.find({ active: true, categoryId: { $in: topIds } }).sort({ priority: 1 }).lean()]); res.json({ attempt, result, profile, explorationTopics, recommendations, structuredRecommendations, aiExplanation, aiExplanationError, assessmentType: currentAfter12 ? "AFTER12" : "AFTER10" }); });
+const getPersonalizedRoadmap = asyncHandler(async (req, res) => { if (after12(req.user)) throw new ApiError(404, "The After-12th roadmap is not available yet."); const attempt = await latest(req.user); if (!attempt) throw new ApiError(404, "Complete the assessment before viewing your roadmap."); const [result, responses] = await Promise.all([InterestResult.findOne({ attemptId: attempt._id }).lean(), AssessmentResponse.find({ attemptId: attempt._id, responseType: "PROFILE" }).lean()]); if (result.personalizedRoadmap) return res.json({ roadmap: result.personalizedRoadmap, cached: true }); const structured = result.structuredRecommendations || buildStructuredRecommendations({ user: req.user, interestResult: result, profile: profiles(responses) }); const roadmap = await buildRoadmap({ result, structuredRecommendations: structured, aiExplanation: result.aiExplanation, marksDeclared: req.user.resultStatus !== "NOT_DECLARED" && req.user.tenthOverallPercentage != null }); await InterestResult.updateOne({ _id: result._id }, { $set: { structuredRecommendations: structured, personalizedRoadmap: roadmap, roadmapGeneratedAt: new Date() } }); res.json({ roadmap, cached: false }); });
+module.exports = { getQuestions, submitAssessment, getLatestAssessment, getPersonalizedRoadmap };

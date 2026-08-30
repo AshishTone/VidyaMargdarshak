@@ -6,6 +6,7 @@ export const fetchAssessmentForm = async () => (await api.get("/assessments/ques
 export const submitAssessment = async (payload) =>
   (await api.post("/assessments", payload)).data;
 export const fetchLatestAssessment = async () => (await api.get("/assessments/latest")).data;
+export const fetchAssessmentRoadmap = async () => (await api.get("/assessments/latest/roadmap")).data.roadmap;
 export const fetchStreamRecommendation = async () =>
   (await api.get("/recommendations/streams")).data;
 export const fetchRecommendedCourses = async () =>

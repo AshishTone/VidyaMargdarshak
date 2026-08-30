@@ -26,7 +26,7 @@ function buildStructuredRecommendations({ user, interestResult, profile }) {
     const academic = academicFit(user, rule.academicSubjects);
     const matchScore = marksDeclared
       ? interestFit * 0.5 + academic * 0.3 + preference * 0.2
-      : ((interestFit * 0.5 + preference * 0.2) / 0.7) * 100;
+      : (interestFit * 0.5 + preference * 0.2) / 0.7;
     return { pathway: rule.pathway, matchScore: Number(matchScore.toFixed(1)), interestFit: Number(interestFit.toFixed(1)), preferenceFit: Number(preference.toFixed(1)), academicFit: academic == null ? "UNAVAILABLE" : Number(academic.toFixed(1)), eligibility: "REVIEW_REQUIRED" };
   }).sort((left, right) => right.matchScore - left.matchScore);
   return { student: { marksDeclared, overallPercentage: marksDeclared ? user.tenthOverallPercentage : null, subjects: user.subjectMarks || {} }, interestProfile: (interestResult.results || []).map(item => ({ category: item.categoryId, score: item.interestIndex, uncertainty: item.uncertaintyRate })), learningProfile: profile, recommendations };
