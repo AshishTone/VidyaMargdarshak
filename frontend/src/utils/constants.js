@@ -25,13 +25,13 @@ export const strengthOptions = [
 ];
 
 export const sidebarLinks = [
-  { to: "/dashboard", label: "Dashboard" },
-  { to: "/profile", label: "Profile" },
-  { to: "/assessment", label: "Assessment" },
-  { to: "/results", label: "Results" },
-  { to: "/roadmaps", label: "Roadmaps" },
-  { to: "/courses", label: "Courses" },
-  { to: "/colleges", label: "Colleges" },
-  { to: "/deadlines", label: "Deadlines" },
-  { to: "/saved", label: "Saved" },
+  { to: "/dashboard", label: "🏠 Home Dashboard" },
+  { to: "/assessment", label: "📝 Assessment Quiz" },
+  { to: "/results", label: "🎯 AI Predictions & Results" },
+  { to: "/roadmaps", label: "🧭 Interactive Roadmaps" },
+  { to: "/courses", label: "📚 Degree Courses" },
+  { to: "/colleges", label: "🎓 Top Colleges" },
+  { to: "/deadlines", label: "⏰ Exam Deadlines" },
+  { to: "/saved", label: "🔖 Saved Items" },
+  { to: "/profile", label: "👤 Student Profile" },
 ];

@@ -66,6 +66,7 @@ const createLikertOptions = (keyPrefix, weights, reverseWeights = {}) => [
 ];
 
 const sampleQuestions = [
+  // LOGIC & MATHEMATICS (q1 - q11)
   {
     order: 1,
     classLevel: "10",
@@ -80,100 +81,704 @@ const sampleQuestions = [
   {
     order: 2,
     classLevel: "10",
-    category: "science",
-    question: "I find scientific experiments, physics principles, and chemical reactions intriguing.",
-    options: createLikertOptions(
-      "q2-physics-chem",
-      { science: 6, commerce: 0, arts: 0, vocational: 1 },
-      { science: 0, commerce: 2, arts: 3, vocational: 2 }
-    ),
-  },
-  {
-    order: 3,
-    classLevel: "10",
-    category: "science",
-    question: "I am interested in biological sciences, plant/animal physiology, and healthcare systems.",
-    options: createLikertOptions(
-      "q3-bio-med",
-      { science: 6, commerce: 0, arts: 1, vocational: 1 },
-      { science: 0, commerce: 2, arts: 3, vocational: 1 }
-    ),
-  },
-  {
-    order: 4,
-    classLevel: "10",
     category: "logic",
     question: "I like computers, coding, software applications, and understanding technological innovations.",
     options: createLikertOptions(
-      "q4-tech-code",
+      "q2-tech-code",
       { science: 6, commerce: 2, arts: 0, vocational: 3 },
       { science: 0, commerce: 2, arts: 3, vocational: 1 }
     ),
   },
   {
-    order: 5,
-    classLevel: "10",
-    category: "commerce",
-    question: "I am interested in how companies make profits, stock markets, accounting, and financial management.",
+    order: 3,
+    classLevel: "all",
+    category: "logic",
+    question: "I excel at discovering patterns in data sets, interpreting complex graphs, and drawing logical conclusions.",
     options: createLikertOptions(
-      "q5-commerce-finance",
-      { science: 0, commerce: 6, arts: 1, vocational: 1 },
-      { science: 3, commerce: 0, arts: 2, vocational: 2 }
+      "q3-data-patterns",
+      { science: 6, commerce: 5, arts: 1, vocational: 1 },
+      { science: 0, commerce: 1, arts: 3, vocational: 2 }
+    ),
+  },
+  {
+    order: 4,
+    classLevel: "12",
+    category: "logic",
+    question: "I am fascinated by how artificial intelligence models, machine learning, and automated algorithms make decisions.",
+    options: createLikertOptions(
+      "q4-ai-algorithms",
+      { science: 7, commerce: 3, arts: 0, vocational: 2 },
+      { science: 0, commerce: 2, arts: 3, vocational: 1 }
+    ),
+  },
+  {
+    order: 5,
+    classLevel: "12",
+    category: "logic",
+    question: "I enjoy breaking down large multi-step challenges into smaller, systematic step-by-step procedures.",
+    options: createLikertOptions(
+      "q5-algorithmic-thinking",
+      { science: 6, commerce: 4, arts: 1, vocational: 2 },
+      { science: 0, commerce: 1, arts: 3, vocational: 2 }
     ),
   },
   {
     order: 6,
-    classLevel: "10",
-    category: "commerce",
-    question: "I would like to start my own commercial business, manage corporate teams, or analyze market trends.",
+    classLevel: "all",
+    category: "logic",
+    question: "I prefer working with structured databases, quantitative models, and clear logical rules.",
     options: createLikertOptions(
-      "q6-business-mgmt",
-      { science: 1, commerce: 6, arts: 1, vocational: 2 },
-      { science: 2, commerce: 0, arts: 2, vocational: 2 }
+      "q6-databases-quant",
+      { science: 5, commerce: 5, arts: 0, vocational: 1 },
+      { science: 1, commerce: 1, arts: 4, vocational: 2 }
     ),
   },
   {
     order: 7,
     classLevel: "10",
-    category: "creativity",
-    question: "I love creative expression, literature, painting, creative writing, or visual design.",
+    category: "logic",
+    question: "I enjoy playing strategy games like chess, solving Sudoku, or tackling cryptic analytical brainteasers.",
     options: createLikertOptions(
-      "q7-arts-creative",
-      { science: 0, commerce: 1, arts: 6, vocational: 2 },
-      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+      "q7-strategy-puzzles",
+      { science: 5, commerce: 4, arts: 1, vocational: 1 },
+      { science: 1, commerce: 1, arts: 3, vocational: 2 }
     ),
   },
   {
     order: 8,
-    classLevel: "10",
-    category: "social",
-    question: "I am enthusiastic about history, geography, psychology, and understanding societal changes.",
+    classLevel: "12",
+    category: "logic",
+    question: "I am intrigued by cybersecurity, network encryption protocols, and data protection mechanisms.",
     options: createLikertOptions(
-      "q8-humanities-soc",
-      { science: 1, commerce: 1, arts: 6, vocational: 1 },
-      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+      "q8-cybersecurity",
+      { science: 6, commerce: 3, arts: 0, vocational: 3 },
+      { science: 0, commerce: 2, arts: 3, vocational: 1 }
     ),
   },
   {
     order: 9,
-    classLevel: "10",
-    category: "practical",
-    question: "I prefer hands-on practical work (assembling electronics, crafting, workshop tools) over pure textbook memorization.",
+    classLevel: "12",
+    category: "logic",
+    question: "I find financial mathematics, statistical probability, and quantitative risk calculations exciting.",
     options: createLikertOptions(
-      "q9-practical-voc",
-      { science: 2, commerce: 1, arts: 2, vocational: 6 },
-      { science: 3, commerce: 3, arts: 2, vocational: 0 }
+      "q9-financial-math",
+      { science: 4, commerce: 7, arts: 0, vocational: 1 },
+      { science: 2, commerce: 0, arts: 3, vocational: 2 }
     ),
   },
   {
     order: 10,
     classLevel: "10",
+    category: "logic",
+    question: "I enjoy spatial reasoning, analyzing 3D geometric shapes, and understanding architectural or engineering blueprints.",
+    options: createLikertOptions(
+      "q10-spatial-3d",
+      { science: 6, commerce: 1, arts: 2, vocational: 4 },
+      { science: 0, commerce: 2, arts: 2, vocational: 1 }
+    ),
+  },
+  {
+    order: 11,
+    classLevel: "all",
+    category: "logic",
+    question: "I like using complex formulas in spreadsheets to automate calculations, track metrics, or project outcomes.",
+    options: createLikertOptions(
+      "q11-excel-formulas",
+      { science: 4, commerce: 6, arts: 1, vocational: 2 },
+      { science: 2, commerce: 0, arts: 3, vocational: 1 }
+    ),
+  },
+
+  // SCIENCE & ENGINEERING (q12 - q22)
+  {
+    order: 12,
+    classLevel: "10",
+    category: "science",
+    question: "I find scientific experiments, physics principles, and chemical reactions intriguing.",
+    options: createLikertOptions(
+      "q12-physics-chem",
+      { science: 7, commerce: 0, arts: 0, vocational: 2 },
+      { science: 0, commerce: 2, arts: 3, vocational: 2 }
+    ),
+  },
+  {
+    order: 13,
+    classLevel: "10",
+    category: "science",
+    question: "I am interested in biological sciences, plant/animal physiology, and human anatomy.",
+    options: createLikertOptions(
+      "q13-bio-physiology",
+      { science: 7, commerce: 0, arts: 1, vocational: 1 },
+      { science: 0, commerce: 2, arts: 3, vocational: 1 }
+    ),
+  },
+  {
+    order: 14,
+    classLevel: "12",
+    category: "science",
+    question: "I am eager to learn how electronic circuits, microcontrollers, and robotics hardware work.",
+    options: createLikertOptions(
+      "q14-electronics-robotics",
+      { science: 7, commerce: 1, arts: 0, vocational: 4 },
+      { science: 0, commerce: 2, arts: 3, vocational: 1 }
+    ),
+  },
+  {
+    order: 15,
+    classLevel: "all",
+    category: "science",
+    question: "I enjoy researching astronomy, astrophysics, planetary science, and satellite technology.",
+    options: createLikertOptions(
+      "q15-astronomy-space",
+      { science: 7, commerce: 0, arts: 1, vocational: 1 },
+      { science: 0, commerce: 2, arts: 3, vocational: 2 }
+    ),
+  },
+  {
+    order: 16,
+    classLevel: "12",
+    category: "science",
+    question: "I am fascinated by genetics, DNA sequencing, gene editing, and biotechnological breakthroughs.",
+    options: createLikertOptions(
+      "q16-genetics-biotech",
+      { science: 7, commerce: 0, arts: 1, vocational: 1 },
+      { science: 0, commerce: 2, arts: 3, vocational: 1 }
+    ),
+  },
+  {
+    order: 17,
+    classLevel: "all",
+    category: "science",
+    question: "I am deeply passionate about environmental conservation, renewable energy systems, and climate science.",
+    options: createLikertOptions(
+      "q17-environmental-sci",
+      { science: 6, commerce: 1, arts: 3, vocational: 2 },
+      { science: 0, commerce: 2, arts: 1, vocational: 1 }
+    ),
+  },
+  {
+    order: 18,
+    classLevel: "12",
+    category: "science",
+    question: "I am interested in medical diagnostics, pathology, pharmacology, and clinical patient care.",
+    options: createLikertOptions(
+      "q18-medical-care",
+      { science: 7, commerce: 0, arts: 1, vocational: 2 },
+      { science: 0, commerce: 3, arts: 2, vocational: 1 }
+    ),
+  },
+  {
+    order: 19,
+    classLevel: "12",
+    category: "science",
+    question: "I enjoy studying organic chemistry, molecular structures, and industrial chemical formulations.",
+    options: createLikertOptions(
+      "q19-chem-formulation",
+      { science: 7, commerce: 1, arts: 0, vocational: 2 },
+      { science: 0, commerce: 2, arts: 3, vocational: 1 }
+    ),
+  },
+  {
+    order: 20,
+    classLevel: "10",
+    category: "science",
+    question: "I am curious about civil engineering, bridge design, structural dynamics, and urban infrastructure.",
+    options: createLikertOptions(
+      "q20-civil-eng",
+      { science: 6, commerce: 1, arts: 1, vocational: 4 },
+      { science: 0, commerce: 2, arts: 2, vocational: 1 }
+    ),
+  },
+  {
+    order: 21,
+    classLevel: "12",
+    category: "science",
+    question: "I like understanding fluid dynamics, thermodynamics, engine mechanics, and aerospace propulsion.",
+    options: createLikertOptions(
+      "q21-aerospace-thermo",
+      { science: 7, commerce: 1, arts: 0, vocational: 3 },
+      { science: 0, commerce: 2, arts: 3, vocational: 1 }
+    ),
+  },
+  {
+    order: 22,
+    classLevel: "all",
+    category: "science",
+    question: "I am intrigued by agricultural sciences, soil chemistry, crop biotechnology, and sustainable farming.",
+    options: createLikertOptions(
+      "q22-agri-science",
+      { science: 6, commerce: 2, arts: 1, vocational: 4 },
+      { science: 0, commerce: 2, arts: 2, vocational: 1 }
+    ),
+  },
+
+  // COMMERCE, FINANCE & BUSINESS (q23 - q33)
+  {
+    order: 23,
+    classLevel: "10",
+    category: "commerce",
+    question: "I am interested in how companies make profits, stock markets, accounting, and financial management.",
+    options: createLikertOptions(
+      "q23-commerce-finance",
+      { science: 0, commerce: 7, arts: 1, vocational: 1 },
+      { science: 3, commerce: 0, arts: 2, vocational: 2 }
+    ),
+  },
+  {
+    order: 24,
+    classLevel: "10",
+    category: "commerce",
+    question: "I would like to start my own commercial business, manage corporate teams, or analyze market trends.",
+    options: createLikertOptions(
+      "q24-business-mgmt",
+      { science: 1, commerce: 7, arts: 1, vocational: 2 },
+      { science: 2, commerce: 0, arts: 2, vocational: 2 }
+    ),
+  },
+  {
+    order: 25,
+    classLevel: "12",
+    category: "commerce",
+    question: "I enjoy keeping track of balance sheets, ledger accounts, tax calculations, and corporate auditing.",
+    options: createLikertOptions(
+      "q25-accounting-audit",
+      { science: 0, commerce: 7, arts: 0, vocational: 1 },
+      { science: 3, commerce: 0, arts: 3, vocational: 2 }
+    ),
+  },
+  {
+    order: 26,
+    classLevel: "12",
+    category: "commerce",
+    question: "I am interested in macroeconomic trends, inflation rates, interest policy, and international trade.",
+    options: createLikertOptions(
+      "q26-macro-economics",
+      { science: 1, commerce: 7, arts: 3, vocational: 0 },
+      { science: 2, commerce: 0, arts: 1, vocational: 2 }
+    ),
+  },
+  {
+    order: 27,
+    classLevel: "all",
+    category: "commerce",
+    question: "I enjoy studying buyer psychology, digital marketing funnels, and corporate brand positioning strategies.",
+    options: createLikertOptions(
+      "q27-marketing-brand",
+      { science: 1, commerce: 6, arts: 3, vocational: 2 },
+      { science: 2, commerce: 0, arts: 1, vocational: 2 }
+    ),
+  },
+  {
+    order: 28,
+    classLevel: "all",
+    category: "commerce",
+    question: "I am fascinated by global supply chains, e-commerce fulfillment networks, and inventory logistics.",
+    options: createLikertOptions(
+      "q28-supply-chain",
+      { science: 2, commerce: 6, arts: 0, vocational: 3 },
+      { science: 2, commerce: 0, arts: 3, vocational: 1 }
+    ),
+  },
+  {
+    order: 29,
+    classLevel: "12",
+    category: "commerce",
+    question: "I like evaluating startup investment decks, stock equity valuation, and venture capital growth.",
+    options: createLikertOptions(
+      "q29-venture-capital",
+      { science: 2, commerce: 7, arts: 1, vocational: 1 },
+      { science: 2, commerce: 0, arts: 2, vocational: 2 }
+    ),
+  },
+  {
+    order: 30,
+    classLevel: "all",
+    category: "commerce",
+    question: "I am interested in corporate negotiation, client sales pipelines, and closing business deals.",
+    options: createLikertOptions(
+      "q30-sales-negotiation",
+      { science: 0, commerce: 7, arts: 2, vocational: 2 },
+      { science: 3, commerce: 0, arts: 1, vocational: 2 }
+    ),
+  },
+  {
+    order: 31,
+    classLevel: "10",
+    category: "commerce",
+    question: "I enjoy organizing team workloads, human resource management, and workplace leadership.",
+    options: createLikertOptions(
+      "q31-hr-leadership",
+      { science: 1, commerce: 6, arts: 3, vocational: 2 },
+      { science: 2, commerce: 0, arts: 1, vocational: 2 }
+    ),
+  },
+  {
+    order: 32,
+    classLevel: "12",
+    category: "commerce",
+    question: "I am interested in legal compliance, company secretary duties, governance regulations, and corporate law.",
+    options: createLikertOptions(
+      "q32-corporate-law-cs",
+      { science: 0, commerce: 6, arts: 4, vocational: 1 },
+      { science: 3, commerce: 0, arts: 1, vocational: 2 }
+    ),
+  },
+  {
+    order: 33,
+    classLevel: "all",
+    category: "commerce",
+    question: "I regularly follow business news, stock market updates, economic forecasts, and industry quarterly reports.",
+    options: createLikertOptions(
+      "q33-business-news",
+      { science: 1, commerce: 7, arts: 1, vocational: 1 },
+      { science: 3, commerce: 0, arts: 2, vocational: 2 }
+    ),
+  },
+
+  // CREATIVITY & DESIGN (q34 - q44)
+  {
+    order: 34,
+    classLevel: "10",
+    category: "creativity",
+    question: "I love creative expression, fine arts, illustration, creative writing, or visual design.",
+    options: createLikertOptions(
+      "q34-fine-arts",
+      { science: 0, commerce: 1, arts: 7, vocational: 2 },
+      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 35,
+    classLevel: "all",
+    category: "creativity",
+    question: "I enjoy designing digital user interfaces (UI), user experiences (UX), app mockups, and website layouts.",
+    options: createLikertOptions(
+      "q35-ui-ux-design",
+      { science: 3, commerce: 2, arts: 6, vocational: 3 },
+      { science: 2, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 36,
+    classLevel: "all",
+    category: "creativity",
+    question: "I am passionate about architectural design, interior decoration, lighting aesthetics, and spatial arrangement.",
+    options: createLikertOptions(
+      "q36-interior-architecture",
+      { science: 3, commerce: 1, arts: 6, vocational: 4 },
+      { science: 2, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 37,
+    classLevel: "12",
+    category: "creativity",
+    question: "I enjoy visual storytelling, video editing, cinematography techniques, and film direction.",
+    options: createLikertOptions(
+      "q37-film-video-editing",
+      { science: 1, commerce: 2, arts: 7, vocational: 3 },
+      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 38,
+    classLevel: "10",
+    category: "creativity",
+    question: "I like experimenting with color palettes, custom typography, brand identities, and logo creation.",
+    options: createLikertOptions(
+      "q38-graphic-branding",
+      { science: 0, commerce: 3, arts: 7, vocational: 2 },
+      { science: 3, commerce: 1, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 39,
+    classLevel: "all",
+    category: "creativity",
+    question: "I am interested in 3D character modeling, game world design, animation, and visual effects (VFX).",
+    options: createLikertOptions(
+      "q39-3d-vfx-gaming",
+      { science: 3, commerce: 1, arts: 6, vocational: 4 },
+      { science: 2, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 40,
+    classLevel: "10",
+    category: "creativity",
+    question: "I enjoy fashion design, apparel styling, textile patterns, and visual merchandising.",
+    options: createLikertOptions(
+      "q40-fashion-textile",
+      { science: 0, commerce: 3, arts: 6, vocational: 4 },
+      { science: 3, commerce: 1, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 41,
+    classLevel: "10",
+    category: "creativity",
+    question: "I am drawn to digital sketching, comic art, concept illustration, and character design.",
+    options: createLikertOptions(
+      "q41-concept-art",
+      { science: 0, commerce: 1, arts: 7, vocational: 2 },
+      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 42,
+    classLevel: "all",
+    category: "creativity",
+    question: "I like capturing moments through professional photography, photo retouching, and visual composition.",
+    options: createLikertOptions(
+      "q42-photography",
+      { science: 1, commerce: 2, arts: 6, vocational: 4 },
+      { science: 2, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 43,
+    classLevel: "12",
+    category: "creativity",
+    question: "I enjoy audio engineering, music composition, sound design, and podcast production.",
+    options: createLikertOptions(
+      "q43-music-sound",
+      { science: 2, commerce: 1, arts: 7, vocational: 3 },
+      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 44,
+    classLevel: "all",
+    category: "creativity",
+    question: "I am fascinated by industrial product design, ergonomic styling, and physical prototype creation.",
+    options: createLikertOptions(
+      "q44-product-industrial-design",
+      { science: 3, commerce: 2, arts: 5, vocational: 5 },
+      { science: 2, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+
+  // SOCIAL SCIENCES, LAW & HUMANITIES (q45 - q54)
+  {
+    order: 45,
+    classLevel: "10",
+    category: "social",
+    question: "I am enthusiastic about history, world geography, psychology, and understanding social transformations.",
+    options: createLikertOptions(
+      "q45-humanities-history",
+      { science: 1, commerce: 1, arts: 7, vocational: 1 },
+      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 46,
+    classLevel: "10",
     category: "social",
     question: "I enjoy public speaking, debating ethical issues, policy analysis, and legal systems.",
     options: createLikertOptions(
-      "q10-law-debate",
-      { science: 0, commerce: 2, arts: 6, vocational: 1 },
+      "q46-law-debate",
+      { science: 0, commerce: 2, arts: 7, vocational: 1 },
       { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 47,
+    classLevel: "12",
+    category: "social",
+    question: "I am interested in understanding human emotional behavior, mental health counseling, and clinical psychology.",
+    options: createLikertOptions(
+      "q47-psychology-counseling",
+      { science: 2, commerce: 1, arts: 7, vocational: 1 },
+      { science: 2, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 48,
+    classLevel: "12",
+    category: "social",
+    question: "I am passionate about constitutional law, legal research, courtroom advocacy, and human rights advocacy.",
+    options: createLikertOptions(
+      "q48-constitutional-law",
+      { science: 0, commerce: 3, arts: 7, vocational: 1 },
+      { science: 3, commerce: 1, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 49,
+    classLevel: "12",
+    category: "social",
+    question: "I enjoy political science, international relations, foreign diplomacy, and global governance.",
+    options: createLikertOptions(
+      "q49-political-sci-diplomacy",
+      { science: 0, commerce: 2, arts: 7, vocational: 1 },
+      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 50,
+    classLevel: "all",
+    category: "social",
+    question: "I am driven to pursue public service careers (such as IAS/IPS/Civil Services) to solve civic and societal challenges.",
+    options: createLikertOptions(
+      "q50-civil-services",
+      { science: 2, commerce: 2, arts: 7, vocational: 1 },
+      { science: 2, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 51,
+    classLevel: "all",
+    category: "social",
+    question: "I enjoy investigating news stories, conducting journalistic interviews, and reporting public affairs.",
+    options: createLikertOptions(
+      "q51-journalism-media",
+      { science: 0, commerce: 2, arts: 7, vocational: 2 },
+      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 52,
+    classLevel: "all",
+    category: "social",
+    question: "I am interested in sociology, community welfare projects, non-profit leadership, and social equality initiatives.",
+    options: createLikertOptions(
+      "q52-sociology-ngo",
+      { science: 1, commerce: 1, arts: 7, vocational: 2 },
+      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 53,
+    classLevel: "10",
+    category: "social",
+    question: "I enjoy studying ancient civilizations, archaeological discoveries, museum curation, and historical archives.",
+    options: createLikertOptions(
+      "q53-archaeology-history",
+      { science: 1, commerce: 0, arts: 7, vocational: 1 },
+      { science: 3, commerce: 3, arts: 0, vocational: 1 }
+    ),
+  },
+  {
+    order: 54,
+    classLevel: "all",
+    category: "social",
+    question: "I am eager to master foreign languages, linguistics, literary translation, and cross-cultural communication.",
+    options: createLikertOptions(
+      "q54-linguistics-languages",
+      { science: 0, commerce: 2, arts: 7, vocational: 1 },
+      { science: 3, commerce: 2, arts: 0, vocational: 1 }
+    ),
+  },
+
+  // PRACTICAL, VOCATIONAL & APPLIED SKILLS (q55 - q64)
+  {
+    order: 55,
+    classLevel: "10",
+    category: "practical",
+    question: "I prefer hands-on practical work (assembling electronics, crafting, workshop tools) over pure textbook memorization.",
+    options: createLikertOptions(
+      "q55-practical-voc",
+      { science: 2, commerce: 1, arts: 2, vocational: 7 },
+      { science: 3, commerce: 3, arts: 2, vocational: 0 }
+    ),
+  },
+  {
+    order: 56,
+    classLevel: "all",
+    category: "practical",
+    question: "I enjoy troubleshooting physical machinery, repairing electrical gadgets, and operating workshop tools.",
+    options: createLikertOptions(
+      "q56-machinery-repair",
+      { science: 2, commerce: 1, arts: 0, vocational: 7 },
+      { science: 3, commerce: 3, arts: 3, vocational: 0 }
+    ),
+  },
+  {
+    order: 57,
+    classLevel: "all",
+    category: "practical",
+    question: "I am interested in hotel management, culinary arts, front office operations, and hospitality guest services.",
+    options: createLikertOptions(
+      "q57-hotel-hospitality",
+      { science: 0, commerce: 3, arts: 2, vocational: 7 },
+      { science: 3, commerce: 1, arts: 2, vocational: 0 }
+    ),
+  },
+  {
+    order: 58,
+    classLevel: "12",
+    category: "practical",
+    question: "I enjoy hands-on paramedical tech support, medical lab testing, X-ray operation, and emergency clinical assistance.",
+    options: createLikertOptions(
+      "q58-paramedical-lab",
+      { science: 4, commerce: 0, arts: 1, vocational: 7 },
+      { science: 2, commerce: 3, arts: 2, vocational: 0 }
+    ),
+  },
+  {
+    order: 59,
+    classLevel: "10",
+    category: "practical",
+    question: "I am interested in automotive engineering, vehicle mechanics, electric vehicle technology, and servicing.",
+    options: createLikertOptions(
+      "q59-automotive-mech",
+      { science: 3, commerce: 1, arts: 0, vocational: 7 },
+      { science: 2, commerce: 3, arts: 3, vocational: 0 }
+    ),
+  },
+  {
+    order: 60,
+    classLevel: "all",
+    category: "practical",
+    question: "I enjoy working outdoors in agricultural farming, horticulture, plant nursery management, and landscaping.",
+    options: createLikertOptions(
+      "q60-farming-horticulture",
+      { science: 3, commerce: 1, arts: 1, vocational: 7 },
+      { science: 2, commerce: 3, arts: 2, vocational: 0 }
+    ),
+  },
+  {
+    order: 61,
+    classLevel: "12",
+    category: "practical",
+    question: "I am interested in aviation, commercial flight operations, air traffic control, and aircraft maintenance.",
+    options: createLikertOptions(
+      "q61-aviation-flight",
+      { science: 4, commerce: 2, arts: 0, vocational: 6 },
+      { science: 2, commerce: 2, arts: 3, vocational: 0 }
+    ),
+  },
+  {
+    order: 62,
+    classLevel: "10",
+    category: "practical",
+    question: "I enjoy carpentry, interior crafting, metal fabrication, and hands-on furniture creation.",
+    options: createLikertOptions(
+      "q62-carpentry-fabrication",
+      { science: 1, commerce: 1, arts: 2, vocational: 7 },
+      { science: 3, commerce: 3, arts: 2, vocational: 0 }
+    ),
+  },
+  {
+    order: 63,
+    classLevel: "all",
+    category: "practical",
+    question: "I am interested in electrical installations, power grid wiring, renewable solar panel setup, and maintenance.",
+    options: createLikertOptions(
+      "q63-electrical-solar",
+      { science: 3, commerce: 1, arts: 0, vocational: 7 },
+      { science: 2, commerce: 3, arts: 3, vocational: 0 }
+    ),
+  },
+  {
+    order: 64,
+    classLevel: "all",
+    category: "practical",
+    question: "I enjoy event logistics management, stage setups, sound/lighting venue assembly, and live event operations.",
+    options: createLikertOptions(
+      "q64-event-logistics",
+      { science: 1, commerce: 3, arts: 2, vocational: 7 },
+      { science: 3, commerce: 1, arts: 2, vocational: 0 }
     ),
   },
 ];
@@ -754,6 +1359,96 @@ async function seedDatabase() {
       cutoffInfo: "Design admission depends on NIFT entrance and portfolio evaluation.",
       contact: { website: "https://www.nift.ac.in/bengaluru/", phone: "+91 80 22552550", email: "nift.bengaluru@nift.ac.in" },
       source: { label: "Official institute site", url: "https://www.nift.ac.in/bengaluru/", lastVerifiedAt: new Date("2026-06-01") },
+      verifiedStatus: "verified",
+    },
+    {
+      name: "Indian Institute of Technology Bombay (IITB)",
+      slug: "iit-bombay",
+      location: { state: "Maharashtra", city: "Mumbai", address: "Powai, Mumbai", lat: 19.1334, lng: 72.9133 },
+      type: "Government (NIRF #1 Engineering)",
+      mediumOfInstruction: ["English"],
+      coursesOffered: [courseMap["btech-cse"], courseMap["bsc-computer-science"]].filter(Boolean),
+      facilities: ["Supercomputing Center", "Robotics Lab", "Central Library", "Sports Complex", "Hostel"],
+      hostel: true,
+      library: true,
+      lab: true,
+      internet: true,
+      feesRange: "INR 1,20,000 - 2,50,000 / year",
+      cutoffInfo: "Admissions strictly based on JEE Advanced All India Top Ranks.",
+      contact: { website: "https://www.iitb.ac.in/", phone: "+91 22 25722545", email: "gateoffice@iitb.ac.in" },
+      source: { label: "Official IIT Bombay Portal", url: "https://www.iitb.ac.in/", lastVerifiedAt: new Date("2026-06-01") },
+      verifiedStatus: "verified",
+    },
+    {
+      name: "Indian Institute of Technology Delhi (IITD)",
+      slug: "iit-delhi",
+      location: { state: "Delhi", city: "New Delhi", address: "Hauz Khas, New Delhi", lat: 28.5450, lng: 77.1926 },
+      type: "Government (NIRF Top 2)",
+      mediumOfInstruction: ["English"],
+      coursesOffered: [courseMap["btech-cse"], courseMap["bsc-computer-science"]].filter(Boolean),
+      facilities: ["AI & Data Center", "Nanotech Lab", "Research Park", "Hostels"],
+      hostel: true,
+      library: true,
+      lab: true,
+      internet: true,
+      feesRange: "INR 1,15,000 - 2,40,000 / year",
+      cutoffInfo: "Admissions strictly based on JEE Advanced Top Cutoffs.",
+      contact: { website: "https://home.iitd.ac.in/", phone: "+91 11 26597135", email: "webmaster@iitd.ac.in" },
+      source: { label: "Official IIT Delhi Portal", url: "https://home.iitd.ac.in/", lastVerifiedAt: new Date("2026-06-01") },
+      verifiedStatus: "verified",
+    },
+    {
+      name: "All India Institute of Medical Sciences (AIIMS)",
+      slug: "aiims-new-delhi",
+      location: { state: "Delhi", city: "New Delhi", address: "Ansari Nagar, New Delhi", lat: 28.5672, lng: 77.2100 },
+      type: "Government (NIRF #1 Medical)",
+      mediumOfInstruction: ["English"],
+      coursesOffered: [courseMap["mbbs"], courseMap["bpharm"]].filter(Boolean),
+      facilities: ["Specialty Hospital Labs", "Genomics Research Center", "Medical Library"],
+      hostel: true,
+      library: true,
+      lab: true,
+      internet: true,
+      feesRange: "INR 5,850 / year (Government Subsidized)",
+      cutoffInfo: "Admissions strictly based on NEET-UG All India Top Ranks.",
+      contact: { website: "https://www.aiims.edu/", phone: "+91 11 26588500", email: "info@aiims.edu" },
+      source: { label: "Official AIIMS Medical Portal", url: "https://www.aiims.edu/", lastVerifiedAt: new Date("2026-06-01") },
+      verifiedStatus: "verified",
+    },
+    {
+      name: "Birla Institute of Technology & Science (BITS Pilani)",
+      slug: "bits-pilani",
+      location: { state: "Rajasthan", city: "Pilani", address: "Vidya Vihar, Pilani", lat: 28.3639, lng: 75.5870 },
+      type: "Deemed University (Top Private)",
+      mediumOfInstruction: ["English"],
+      coursesOffered: [courseMap["btech-cse"], courseMap["bsc-computer-science"]].filter(Boolean),
+      facilities: ["Practice School Network", "Innovation Hub", "24/7 Wi-Fi Library"],
+      hostel: true,
+      library: true,
+      lab: true,
+      internet: true,
+      feesRange: "INR 2,45,000 - 4,80,000 / year",
+      cutoffInfo: "Admissions strictly based on BITSAT Entrance Examination.",
+      contact: { website: "https://www.bits-pilani.ac.in/", phone: "+91 1596 245073", email: "admissions@pilani.bits-pilani.ac.in" },
+      source: { label: "Official BITS Pilani Portal", url: "https://www.bits-pilani.ac.in/", lastVerifiedAt: new Date("2026-06-01") },
+      verifiedStatus: "verified",
+    },
+    {
+      name: "St. Xavier's College Mumbai",
+      slug: "st-xaviers-college-mumbai",
+      location: { state: "Maharashtra", city: "Mumbai", address: "5, Mahapalika Marg, Mumbai", lat: 18.9438, lng: 72.8318 },
+      type: "Autonomous Top College",
+      mediumOfInstruction: ["English"],
+      coursesOffered: [courseMap["bba"], courseMap["ba-psychology"], courseMap["ba-journalism-mass-communication"]].filter(Boolean),
+      facilities: ["Heritage Campus", "Mass Media Studio", "Psychology Lab", "Library"],
+      hostel: true,
+      library: true,
+      lab: true,
+      internet: true,
+      feesRange: "INR 25,000 - 85,000 / year",
+      cutoffInfo: "Admission based on 12th Board Merit & Xavier Entrance Test (XET).",
+      contact: { website: "https://xaviers.edu/", phone: "+91 22 22620661", email: "webmaster@xaviers.edu" },
+      source: { label: "Official St. Xavier's Portal", url: "https://xaviers.edu/", lastVerifiedAt: new Date("2026-06-01") },
       verifiedStatus: "verified",
     },
     {

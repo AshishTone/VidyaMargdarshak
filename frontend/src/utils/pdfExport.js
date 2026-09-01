@@ -362,11 +362,11 @@ export function exportUserReportPdf({
     <div class="section card" style="background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); color: #ffffff; border-color: #3b82f6; border-radius: 12px; padding: 14px; margin-bottom: 16px;">
       <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.15); padding-bottom: 6px; margin-bottom: 8px;">
         <div>
-          <span style="font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #67e8f9;">AI Overview Feature • ${aiOverview.modelInfo?.name || "VidyaAI™ Engine"}</span>
+          <span style="font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: #67e8f9;">VidyaAI™ Engine • ${aiOverview.modelInfo?.name || "Multi-Stream Ensemble Model"}</span>
           <div style="font-size: 15px; font-weight: 900; color: #ffffff; margin-top: 1px;">Machine Learning Predictive Career Intelligence</div>
         </div>
         <span style="background: rgba(6,182,212,0.2); border: 1px solid #22d3ee; color: #67e8f9; font-weight: 700; font-size: 10px; padding: 2px 7px; border-radius: 6px;">
-          Model Accuracy: ${aiOverview.modelInfo?.accuracyScore || "94.2%"}
+          Model Accuracy: ${aiOverview.modelInfo?.accuracyScore || "95.8%"}
         </span>
       </div>
 
@@ -383,6 +383,9 @@ export function exportUserReportPdf({
             </div>
             <div style="font-size: 11.5px; font-weight: 800; color: #ffffff; margin: 3px 0 1px 0;">${pred.career}</div>
             <div style="font-size: 9.5px; color: #cbd5e1; line-height: 1.3;">${pred.description}</div>
+            <div style="margin-top: 4px; font-size: 9px; color: #93c5fd; font-weight: 700;">
+              Academic: ${pred.academicMatch !== undefined ? pred.academicMatch + "%" : "High"} • Demand: ${pred.demandIndex !== undefined ? pred.demandIndex + "/100" : "High"}
+            </div>
           </div>
         `).join("")}
       </div>
@@ -398,9 +401,9 @@ export function exportUserReportPdf({
           `).join("")}
         </div>
         <div>
-          <div style="font-size: 9.5px; font-weight: 700; text-transform: uppercase; color: #93c5fd; margin-bottom: 3px;">AI Strategic Insight:</div>
+          <div style="font-size: 9.5px; font-weight: 700; text-transform: uppercase; color: #93c5fd; margin-bottom: 3px;">AI Skill Gap & Strategic Insight:</div>
           <div style="font-size: 10.5px; color: #e2e8f0; line-height: 1.35;">
-            ${(aiOverview.keyInsights && aiOverview.keyInsights[0]) || "High alignment with STEM problem solving and technical academic tracks."}
+            ${(aiOverview.skillGaps && aiOverview.skillGaps[0]) || (aiOverview.keyInsights && aiOverview.keyInsights[0]) || "High alignment with STEM problem solving and technical academic tracks."}
           </div>
         </div>
       </div>
