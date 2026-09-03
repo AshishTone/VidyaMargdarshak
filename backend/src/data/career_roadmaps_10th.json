@@ -1,0 +1,6537 @@
+{
+  "metadata": {
+    "graphId": "VIDYAMARGDARSHAK_AFTER10TH_MASTER_ROADMAP",
+    "title": "Vidyamargdarshak Comprehensive Career Roadmap After Class 10",
+    "version": "1.0.0",
+    "lastUpdated": "2026-09-03",
+    "country": "India",
+    "purpose": "Master education-to-career graph for React Flow and MongoDB",
+    "scope": "All major pathways represented in the supplied Vidyamargdarshak knowledge-base files",
+    "importantNote": "This is a source-bounded master roadmap. It should not be interpreted as a literal list of every course or occupation available in India. Institution-specific eligibility must be verified before admission.",
+    "reactFlowCompatible": true,
+    "mongoCollectionSuggested": "career_roadmaps_10th",
+    "rootNodeId": "root_10th",
+    "nodeCount": 144,
+    "edgeCount": 418,
+    "sourceFiles": [
+      "course-directory.json",
+      "course-taxonomy.md",
+      "education-pathways.md",
+      "science-stream.md",
+      "commerce-stream.md",
+      "arts-humanities-stream.md",
+      "diploma-polytechnic.md",
+      "iti-vocational.md",
+      "AFTER12_PCM_V1.json",
+      "AFTER12_PCB_V1.json"
+    ],
+    "nodeTypes": [
+      "root",
+      "stream",
+      "pathway",
+      "course",
+      "professional",
+      "vocational",
+      "career_group",
+      "career",
+      "government",
+      "research"
+    ],
+    "edgeRelations": [
+      "after_10th_choice",
+      "eligible_path",
+      "specialization",
+      "trade",
+      "lateral_entry",
+      "professional_path",
+      "higher_study",
+      "medical_higher_study",
+      "super_specialization",
+      "doctoral_progression",
+      "research_path",
+      "career_outcome",
+      "government_opportunity",
+      "technical_government_opportunity",
+      "entrepreneurship",
+      "employment"
+    ],
+    "courseDirectoryReference": {
+      "A001": "Science Stream (Class 11-12)",
+      "A002": "Commerce Stream (Class 11-12)",
+      "A003": "Arts / Humanities Stream (Class 11-12)",
+      "A004": "Diploma / Polytechnic after 10th",
+      "A005": "ITI / Vocational Training after 10th",
+      "DP001": "Diploma in Engineering",
+      "C001": "B.Tech",
+      "C002": "BCA",
+      "C003": "B.Sc Computer Science",
+      "C004": "B.Sc IT",
+      "C005": "B.Sc General",
+      "C006": "B.Com",
+      "C007": "BBA",
+      "C008": "B.A.",
+      "C009": "B.Arch",
+      "C010": "B.Pharm",
+      "C011": "LLB / Integrated Law",
+      "C012": "B.Ed",
+      "C013": "BHM",
+      "C014": "MBBS",
+      "C015": "B.Sc Nursing",
+      "P001": "CA",
+      "P002": "CS",
+      "P003": "CMA",
+      "V001": "ITI",
+      "V002": "PMKVY / Skill India",
+      "V003": "NIELIT",
+      "PG001": "MBA",
+      "PG002": "M.Tech",
+      "PG003": "MCA",
+      "PG004": "M.Sc",
+      "PG005": "M.Com",
+      "PG006": "M.A.",
+      "PG007": "LLM",
+      "PG008": "M.Pharm",
+      "DR001": "PhD",
+      "DR002": "Research Pathways"
+    }
+  },
+  "nodes": [
+    {
+      "id": "root_10th",
+      "type": "root",
+      "data": {
+        "label": "Class 10 / SSC / CBSE / ICSE",
+        "level": "after-10th",
+        "description": "Starting point for the comprehensive post-10th education roadmap."
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "a001_pcm",
+      "type": "stream",
+      "data": {
+        "label": "Science — PCM",
+        "level": "after-10th",
+        "combination": "Physics, Chemistry, Mathematics"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "a001_pcb",
+      "type": "stream",
+      "data": {
+        "label": "Science — PCB",
+        "level": "after-10th",
+        "combination": "Physics, Chemistry, Biology"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "a001_pcmb",
+      "type": "stream",
+      "data": {
+        "label": "Science — PCMB",
+        "level": "after-10th",
+        "combination": "Physics, Chemistry, Mathematics, Biology"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "a002_com_math",
+      "type": "stream",
+      "data": {
+        "label": "Commerce — With Mathematics",
+        "level": "after-10th",
+        "combination": "Accountancy, Business Studies, Economics, Mathematics"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "a002_com_nomath",
+      "type": "stream",
+      "data": {
+        "label": "Commerce — Without Mathematics",
+        "level": "after-10th",
+        "combination": "Accountancy, Business Studies, Economics"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "a003_arts",
+      "type": "stream",
+      "data": {
+        "label": "Arts / Humanities",
+        "level": "after-10th",
+        "combination": "History, Political Science, Geography, Economics, Sociology, Psychology, Languages"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "a004_diploma",
+      "type": "pathway",
+      "data": {
+        "label": "Diploma / Polytechnic",
+        "level": "after-10th",
+        "duration": "3 years",
+        "entry_after": "10th",
+        "domains": [
+          "Engineering",
+          "Technology",
+          "Computing"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "a005_iti",
+      "type": "pathway",
+      "data": {
+        "label": "ITI / Industrial Training",
+        "level": "after-10th",
+        "duration": "1–2 years",
+        "entry_after": "10th",
+        "domains": [
+          "Vocational",
+          "Trade",
+          "Technical"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "v002_pmkvy",
+      "type": "vocational",
+      "data": {
+        "label": "Skill India / PMKVY",
+        "level": "after-10th",
+        "duration": "3–12 months",
+        "entry_after": "10th"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "v003_nielit",
+      "type": "vocational",
+      "data": {
+        "label": "NIELIT Digital Skills",
+        "level": "after-10th",
+        "duration": "80 hours–1 year",
+        "entry_after": "10th"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dp_civil",
+      "type": "course",
+      "data": {
+        "label": "Diploma Engineering — Civil",
+        "level": "diploma",
+        "entry_after": "10th",
+        "duration": "3 years",
+        "parent_course": "DP001",
+        "category": "Diploma in Engineering"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dp_me",
+      "type": "course",
+      "data": {
+        "label": "Diploma Engineering — Mechanical",
+        "level": "diploma",
+        "entry_after": "10th",
+        "duration": "3 years",
+        "parent_course": "DP001",
+        "category": "Diploma in Engineering"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dp_ee",
+      "type": "course",
+      "data": {
+        "label": "Diploma Engineering — Electrical",
+        "level": "diploma",
+        "entry_after": "10th",
+        "duration": "3 years",
+        "parent_course": "DP001",
+        "category": "Diploma in Engineering"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dp_cse",
+      "type": "course",
+      "data": {
+        "label": "Diploma Engineering — Computer Science",
+        "level": "diploma",
+        "entry_after": "10th",
+        "duration": "3 years",
+        "parent_course": "DP001",
+        "category": "Diploma in Engineering"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dp_ece",
+      "type": "course",
+      "data": {
+        "label": "Diploma Engineering — Electronics & Communication",
+        "level": "diploma",
+        "entry_after": "10th",
+        "duration": "3 years",
+        "parent_course": "DP001",
+        "category": "Diploma in Engineering"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dp_auto",
+      "type": "course",
+      "data": {
+        "label": "Diploma Engineering — Automobile",
+        "level": "diploma",
+        "entry_after": "10th",
+        "duration": "3 years",
+        "parent_course": "DP001",
+        "category": "Diploma in Engineering"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dp_chemical",
+      "type": "course",
+      "data": {
+        "label": "Diploma Engineering — Chemical",
+        "level": "diploma",
+        "entry_after": "10th",
+        "duration": "3 years",
+        "parent_course": "DP001",
+        "category": "Diploma in Engineering"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dp_textile",
+      "type": "course",
+      "data": {
+        "label": "Diploma Engineering — Textile",
+        "level": "diploma",
+        "entry_after": "10th",
+        "duration": "3 years",
+        "parent_course": "DP001",
+        "category": "Diploma in Engineering"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dp_instrument",
+      "type": "course",
+      "data": {
+        "label": "Diploma Engineering — Instrumentation",
+        "level": "diploma",
+        "entry_after": "10th",
+        "duration": "3 years",
+        "parent_course": "DP001",
+        "category": "Diploma in Engineering"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dp_arch",
+      "type": "course",
+      "data": {
+        "label": "Diploma Engineering — Architecture",
+        "level": "diploma",
+        "entry_after": "10th",
+        "duration": "3 years",
+        "parent_course": "DP001",
+        "category": "Diploma in Engineering"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "diploma_employment",
+      "type": "career_group",
+      "data": {
+        "label": "Diploma Direct Employment",
+        "level": "employment"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "btech_lateral",
+      "type": "course",
+      "data": {
+        "label": "B.Tech / B.E. — Lateral Entry (2nd Year)",
+        "level": "undergraduate",
+        "duration": "3 years after diploma",
+        "entry_after": "diploma"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "diploma_je",
+      "type": "career",
+      "data": {
+        "label": "Junior Engineer / Site Supervisor / Technician",
+        "level": "employment"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "diploma_gov",
+      "type": "career",
+      "data": {
+        "label": "Government Technical Jobs — JE / Technical Posts",
+        "level": "employment",
+        "exams": [
+          "SSC JE",
+          "RRB JE",
+          "State recruitment",
+          "DRDO technical recruitment"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_electrician",
+      "type": "course",
+      "data": {
+        "label": "ITI — Electrician",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_fitter",
+      "type": "course",
+      "data": {
+        "label": "ITI — Fitter",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_turner",
+      "type": "course",
+      "data": {
+        "label": "ITI — Turner",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_machinist",
+      "type": "course",
+      "data": {
+        "label": "ITI — Machinist",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_welder",
+      "type": "course",
+      "data": {
+        "label": "ITI — Welder",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_copa",
+      "type": "course",
+      "data": {
+        "label": "ITI — COPA",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_mmv",
+      "type": "course",
+      "data": {
+        "label": "ITI — Mechanic Motor Vehicle",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_draught_civil",
+      "type": "course",
+      "data": {
+        "label": "ITI — Draughtsman Civil",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_draught_mech",
+      "type": "course",
+      "data": {
+        "label": "ITI — Draughtsman Mechanical",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_plumber",
+      "type": "course",
+      "data": {
+        "label": "ITI — Plumber",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_carpenter",
+      "type": "course",
+      "data": {
+        "label": "ITI — Carpenter",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_steno",
+      "type": "course",
+      "data": {
+        "label": "ITI — Stenography",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_electronics",
+      "type": "course",
+      "data": {
+        "label": "ITI — Electronics Mechanic",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_wireman",
+      "type": "course",
+      "data": {
+        "label": "ITI — Wireman",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_ref_ac",
+      "type": "course",
+      "data": {
+        "label": "ITI — Refrigeration & AC Mechanic",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_sewing",
+      "type": "course",
+      "data": {
+        "label": "ITI — Sewing Technology",
+        "level": "vocational",
+        "entry_after": "10th",
+        "parent_course": "V001"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "apprenticeship",
+      "type": "pathway",
+      "data": {
+        "label": "Industry Apprenticeship",
+        "level": "vocational",
+        "duration": "typically 1–2 years",
+        "outcome": "National Apprenticeship Certificate (NAC)"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_employment",
+      "type": "career_group",
+      "data": {
+        "label": "Skilled Trade Employment",
+        "level": "employment"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "iti_gov",
+      "type": "career_group",
+      "data": {
+        "label": "Government / PSU Technical Jobs",
+        "level": "employment",
+        "examples": [
+          "Railways",
+          "Defence",
+          "PSUs",
+          "PWD",
+          "Municipal bodies"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "skill_training",
+      "type": "pathway",
+      "data": {
+        "label": "Sector-Specific Skill Training",
+        "level": "vocational",
+        "examples": [
+          "Automotive",
+          "Electronics",
+          "IT-ITeS",
+          "Healthcare",
+          "Retail",
+          "Construction"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "skill_worker",
+      "type": "career",
+      "data": {
+        "label": "Skilled Worker / Self-Employment",
+        "level": "employment"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "nielit_it",
+      "type": "career",
+      "data": {
+        "label": "Computer Operator / Data Entry / IT Support",
+        "level": "employment"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bca",
+      "type": "course",
+      "data": {
+        "label": "BCA — Bachelor of Computer Applications",
+        "level": "undergraduate",
+        "duration": "3 years",
+        "eligible": [
+          "Science",
+          "Commerce",
+          "Arts"
+        ],
+        "caveat": "Mathematics requirements vary by university."
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bcom",
+      "type": "course",
+      "data": {
+        "label": "B.Com — Bachelor of Commerce",
+        "level": "undergraduate",
+        "duration": "3 years",
+        "eligible": [
+          "Commerce",
+          "Science",
+          "Arts"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bba",
+      "type": "course",
+      "data": {
+        "label": "BBA — Bachelor of Business Administration",
+        "level": "undergraduate",
+        "duration": "3 years",
+        "eligible": [
+          "Science",
+          "Commerce",
+          "Arts"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_ba",
+      "type": "course",
+      "data": {
+        "label": "B.A. — Bachelor of Arts",
+        "level": "undergraduate",
+        "duration": "3 years",
+        "eligible": [
+          "Arts",
+          "Commerce",
+          "Science"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_llb5",
+      "type": "course",
+      "data": {
+        "label": "Integrated Law — BA LLB / equivalent",
+        "level": "undergraduate",
+        "duration": "5 years",
+        "eligible": [
+          "Science",
+          "Commerce",
+          "Arts"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bhm",
+      "type": "course",
+      "data": {
+        "label": "BHM — Bachelor of Hotel Management",
+        "level": "undergraduate",
+        "duration": "3–4 years",
+        "eligible": [
+          "Science",
+          "Commerce",
+          "Arts"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bed4",
+      "type": "course",
+      "data": {
+        "label": "Integrated B.Ed",
+        "level": "undergraduate",
+        "duration": "4 years",
+        "eligible": [
+          "Science",
+          "Commerce",
+          "Arts"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bpharm",
+      "type": "course",
+      "data": {
+        "label": "B.Pharm — Bachelor of Pharmacy",
+        "level": "undergraduate",
+        "duration": "4 years",
+        "eligible": [
+          "Science PCM",
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bsc",
+      "type": "course",
+      "data": {
+        "label": "B.Sc — General Sciences",
+        "level": "undergraduate",
+        "duration": "3 years",
+        "eligible": [
+          "Science"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bsc_cs",
+      "type": "course",
+      "data": {
+        "label": "B.Sc Computer Science",
+        "level": "undergraduate",
+        "duration": "3 years",
+        "eligible": [
+          "Science"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bsc_it",
+      "type": "course",
+      "data": {
+        "label": "B.Sc Information Technology",
+        "level": "undergraduate",
+        "duration": "3 years",
+        "eligible": [
+          "Science",
+          "Commerce"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_barch",
+      "type": "course",
+      "data": {
+        "label": "B.Arch — Bachelor of Architecture",
+        "level": "undergraduate",
+        "duration": "5 years",
+        "eligible": [
+          "Science with required subjects"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bsc_nursing",
+      "type": "course",
+      "data": {
+        "label": "B.Sc Nursing",
+        "level": "undergraduate",
+        "duration": "4 years",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_mbbs",
+      "type": "course",
+      "data": {
+        "label": "MBBS",
+        "level": "undergraduate",
+        "duration": "5.5 years incl. internship",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bds",
+      "type": "course",
+      "data": {
+        "label": "BDS — Dentistry",
+        "level": "undergraduate",
+        "duration": "5 years",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bams",
+      "type": "course",
+      "data": {
+        "label": "BAMS — Ayurveda",
+        "level": "undergraduate",
+        "duration": "5.5 years",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bhms",
+      "type": "course",
+      "data": {
+        "label": "BHMS — Homeopathy",
+        "level": "undergraduate",
+        "duration": "5.5 years",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bums",
+      "type": "course",
+      "data": {
+        "label": "BUMS — Unani Medicine",
+        "level": "undergraduate",
+        "duration": "5.5 years",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bvsc",
+      "type": "course",
+      "data": {
+        "label": "BVSc & AH — Veterinary Science",
+        "level": "undergraduate",
+        "duration": "5.5 years",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bpt",
+      "type": "course",
+      "data": {
+        "label": "BPT — Physiotherapy",
+        "level": "undergraduate",
+        "duration": "4.5 years",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bot",
+      "type": "course",
+      "data": {
+        "label": "BOT — Occupational Therapy",
+        "level": "undergraduate",
+        "duration": "4+ years",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bmlt",
+      "type": "course",
+      "data": {
+        "label": "BMLT — Medical Laboratory Technology",
+        "level": "undergraduate",
+        "duration": "3–4 years",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_brd",
+      "type": "course",
+      "data": {
+        "label": "Radiology & Imaging — BRD / related degree",
+        "level": "undergraduate",
+        "duration": "3–4 years",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bsc_biotech",
+      "type": "course",
+      "data": {
+        "label": "B.Sc Biotechnology",
+        "level": "undergraduate",
+        "duration": "3 years",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_btech_biotech",
+      "type": "course",
+      "data": {
+        "label": "B.Tech Biotechnology",
+        "level": "undergraduate",
+        "duration": "4 years",
+        "eligible": [
+          "Science PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bsc_agri",
+      "type": "course",
+      "data": {
+        "label": "B.Sc Agriculture",
+        "level": "undergraduate",
+        "duration": "4 years",
+        "eligible": [
+          "Science PCM/PCB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bdes",
+      "type": "course",
+      "data": {
+        "label": "B.Des — Bachelor of Design",
+        "level": "undergraduate",
+        "duration": "4 years",
+        "eligible": [
+          "Science",
+          "Commerce",
+          "Arts"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bfa",
+      "type": "course",
+      "data": {
+        "label": "BFA — Bachelor of Fine Arts",
+        "level": "undergraduate",
+        "duration": "4 years",
+        "eligible": [
+          "Arts",
+          "other eligible streams"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bjmc",
+      "type": "course",
+      "data": {
+        "label": "BJMC / BJC — Journalism & Mass Communication",
+        "level": "undergraduate",
+        "duration": "3 years",
+        "eligible": [
+          "Arts",
+          "Commerce",
+          "Science"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bsw",
+      "type": "course",
+      "data": {
+        "label": "BSW — Bachelor of Social Work",
+        "level": "undergraduate",
+        "duration": "3 years",
+        "eligible": [
+          "Arts",
+          "other eligible streams"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_bms",
+      "type": "course",
+      "data": {
+        "label": "BMS — Bachelor of Management Studies",
+        "level": "undergraduate",
+        "duration": "3 years",
+        "eligible": [
+          "Commerce",
+          "other eligible streams"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "c_econ",
+      "type": "course",
+      "data": {
+        "label": "B.A./B.Sc Economics Honours",
+        "level": "undergraduate",
+        "duration": "3 years",
+        "eligible": [
+          "Commerce",
+          "Arts",
+          "Science where permitted"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "p_ca",
+      "type": "professional",
+      "data": {
+        "label": "CA — Chartered Accountancy",
+        "level": "professional",
+        "stages": [
+          "Foundation",
+          "Intermediate",
+          "Articleship",
+          "Final"
+        ],
+        "entry_after": "12th / graduation"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "p_cs",
+      "type": "professional",
+      "data": {
+        "label": "CS — Company Secretary",
+        "level": "professional",
+        "stages": [
+          "Foundation",
+          "Executive",
+          "Professional"
+        ],
+        "entry_after": "12th / graduation"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "p_cma",
+      "type": "professional",
+      "data": {
+        "label": "CMA — Cost & Management Accountancy",
+        "level": "professional",
+        "stages": [
+          "Foundation",
+          "Intermediate",
+          "Final"
+        ],
+        "entry_after": "12th / graduation"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "p_actuarial",
+      "type": "professional",
+      "data": {
+        "label": "Actuarial Science",
+        "level": "professional",
+        "stages": [
+          "Stage-based professional exams"
+        ],
+        "entry_after": "12th / eligible graduation"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_mtech",
+      "type": "course",
+      "data": {
+        "label": "M.Tech / M.E.",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "graduation",
+        "entrance": [
+          "GATE"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_mca",
+      "type": "course",
+      "data": {
+        "label": "MCA",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "graduation",
+        "entrance": [
+          "NIMCET",
+          "State/University entrance"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_mba",
+      "type": "course",
+      "data": {
+        "label": "MBA",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "graduation",
+        "entrance": [
+          "CAT",
+          "XAT",
+          "MAT",
+          "CMAT",
+          "GMAT",
+          "SNAP"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_msc",
+      "type": "course",
+      "data": {
+        "label": "M.Sc",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "relevant graduation",
+        "entrance": [
+          "IIT JAM",
+          "University entrance"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_mcom",
+      "type": "course",
+      "data": {
+        "label": "M.Com",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "B.Com / relevant graduation"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_ma",
+      "type": "course",
+      "data": {
+        "label": "M.A.",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "graduation"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_llm",
+      "type": "course",
+      "data": {
+        "label": "LLM",
+        "level": "postgraduate",
+        "duration": "1–2 years",
+        "entry_after": "LLB"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_mpharm",
+      "type": "course",
+      "data": {
+        "label": "M.Pharm",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "B.Pharm",
+        "entrance": [
+          "GPAT / state entrance"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_msc_nursing",
+      "type": "course",
+      "data": {
+        "label": "M.Sc Nursing",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "B.Sc Nursing"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_msw",
+      "type": "course",
+      "data": {
+        "label": "MSW",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "BSW / relevant graduation"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_march",
+      "type": "course",
+      "data": {
+        "label": "M.Arch",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "B.Arch"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_mdes",
+      "type": "course",
+      "data": {
+        "label": "M.Des",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "B.Des / eligible degree"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_mtech_biotech",
+      "type": "course",
+      "data": {
+        "label": "M.Tech Biotechnology",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "relevant graduation"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_msc_agri",
+      "type": "course",
+      "data": {
+        "label": "M.Sc Agriculture",
+        "level": "postgraduate",
+        "duration": "2 years",
+        "entry_after": "B.Sc Agriculture"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_md",
+      "type": "course",
+      "data": {
+        "label": "MD — Doctor of Medicine",
+        "level": "postgraduate",
+        "duration": "3 years",
+        "entry_after": "MBBS",
+        "entrance": [
+          "NEET-PG"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_ms",
+      "type": "course",
+      "data": {
+        "label": "MS — Master of Surgery",
+        "level": "postgraduate",
+        "duration": "3 years",
+        "entry_after": "MBBS",
+        "entrance": [
+          "NEET-PG"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "pg_dnb",
+      "type": "course",
+      "data": {
+        "label": "DNB",
+        "level": "postgraduate",
+        "duration": "3 years",
+        "entry_after": "MBBS",
+        "entrance": [
+          "NEET-PG"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dr_dm",
+      "type": "course",
+      "data": {
+        "label": "DM — Super-specialization",
+        "level": "super-specialization",
+        "duration": "3 years",
+        "entry_after": "MD/DNB",
+        "entrance": [
+          "NEET-SS"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dr_mch",
+      "type": "course",
+      "data": {
+        "label": "MCh — Surgical Super-specialization",
+        "level": "super-specialization",
+        "duration": "3 years",
+        "entry_after": "MS/DNB",
+        "entrance": [
+          "NEET-SS"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dr_phd",
+      "type": "course",
+      "data": {
+        "label": "PhD",
+        "level": "doctoral",
+        "duration": "3–6+ years",
+        "entry_after": "postgraduate"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "dr_research",
+      "type": "research",
+      "data": {
+        "label": "Research Pathways — CSIR / ISRO / DRDO / BARC / TIFR / IISc",
+        "level": "doctoral",
+        "examples": [
+          "Scientist",
+          "Research Fellow",
+          "Defence R&D Scientist",
+          "Space Scientist"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_software",
+      "type": "career",
+      "data": {
+        "label": "Software Engineer / Developer",
+        "level": "career",
+        "pathway_requirements": [
+          "B.Tech CSE/IT",
+          "BCA",
+          "B.Sc CS",
+          "B.Sc IT",
+          "MCA"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_engineer",
+      "type": "career",
+      "data": {
+        "label": "Engineer",
+        "level": "career",
+        "pathway_requirements": [
+          "B.Tech / B.E."
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_architect",
+      "type": "career",
+      "data": {
+        "label": "Architect",
+        "level": "career",
+        "pathway_requirements": [
+          "B.Arch"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_doctor",
+      "type": "career",
+      "data": {
+        "label": "Doctor / Medical Officer",
+        "level": "career",
+        "pathway_requirements": [
+          "MBBS"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_dentist",
+      "type": "career",
+      "data": {
+        "label": "Dentist",
+        "level": "career",
+        "pathway_requirements": [
+          "BDS"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_ayurveda",
+      "type": "career",
+      "data": {
+        "label": "Ayurveda Practitioner",
+        "level": "career",
+        "pathway_requirements": [
+          "BAMS"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_homeopathy",
+      "type": "career",
+      "data": {
+        "label": "Homeopathy Practitioner",
+        "level": "career",
+        "pathway_requirements": [
+          "BHMS"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_unani",
+      "type": "career",
+      "data": {
+        "label": "Unani Medicine Practitioner",
+        "level": "career",
+        "pathway_requirements": [
+          "BUMS"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_vet",
+      "type": "career",
+      "data": {
+        "label": "Veterinarian",
+        "level": "career",
+        "pathway_requirements": [
+          "BVSc & AH"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_nurse",
+      "type": "career",
+      "data": {
+        "label": "Nurse / Nursing Educator",
+        "level": "career",
+        "pathway_requirements": [
+          "B.Sc Nursing",
+          "M.Sc Nursing"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_pharmacist",
+      "type": "career",
+      "data": {
+        "label": "Pharmacist / Pharma Professional",
+        "level": "career",
+        "pathway_requirements": [
+          "B.Pharm",
+          "M.Pharm"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_physio",
+      "type": "career",
+      "data": {
+        "label": "Physiotherapist",
+        "level": "career",
+        "pathway_requirements": [
+          "BPT"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_allied",
+      "type": "career",
+      "data": {
+        "label": "Allied Health Professional",
+        "level": "career",
+        "pathway_requirements": [
+          "BOT",
+          "BMLT",
+          "BRD"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_biotech",
+      "type": "career",
+      "data": {
+        "label": "Biotechnology Professional / Researcher",
+        "level": "career",
+        "pathway_requirements": [
+          "B.Sc Biotechnology",
+          "B.Tech Biotechnology",
+          "M.Sc",
+          "M.Tech"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_agri",
+      "type": "career",
+      "data": {
+        "label": "Agricultural Professional / Agri-entrepreneur",
+        "level": "career",
+        "pathway_requirements": [
+          "B.Sc Agriculture",
+          "M.Sc Agriculture"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_ca",
+      "type": "career",
+      "data": {
+        "label": "Chartered Accountant / Auditor / Tax Consultant",
+        "level": "career",
+        "pathway_requirements": [
+          "CA"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_cs",
+      "type": "career",
+      "data": {
+        "label": "Company Secretary / Compliance Professional",
+        "level": "career",
+        "pathway_requirements": [
+          "CS"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_cma",
+      "type": "career",
+      "data": {
+        "label": "Cost / Management Accountant",
+        "level": "career",
+        "pathway_requirements": [
+          "CMA"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_finance",
+      "type": "career",
+      "data": {
+        "label": "Finance / Banking Professional",
+        "level": "career",
+        "pathway_requirements": [
+          "B.Com",
+          "BBA",
+          "MBA",
+          "CA",
+          "CMA"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_manager",
+      "type": "career",
+      "data": {
+        "label": "Manager / Business Analyst / Entrepreneur",
+        "level": "career",
+        "pathway_requirements": [
+          "BBA",
+          "BMS",
+          "MBA"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_economist",
+      "type": "career",
+      "data": {
+        "label": "Economist / Policy / Research Analyst",
+        "level": "career",
+        "pathway_requirements": [
+          "Economics",
+          "M.A.",
+          "PhD"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_lawyer",
+      "type": "career",
+      "data": {
+        "label": "Advocate / Legal Advisor",
+        "level": "career",
+        "pathway_requirements": [
+          "BA LLB",
+          "LLB"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_teacher",
+      "type": "career",
+      "data": {
+        "label": "School Teacher / Education Professional",
+        "level": "career",
+        "pathway_requirements": [
+          "UG degree",
+          "B.Ed"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_professor",
+      "type": "career",
+      "data": {
+        "label": "Assistant Professor / Academic",
+        "level": "career",
+        "pathway_requirements": [
+          "PG",
+          "NET",
+          "PhD"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_journalist",
+      "type": "career",
+      "data": {
+        "label": "Journalist / Editor / Content Professional",
+        "level": "career",
+        "pathway_requirements": [
+          "BJMC",
+          "B.A.",
+          "M.A."
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_designer",
+      "type": "career",
+      "data": {
+        "label": "Designer / UX / Visual / Product Professional",
+        "level": "career",
+        "pathway_requirements": [
+          "B.Des",
+          "BFA",
+          "Diploma Design"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_social",
+      "type": "career",
+      "data": {
+        "label": "Social Worker / Development Professional",
+        "level": "career",
+        "pathway_requirements": [
+          "BSW",
+          "MSW"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_hotel",
+      "type": "career",
+      "data": {
+        "label": "Hotel / Hospitality / Event Professional",
+        "level": "career",
+        "pathway_requirements": [
+          "BHM",
+          "Diploma HM"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_research",
+      "type": "career",
+      "data": {
+        "label": "Research Scientist / R&D Professional",
+        "level": "career",
+        "pathway_requirements": [
+          "M.Sc",
+          "M.Tech",
+          "PhD"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "career_civil",
+      "type": "career",
+      "data": {
+        "label": "Civil Services / Public Administration",
+        "level": "career",
+        "pathway_requirements": [
+          "Any UG",
+          "UPSC/State PSC"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "gov_upsc",
+      "type": "government",
+      "data": {
+        "label": "UPSC Civil Services — IAS / IPS / IFS",
+        "level": "government"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "gov_statepsc",
+      "type": "government",
+      "data": {
+        "label": "State PSC / Civil Services",
+        "level": "government"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "gov_ssc",
+      "type": "government",
+      "data": {
+        "label": "SSC CGL / Central Government Graduate Jobs",
+        "level": "government"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "gov_banking",
+      "type": "government",
+      "data": {
+        "label": "IBPS / SBI Banking Exams",
+        "level": "government"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "gov_railway",
+      "type": "government",
+      "data": {
+        "label": "Railway Recruitment — RRB",
+        "level": "government"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "gov_defence",
+      "type": "government",
+      "data": {
+        "label": "Defence Services / Technical Defence Roles",
+        "level": "government"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "gov_nic",
+      "type": "government",
+      "data": {
+        "label": "NIC / Government IT Roles",
+        "level": "government"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "gov_drdo",
+      "type": "government",
+      "data": {
+        "label": "DRDO Technical / Research Roles",
+        "level": "government"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "gov_psu",
+      "type": "government",
+      "data": {
+        "label": "PSU Technical / Professional Recruitment",
+        "level": "government"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "entrepreneurship",
+      "type": "career_group",
+      "data": {
+        "label": "Entrepreneurship / Self-Employment",
+        "level": "career",
+        "examples": [
+          "Freelancing",
+          "Agency",
+          "Consulting",
+          "Restaurant/Cafe",
+          "Healthcare venture",
+          "Agri-enterprise",
+          "Technical services"
+        ]
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e_root_a001_pcm",
+      "source": "root_10th",
+      "target": "a001_pcm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "after_10th_choice"
+      }
+    },
+    {
+      "id": "e_root_a001_pcb",
+      "source": "root_10th",
+      "target": "a001_pcb",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "after_10th_choice"
+      }
+    },
+    {
+      "id": "e_root_a001_pcmb",
+      "source": "root_10th",
+      "target": "a001_pcmb",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "after_10th_choice"
+      }
+    },
+    {
+      "id": "e_root_a002_com_math",
+      "source": "root_10th",
+      "target": "a002_com_math",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "after_10th_choice"
+      }
+    },
+    {
+      "id": "e_root_a002_com_nomath",
+      "source": "root_10th",
+      "target": "a002_com_nomath",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "after_10th_choice"
+      }
+    },
+    {
+      "id": "e_root_a003_arts",
+      "source": "root_10th",
+      "target": "a003_arts",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "after_10th_choice"
+      }
+    },
+    {
+      "id": "e_root_a004_diploma",
+      "source": "root_10th",
+      "target": "a004_diploma",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "after_10th_choice"
+      }
+    },
+    {
+      "id": "e_root_a005_iti",
+      "source": "root_10th",
+      "target": "a005_iti",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "after_10th_choice"
+      }
+    },
+    {
+      "id": "e_root_v002_pmkvy",
+      "source": "root_10th",
+      "target": "v002_pmkvy",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "after_10th_choice"
+      }
+    },
+    {
+      "id": "e_root_v003_nielit",
+      "source": "root_10th",
+      "target": "v003_nielit",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "after_10th_choice"
+      }
+    },
+    {
+      "id": "e_diploma_dp_civil",
+      "source": "a004_diploma",
+      "target": "dp_civil",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "specialization"
+      }
+    },
+    {
+      "id": "e_diploma_dp_me",
+      "source": "a004_diploma",
+      "target": "dp_me",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "specialization"
+      }
+    },
+    {
+      "id": "e_diploma_dp_ee",
+      "source": "a004_diploma",
+      "target": "dp_ee",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "specialization"
+      }
+    },
+    {
+      "id": "e_diploma_dp_cse",
+      "source": "a004_diploma",
+      "target": "dp_cse",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "specialization"
+      }
+    },
+    {
+      "id": "e_diploma_dp_ece",
+      "source": "a004_diploma",
+      "target": "dp_ece",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "specialization"
+      }
+    },
+    {
+      "id": "e_diploma_dp_auto",
+      "source": "a004_diploma",
+      "target": "dp_auto",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "specialization"
+      }
+    },
+    {
+      "id": "e_diploma_dp_chemical",
+      "source": "a004_diploma",
+      "target": "dp_chemical",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "specialization"
+      }
+    },
+    {
+      "id": "e_diploma_dp_textile",
+      "source": "a004_diploma",
+      "target": "dp_textile",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "specialization"
+      }
+    },
+    {
+      "id": "e_diploma_dp_instrument",
+      "source": "a004_diploma",
+      "target": "dp_instrument",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "specialization"
+      }
+    },
+    {
+      "id": "e_diploma_dp_arch",
+      "source": "a004_diploma",
+      "target": "dp_arch",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "specialization"
+      }
+    },
+    {
+      "id": "e_dp_civil_employment",
+      "source": "dp_civil",
+      "target": "diploma_employment",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_dp_me_employment",
+      "source": "dp_me",
+      "target": "diploma_employment",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_dp_ee_employment",
+      "source": "dp_ee",
+      "target": "diploma_employment",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_dp_cse_employment",
+      "source": "dp_cse",
+      "target": "diploma_employment",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_dp_ece_employment",
+      "source": "dp_ece",
+      "target": "diploma_employment",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_dp_auto_employment",
+      "source": "dp_auto",
+      "target": "diploma_employment",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_dp_chemical_employment",
+      "source": "dp_chemical",
+      "target": "diploma_employment",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_dp_textile_employment",
+      "source": "dp_textile",
+      "target": "diploma_employment",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_dp_instrument_employment",
+      "source": "dp_instrument",
+      "target": "diploma_employment",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_dp_arch_employment",
+      "source": "dp_arch",
+      "target": "diploma_employment",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_dp_civil_lateral",
+      "source": "dp_civil",
+      "target": "btech_lateral",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "lateral_entry",
+        "note": "Relevant diploma branch required; actual eligibility varies by institution/state."
+      }
+    },
+    {
+      "id": "e_dp_me_lateral",
+      "source": "dp_me",
+      "target": "btech_lateral",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "lateral_entry",
+        "note": "Relevant diploma branch required; actual eligibility varies by institution/state."
+      }
+    },
+    {
+      "id": "e_dp_ee_lateral",
+      "source": "dp_ee",
+      "target": "btech_lateral",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "lateral_entry",
+        "note": "Relevant diploma branch required; actual eligibility varies by institution/state."
+      }
+    },
+    {
+      "id": "e_dp_cse_lateral",
+      "source": "dp_cse",
+      "target": "btech_lateral",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "lateral_entry",
+        "note": "Relevant diploma branch required; actual eligibility varies by institution/state."
+      }
+    },
+    {
+      "id": "e_dp_ece_lateral",
+      "source": "dp_ece",
+      "target": "btech_lateral",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "lateral_entry",
+        "note": "Relevant diploma branch required; actual eligibility varies by institution/state."
+      }
+    },
+    {
+      "id": "e_dp_auto_lateral",
+      "source": "dp_auto",
+      "target": "btech_lateral",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "lateral_entry",
+        "note": "Relevant diploma branch required; actual eligibility varies by institution/state."
+      }
+    },
+    {
+      "id": "e_dp_chemical_lateral",
+      "source": "dp_chemical",
+      "target": "btech_lateral",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "lateral_entry",
+        "note": "Relevant diploma branch required; actual eligibility varies by institution/state."
+      }
+    },
+    {
+      "id": "e_dp_textile_lateral",
+      "source": "dp_textile",
+      "target": "btech_lateral",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "lateral_entry",
+        "note": "Relevant diploma branch required; actual eligibility varies by institution/state."
+      }
+    },
+    {
+      "id": "e_dp_instrument_lateral",
+      "source": "dp_instrument",
+      "target": "btech_lateral",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "lateral_entry",
+        "note": "Relevant diploma branch required; actual eligibility varies by institution/state."
+      }
+    },
+    {
+      "id": "e_dp_arch_lateral",
+      "source": "dp_arch",
+      "target": "btech_lateral",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "lateral_entry",
+        "note": "Relevant diploma branch required; actual eligibility varies by institution/state."
+      }
+    },
+    {
+      "id": "e_diploma_emp_je",
+      "source": "diploma_employment",
+      "target": "diploma_je",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career"
+      }
+    },
+    {
+      "id": "e_diploma_emp_gov",
+      "source": "diploma_employment",
+      "target": "diploma_gov",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_career"
+      }
+    },
+    {
+      "id": "e_iti_iti_electrician",
+      "source": "a005_iti",
+      "target": "iti_electrician",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_fitter",
+      "source": "a005_iti",
+      "target": "iti_fitter",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_turner",
+      "source": "a005_iti",
+      "target": "iti_turner",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_machinist",
+      "source": "a005_iti",
+      "target": "iti_machinist",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_welder",
+      "source": "a005_iti",
+      "target": "iti_welder",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_copa",
+      "source": "a005_iti",
+      "target": "iti_copa",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_mmv",
+      "source": "a005_iti",
+      "target": "iti_mmv",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_draught_civil",
+      "source": "a005_iti",
+      "target": "iti_draught_civil",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_draught_mech",
+      "source": "a005_iti",
+      "target": "iti_draught_mech",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_plumber",
+      "source": "a005_iti",
+      "target": "iti_plumber",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_carpenter",
+      "source": "a005_iti",
+      "target": "iti_carpenter",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_steno",
+      "source": "a005_iti",
+      "target": "iti_steno",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_electronics",
+      "source": "a005_iti",
+      "target": "iti_electronics",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_wireman",
+      "source": "a005_iti",
+      "target": "iti_wireman",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_ref_ac",
+      "source": "a005_iti",
+      "target": "iti_ref_ac",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_iti_sewing",
+      "source": "a005_iti",
+      "target": "iti_sewing",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "trade"
+      }
+    },
+    {
+      "id": "e_iti_apprenticeship",
+      "source": "a005_iti",
+      "target": "apprenticeship",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "progression"
+      }
+    },
+    {
+      "id": "e_iti_employment",
+      "source": "a005_iti",
+      "target": "iti_employment",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_iti_gov",
+      "source": "a005_iti",
+      "target": "iti_gov",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_career"
+      }
+    },
+    {
+      "id": "e_apprenticeship_nac",
+      "source": "apprenticeship",
+      "target": "iti_employment",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career"
+      }
+    },
+    {
+      "id": "e_pmkvy_training",
+      "source": "v002_pmkvy",
+      "target": "skill_training",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "skill_training"
+      }
+    },
+    {
+      "id": "e_skill_job",
+      "source": "skill_training",
+      "target": "skill_worker",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_nielit_job",
+      "source": "v003_nielit",
+      "target": "nielit_it",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "employment"
+      }
+    },
+    {
+      "id": "e_pcm_c_bca",
+      "source": "a001_pcm",
+      "target": "c_bca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_bsc_cs",
+      "source": "a001_pcm",
+      "target": "c_bsc_cs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_bsc_it",
+      "source": "a001_pcm",
+      "target": "c_bsc_it",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_bsc",
+      "source": "a001_pcm",
+      "target": "c_bsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_btech_biotech",
+      "source": "a001_pcm",
+      "target": "c_btech_biotech",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_bpharm",
+      "source": "a001_pcm",
+      "target": "c_bpharm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_barch",
+      "source": "a001_pcm",
+      "target": "c_barch",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_bba",
+      "source": "a001_pcm",
+      "target": "c_bba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_bcom",
+      "source": "a001_pcm",
+      "target": "c_bcom",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_ba",
+      "source": "a001_pcm",
+      "target": "c_ba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_llb5",
+      "source": "a001_pcm",
+      "target": "c_llb5",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_bhm",
+      "source": "a001_pcm",
+      "target": "c_bhm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_bdes",
+      "source": "a001_pcm",
+      "target": "c_bdes",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_bms",
+      "source": "a001_pcm",
+      "target": "c_bms",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcm_c_econ",
+      "source": "a001_pcm",
+      "target": "c_econ",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_mbbs",
+      "source": "a001_pcb",
+      "target": "c_mbbs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bds",
+      "source": "a001_pcb",
+      "target": "c_bds",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bams",
+      "source": "a001_pcb",
+      "target": "c_bams",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bhms",
+      "source": "a001_pcb",
+      "target": "c_bhms",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bums",
+      "source": "a001_pcb",
+      "target": "c_bums",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bvsc",
+      "source": "a001_pcb",
+      "target": "c_bvsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bsc_nursing",
+      "source": "a001_pcb",
+      "target": "c_bsc_nursing",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bpharm",
+      "source": "a001_pcb",
+      "target": "c_bpharm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bpt",
+      "source": "a001_pcb",
+      "target": "c_bpt",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bot",
+      "source": "a001_pcb",
+      "target": "c_bot",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bmlt",
+      "source": "a001_pcb",
+      "target": "c_bmlt",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_brd",
+      "source": "a001_pcb",
+      "target": "c_brd",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bsc_biotech",
+      "source": "a001_pcb",
+      "target": "c_bsc_biotech",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_btech_biotech",
+      "source": "a001_pcb",
+      "target": "c_btech_biotech",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bsc_agri",
+      "source": "a001_pcb",
+      "target": "c_bsc_agri",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bsc",
+      "source": "a001_pcb",
+      "target": "c_bsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bba",
+      "source": "a001_pcb",
+      "target": "c_bba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bcom",
+      "source": "a001_pcb",
+      "target": "c_bcom",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_ba",
+      "source": "a001_pcb",
+      "target": "c_ba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bhm",
+      "source": "a001_pcb",
+      "target": "c_bhm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bdes",
+      "source": "a001_pcb",
+      "target": "c_bdes",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcb_c_bsw",
+      "source": "a001_pcb",
+      "target": "c_bsw",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_mbbs",
+      "source": "a001_pcmb",
+      "target": "c_mbbs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bds",
+      "source": "a001_pcmb",
+      "target": "c_bds",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bams",
+      "source": "a001_pcmb",
+      "target": "c_bams",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bhms",
+      "source": "a001_pcmb",
+      "target": "c_bhms",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bums",
+      "source": "a001_pcmb",
+      "target": "c_bums",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bvsc",
+      "source": "a001_pcmb",
+      "target": "c_bvsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bsc_nursing",
+      "source": "a001_pcmb",
+      "target": "c_bsc_nursing",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bpharm",
+      "source": "a001_pcmb",
+      "target": "c_bpharm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bpt",
+      "source": "a001_pcmb",
+      "target": "c_bpt",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bot",
+      "source": "a001_pcmb",
+      "target": "c_bot",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bmlt",
+      "source": "a001_pcmb",
+      "target": "c_bmlt",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_brd",
+      "source": "a001_pcmb",
+      "target": "c_brd",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bsc_biotech",
+      "source": "a001_pcmb",
+      "target": "c_bsc_biotech",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_btech_biotech",
+      "source": "a001_pcmb",
+      "target": "c_btech_biotech",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bsc_agri",
+      "source": "a001_pcmb",
+      "target": "c_bsc_agri",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bsc",
+      "source": "a001_pcmb",
+      "target": "c_bsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bca",
+      "source": "a001_pcmb",
+      "target": "c_bca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bsc_cs",
+      "source": "a001_pcmb",
+      "target": "c_bsc_cs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bsc_it",
+      "source": "a001_pcmb",
+      "target": "c_bsc_it",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_barch",
+      "source": "a001_pcmb",
+      "target": "c_barch",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bba",
+      "source": "a001_pcmb",
+      "target": "c_bba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bcom",
+      "source": "a001_pcmb",
+      "target": "c_bcom",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_ba",
+      "source": "a001_pcmb",
+      "target": "c_ba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_llb5",
+      "source": "a001_pcmb",
+      "target": "c_llb5",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bhm",
+      "source": "a001_pcmb",
+      "target": "c_bhm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bdes",
+      "source": "a001_pcmb",
+      "target": "c_bdes",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_bms",
+      "source": "a001_pcmb",
+      "target": "c_bms",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_pcmb_c_econ",
+      "source": "a001_pcmb",
+      "target": "c_econ",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_c_bcom",
+      "source": "a002_com_math",
+      "target": "c_bcom",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_c_bba",
+      "source": "a002_com_math",
+      "target": "c_bba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_c_bms",
+      "source": "a002_com_math",
+      "target": "c_bms",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_c_econ",
+      "source": "a002_com_math",
+      "target": "c_econ",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_c_bca",
+      "source": "a002_com_math",
+      "target": "c_bca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_c_ba",
+      "source": "a002_com_math",
+      "target": "c_ba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_c_llb5",
+      "source": "a002_com_math",
+      "target": "c_llb5",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_c_bhm",
+      "source": "a002_com_math",
+      "target": "c_bhm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_c_bdes",
+      "source": "a002_com_math",
+      "target": "c_bdes",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_c_bjmc",
+      "source": "a002_com_math",
+      "target": "c_bjmc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_c_bsw",
+      "source": "a002_com_math",
+      "target": "c_bsw",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_nomath_c_bcom",
+      "source": "a002_com_nomath",
+      "target": "c_bcom",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_nomath_c_bba",
+      "source": "a002_com_nomath",
+      "target": "c_bba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_nomath_c_bms",
+      "source": "a002_com_nomath",
+      "target": "c_bms",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_nomath_c_ba",
+      "source": "a002_com_nomath",
+      "target": "c_ba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_nomath_c_llb5",
+      "source": "a002_com_nomath",
+      "target": "c_llb5",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_nomath_c_bhm",
+      "source": "a002_com_nomath",
+      "target": "c_bhm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_nomath_c_bdes",
+      "source": "a002_com_nomath",
+      "target": "c_bdes",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_nomath_c_bjmc",
+      "source": "a002_com_nomath",
+      "target": "c_bjmc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_com_nomath_c_bsw",
+      "source": "a002_com_nomath",
+      "target": "c_bsw",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_arts_c_ba",
+      "source": "a003_arts",
+      "target": "c_ba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_arts_c_llb5",
+      "source": "a003_arts",
+      "target": "c_llb5",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_arts_c_bjmc",
+      "source": "a003_arts",
+      "target": "c_bjmc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_arts_c_bdes",
+      "source": "a003_arts",
+      "target": "c_bdes",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_arts_c_bfa",
+      "source": "a003_arts",
+      "target": "c_bfa",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_arts_c_bsw",
+      "source": "a003_arts",
+      "target": "c_bsw",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_arts_c_bed4",
+      "source": "a003_arts",
+      "target": "c_bed4",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_arts_c_bba",
+      "source": "a003_arts",
+      "target": "c_bba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_arts_c_bcom",
+      "source": "a003_arts",
+      "target": "c_bcom",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_arts_c_bhm",
+      "source": "a003_arts",
+      "target": "c_bhm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_arts_c_econ",
+      "source": "a003_arts",
+      "target": "c_econ",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "eligible_path"
+      }
+    },
+    {
+      "id": "e_a002_com_math_p_ca",
+      "source": "a002_com_math",
+      "target": "p_ca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a002_com_math_p_cs",
+      "source": "a002_com_math",
+      "target": "p_cs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a002_com_math_p_cma",
+      "source": "a002_com_math",
+      "target": "p_cma",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a002_com_math_p_actuarial",
+      "source": "a002_com_math",
+      "target": "p_actuarial",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a002_com_nomath_p_ca",
+      "source": "a002_com_nomath",
+      "target": "p_ca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a002_com_nomath_p_cs",
+      "source": "a002_com_nomath",
+      "target": "p_cs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a002_com_nomath_p_cma",
+      "source": "a002_com_nomath",
+      "target": "p_cma",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a002_com_nomath_p_actuarial",
+      "source": "a002_com_nomath",
+      "target": "p_actuarial",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a001_pcm_p_ca",
+      "source": "a001_pcm",
+      "target": "p_ca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a001_pcm_p_cs",
+      "source": "a001_pcm",
+      "target": "p_cs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a001_pcm_p_cma",
+      "source": "a001_pcm",
+      "target": "p_cma",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a001_pcm_p_actuarial",
+      "source": "a001_pcm",
+      "target": "p_actuarial",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a001_pcb_p_ca",
+      "source": "a001_pcb",
+      "target": "p_ca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a001_pcb_p_cs",
+      "source": "a001_pcb",
+      "target": "p_cs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a001_pcb_p_cma",
+      "source": "a001_pcb",
+      "target": "p_cma",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a001_pcb_p_actuarial",
+      "source": "a001_pcb",
+      "target": "p_actuarial",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a001_pcmb_p_ca",
+      "source": "a001_pcmb",
+      "target": "p_ca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a001_pcmb_p_cs",
+      "source": "a001_pcmb",
+      "target": "p_cs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a001_pcmb_p_cma",
+      "source": "a001_pcmb",
+      "target": "p_cma",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a001_pcmb_p_actuarial",
+      "source": "a001_pcmb",
+      "target": "p_actuarial",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a003_arts_p_ca",
+      "source": "a003_arts",
+      "target": "p_ca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a003_arts_p_cs",
+      "source": "a003_arts",
+      "target": "p_cs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a003_arts_p_cma",
+      "source": "a003_arts",
+      "target": "p_cma",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_a003_arts_p_actuarial",
+      "source": "a003_arts",
+      "target": "p_actuarial",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_c_bcom_ca",
+      "source": "c_bcom",
+      "target": "p_ca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path",
+        "note": "Direct-entry rules apply after graduation."
+      }
+    },
+    {
+      "id": "e_c_bcom_cs",
+      "source": "c_bcom",
+      "target": "p_cs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_c_bcom_cma",
+      "source": "c_bcom",
+      "target": "p_cma",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_c_bba_ca",
+      "source": "c_bba",
+      "target": "p_ca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path",
+        "note": "Direct-entry rules apply after graduation."
+      }
+    },
+    {
+      "id": "e_c_bba_cs",
+      "source": "c_bba",
+      "target": "p_cs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_c_bba_cma",
+      "source": "c_bba",
+      "target": "p_cma",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_c_ba_ca",
+      "source": "c_ba",
+      "target": "p_ca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path",
+        "note": "Direct-entry rules apply after graduation."
+      }
+    },
+    {
+      "id": "e_c_ba_cs",
+      "source": "c_ba",
+      "target": "p_cs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_c_ba_cma",
+      "source": "c_ba",
+      "target": "p_cma",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "professional_path"
+      }
+    },
+    {
+      "id": "e_btech_lateral_mtech",
+      "source": "btech_lateral",
+      "target": "pg_mtech",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_btech_biotech_mtech",
+      "source": "c_btech_biotech",
+      "target": "pg_mtech",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bca_mca",
+      "source": "c_bca",
+      "target": "pg_mca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_mca",
+      "source": "c_bsc_cs",
+      "target": "pg_mca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bsc_it_mca",
+      "source": "c_bsc_it",
+      "target": "pg_mca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bca_mba",
+      "source": "c_bca",
+      "target": "pg_mba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_mba",
+      "source": "c_bsc_cs",
+      "target": "pg_mba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bsc_it_mba",
+      "source": "c_bsc_it",
+      "target": "pg_mba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bcom_mba",
+      "source": "c_bcom",
+      "target": "pg_mba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bba_mba",
+      "source": "c_bba",
+      "target": "pg_mba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_ba_mba",
+      "source": "c_ba",
+      "target": "pg_mba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bms_mba",
+      "source": "c_bms",
+      "target": "pg_mba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_econ_mba",
+      "source": "c_econ",
+      "target": "pg_mba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bhm_mba",
+      "source": "c_bhm",
+      "target": "pg_mba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bdes_mba",
+      "source": "c_bdes",
+      "target": "pg_mba",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bsc_msc",
+      "source": "c_bsc",
+      "target": "pg_msc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_msc",
+      "source": "c_bsc_cs",
+      "target": "pg_msc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bsc_it_msc",
+      "source": "c_bsc_it",
+      "target": "pg_msc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bsc_biotech_msc",
+      "source": "c_bsc_biotech",
+      "target": "pg_msc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bpharm_msc",
+      "source": "c_bpharm",
+      "target": "pg_msc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_c_bsc_agri_msc",
+      "source": "c_bsc_agri",
+      "target": "pg_msc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_bcom_mcom",
+      "source": "c_bcom",
+      "target": "pg_mcom",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_ba_ma",
+      "source": "c_ba",
+      "target": "pg_ma",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_bsw_msw",
+      "source": "c_bsw",
+      "target": "pg_msw",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_llb_llm",
+      "source": "c_llb5",
+      "target": "pg_llm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_bpharm_mpharm",
+      "source": "c_bpharm",
+      "target": "pg_mpharm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_nursing_msc",
+      "source": "c_bsc_nursing",
+      "target": "pg_msc_nursing",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_barch_march",
+      "source": "c_barch",
+      "target": "pg_march",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_bdes_mdes",
+      "source": "c_bdes",
+      "target": "pg_mdes",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_btechbio_mtechbio",
+      "source": "c_btech_biotech",
+      "target": "pg_mtech_biotech",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_agri_msc",
+      "source": "c_bsc_agri",
+      "target": "pg_msc_agri",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "higher_study"
+      }
+    },
+    {
+      "id": "e_mbbs_pg_md",
+      "source": "c_mbbs",
+      "target": "pg_md",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "medical_higher_study"
+      }
+    },
+    {
+      "id": "e_mbbs_pg_ms",
+      "source": "c_mbbs",
+      "target": "pg_ms",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "medical_higher_study"
+      }
+    },
+    {
+      "id": "e_mbbs_pg_dnb",
+      "source": "c_mbbs",
+      "target": "pg_dnb",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "medical_higher_study"
+      }
+    },
+    {
+      "id": "e_md_dm",
+      "source": "pg_md",
+      "target": "dr_dm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "super_specialization"
+      }
+    },
+    {
+      "id": "e_dnb_dm",
+      "source": "pg_dnb",
+      "target": "dr_dm",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "super_specialization"
+      }
+    },
+    {
+      "id": "e_ms_mch",
+      "source": "pg_ms",
+      "target": "dr_mch",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "super_specialization"
+      }
+    },
+    {
+      "id": "e_dnb_mch",
+      "source": "pg_dnb",
+      "target": "dr_mch",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "super_specialization"
+      }
+    },
+    {
+      "id": "e_pg_mtech_phd",
+      "source": "pg_mtech",
+      "target": "dr_phd",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "doctoral_progression"
+      }
+    },
+    {
+      "id": "e_pg_mca_phd",
+      "source": "pg_mca",
+      "target": "dr_phd",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "doctoral_progression"
+      }
+    },
+    {
+      "id": "e_pg_msc_phd",
+      "source": "pg_msc",
+      "target": "dr_phd",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "doctoral_progression"
+      }
+    },
+    {
+      "id": "e_pg_mcom_phd",
+      "source": "pg_mcom",
+      "target": "dr_phd",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "doctoral_progression"
+      }
+    },
+    {
+      "id": "e_pg_ma_phd",
+      "source": "pg_ma",
+      "target": "dr_phd",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "doctoral_progression"
+      }
+    },
+    {
+      "id": "e_pg_llm_phd",
+      "source": "pg_llm",
+      "target": "dr_phd",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "doctoral_progression"
+      }
+    },
+    {
+      "id": "e_pg_mpharm_phd",
+      "source": "pg_mpharm",
+      "target": "dr_phd",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "doctoral_progression"
+      }
+    },
+    {
+      "id": "e_pg_msw_phd",
+      "source": "pg_msw",
+      "target": "dr_phd",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "doctoral_progression"
+      }
+    },
+    {
+      "id": "e_pg_mtech_biotech_phd",
+      "source": "pg_mtech_biotech",
+      "target": "dr_phd",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "doctoral_progression"
+      }
+    },
+    {
+      "id": "e_pg_msc_agri_phd",
+      "source": "pg_msc_agri",
+      "target": "dr_phd",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "doctoral_progression"
+      }
+    },
+    {
+      "id": "e_pg_mtech_research",
+      "source": "pg_mtech",
+      "target": "dr_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "research_path"
+      }
+    },
+    {
+      "id": "e_pg_msc_research",
+      "source": "pg_msc",
+      "target": "dr_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "research_path"
+      }
+    },
+    {
+      "id": "e_pg_mca_research",
+      "source": "pg_mca",
+      "target": "dr_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "research_path"
+      }
+    },
+    {
+      "id": "e_pg_mpharm_research",
+      "source": "pg_mpharm",
+      "target": "dr_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "research_path"
+      }
+    },
+    {
+      "id": "e_c_bca_career_software",
+      "source": "c_bca",
+      "target": "career_software",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bca_career_finance",
+      "source": "c_bca",
+      "target": "career_finance",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_career_software",
+      "source": "c_bsc_cs",
+      "target": "career_software",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_career_research",
+      "source": "c_bsc_cs",
+      "target": "career_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bsc_it_career_software",
+      "source": "c_bsc_it",
+      "target": "career_software",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bcom_career_finance",
+      "source": "c_bcom",
+      "target": "career_finance",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bcom_career_ca",
+      "source": "c_bcom",
+      "target": "career_ca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bcom_career_manager",
+      "source": "c_bcom",
+      "target": "career_manager",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bba_career_manager",
+      "source": "c_bba",
+      "target": "career_manager",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bba_career_finance",
+      "source": "c_bba",
+      "target": "career_finance",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bms_career_manager",
+      "source": "c_bms",
+      "target": "career_manager",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_econ_career_economist",
+      "source": "c_econ",
+      "target": "career_economist",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_econ_career_civil",
+      "source": "c_econ",
+      "target": "career_civil",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_ba_career_civil",
+      "source": "c_ba",
+      "target": "career_civil",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_ba_career_journalist",
+      "source": "c_ba",
+      "target": "career_journalist",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_ba_career_teacher",
+      "source": "c_ba",
+      "target": "career_teacher",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_ba_career_social",
+      "source": "c_ba",
+      "target": "career_social",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_ba_career_economist",
+      "source": "c_ba",
+      "target": "career_economist",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_llb5_career_lawyer",
+      "source": "c_llb5",
+      "target": "career_lawyer",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bhm_career_hotel",
+      "source": "c_bhm",
+      "target": "career_hotel",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_barch_career_architect",
+      "source": "c_barch",
+      "target": "career_architect",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bdes_career_designer",
+      "source": "c_bdes",
+      "target": "career_designer",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bfa_career_designer",
+      "source": "c_bfa",
+      "target": "career_designer",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bjmc_career_journalist",
+      "source": "c_bjmc",
+      "target": "career_journalist",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bsw_career_social",
+      "source": "c_bsw",
+      "target": "career_social",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bed4_career_teacher",
+      "source": "c_bed4",
+      "target": "career_teacher",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_mbbs_career_doctor",
+      "source": "c_mbbs",
+      "target": "career_doctor",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bds_career_dentist",
+      "source": "c_bds",
+      "target": "career_dentist",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bams_career_ayurveda",
+      "source": "c_bams",
+      "target": "career_ayurveda",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bhms_career_homeopathy",
+      "source": "c_bhms",
+      "target": "career_homeopathy",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bums_career_unani",
+      "source": "c_bums",
+      "target": "career_unani",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bvsc_career_vet",
+      "source": "c_bvsc",
+      "target": "career_vet",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bsc_nursing_career_nurse",
+      "source": "c_bsc_nursing",
+      "target": "career_nurse",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bpharm_career_pharmacist",
+      "source": "c_bpharm",
+      "target": "career_pharmacist",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bpt_career_physio",
+      "source": "c_bpt",
+      "target": "career_physio",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bot_career_allied",
+      "source": "c_bot",
+      "target": "career_allied",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bmlt_career_allied",
+      "source": "c_bmlt",
+      "target": "career_allied",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_brd_career_allied",
+      "source": "c_brd",
+      "target": "career_allied",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bsc_biotech_career_biotech",
+      "source": "c_bsc_biotech",
+      "target": "career_biotech",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bsc_biotech_career_research",
+      "source": "c_bsc_biotech",
+      "target": "career_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_btech_biotech_career_biotech",
+      "source": "c_btech_biotech",
+      "target": "career_biotech",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_btech_biotech_career_research",
+      "source": "c_btech_biotech",
+      "target": "career_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bsc_agri_career_agri",
+      "source": "c_bsc_agri",
+      "target": "career_agri",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bsc_career_research",
+      "source": "c_bsc",
+      "target": "career_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_bsc_career_teacher",
+      "source": "c_bsc",
+      "target": "career_teacher",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_btech_lateral_career_engineer",
+      "source": "btech_lateral",
+      "target": "career_engineer",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_mtech_career_engineer",
+      "source": "pg_mtech",
+      "target": "career_engineer",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_mtech_career_research",
+      "source": "pg_mtech",
+      "target": "career_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_mca_career_software",
+      "source": "pg_mca",
+      "target": "career_software",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_mba_career_manager",
+      "source": "pg_mba",
+      "target": "career_manager",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_mba_career_finance",
+      "source": "pg_mba",
+      "target": "career_finance",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_msc_career_research",
+      "source": "pg_msc",
+      "target": "career_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_msc_career_professor",
+      "source": "pg_msc",
+      "target": "career_professor",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_mcom_career_finance",
+      "source": "pg_mcom",
+      "target": "career_finance",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_mcom_career_professor",
+      "source": "pg_mcom",
+      "target": "career_professor",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_ma_career_civil",
+      "source": "pg_ma",
+      "target": "career_civil",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_ma_career_journalist",
+      "source": "pg_ma",
+      "target": "career_journalist",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_ma_career_professor",
+      "source": "pg_ma",
+      "target": "career_professor",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_llm_career_lawyer",
+      "source": "pg_llm",
+      "target": "career_lawyer",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_mpharm_career_pharmacist",
+      "source": "pg_mpharm",
+      "target": "career_pharmacist",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_mpharm_career_research",
+      "source": "pg_mpharm",
+      "target": "career_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_msc_nursing_career_nurse",
+      "source": "pg_msc_nursing",
+      "target": "career_nurse",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_msc_nursing_career_professor",
+      "source": "pg_msc_nursing",
+      "target": "career_professor",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_msw_career_social",
+      "source": "pg_msw",
+      "target": "career_social",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_march_career_architect",
+      "source": "pg_march",
+      "target": "career_architect",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_mdes_career_designer",
+      "source": "pg_mdes",
+      "target": "career_designer",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_mtech_biotech_career_biotech",
+      "source": "pg_mtech_biotech",
+      "target": "career_biotech",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_mtech_biotech_career_research",
+      "source": "pg_mtech_biotech",
+      "target": "career_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_msc_agri_career_agri",
+      "source": "pg_msc_agri",
+      "target": "career_agri",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_pg_msc_agri_career_research",
+      "source": "pg_msc_agri",
+      "target": "career_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_dr_phd_career_professor",
+      "source": "dr_phd",
+      "target": "career_professor",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_dr_phd_career_research",
+      "source": "dr_phd",
+      "target": "career_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_dr_research_career_research",
+      "source": "dr_research",
+      "target": "career_research",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_p_ca_career_ca",
+      "source": "p_ca",
+      "target": "career_ca",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_p_cs_career_cs",
+      "source": "p_cs",
+      "target": "career_cs",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_p_cma_career_cma",
+      "source": "p_cma",
+      "target": "career_cma",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "career_outcome"
+      }
+    },
+    {
+      "id": "e_c_ba_gov_upsc",
+      "source": "c_ba",
+      "target": "gov_upsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_ba_gov_statepsc",
+      "source": "c_ba",
+      "target": "gov_statepsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_ba_gov_ssc",
+      "source": "c_ba",
+      "target": "gov_ssc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_ba_gov_banking",
+      "source": "c_ba",
+      "target": "gov_banking",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_ba_gov_railway",
+      "source": "c_ba",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bcom_gov_upsc",
+      "source": "c_bcom",
+      "target": "gov_upsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bcom_gov_statepsc",
+      "source": "c_bcom",
+      "target": "gov_statepsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bcom_gov_ssc",
+      "source": "c_bcom",
+      "target": "gov_ssc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bcom_gov_banking",
+      "source": "c_bcom",
+      "target": "gov_banking",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bcom_gov_railway",
+      "source": "c_bcom",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bba_gov_upsc",
+      "source": "c_bba",
+      "target": "gov_upsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bba_gov_statepsc",
+      "source": "c_bba",
+      "target": "gov_statepsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bba_gov_ssc",
+      "source": "c_bba",
+      "target": "gov_ssc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bba_gov_banking",
+      "source": "c_bba",
+      "target": "gov_banking",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bba_gov_railway",
+      "source": "c_bba",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bms_gov_upsc",
+      "source": "c_bms",
+      "target": "gov_upsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bms_gov_statepsc",
+      "source": "c_bms",
+      "target": "gov_statepsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bms_gov_ssc",
+      "source": "c_bms",
+      "target": "gov_ssc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bms_gov_banking",
+      "source": "c_bms",
+      "target": "gov_banking",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bms_gov_railway",
+      "source": "c_bms",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bca_gov_upsc",
+      "source": "c_bca",
+      "target": "gov_upsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bca_gov_statepsc",
+      "source": "c_bca",
+      "target": "gov_statepsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bca_gov_ssc",
+      "source": "c_bca",
+      "target": "gov_ssc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bca_gov_banking",
+      "source": "c_bca",
+      "target": "gov_banking",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bca_gov_railway",
+      "source": "c_bca",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_gov_upsc",
+      "source": "c_bsc_cs",
+      "target": "gov_upsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_gov_statepsc",
+      "source": "c_bsc_cs",
+      "target": "gov_statepsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_gov_ssc",
+      "source": "c_bsc_cs",
+      "target": "gov_ssc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_gov_banking",
+      "source": "c_bsc_cs",
+      "target": "gov_banking",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_gov_railway",
+      "source": "c_bsc_cs",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_it_gov_upsc",
+      "source": "c_bsc_it",
+      "target": "gov_upsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_it_gov_statepsc",
+      "source": "c_bsc_it",
+      "target": "gov_statepsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_it_gov_ssc",
+      "source": "c_bsc_it",
+      "target": "gov_ssc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_it_gov_banking",
+      "source": "c_bsc_it",
+      "target": "gov_banking",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_it_gov_railway",
+      "source": "c_bsc_it",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_gov_upsc",
+      "source": "c_bsc",
+      "target": "gov_upsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_gov_statepsc",
+      "source": "c_bsc",
+      "target": "gov_statepsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_gov_ssc",
+      "source": "c_bsc",
+      "target": "gov_ssc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_gov_banking",
+      "source": "c_bsc",
+      "target": "gov_banking",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_gov_railway",
+      "source": "c_bsc",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bhm_gov_upsc",
+      "source": "c_bhm",
+      "target": "gov_upsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bhm_gov_statepsc",
+      "source": "c_bhm",
+      "target": "gov_statepsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bhm_gov_ssc",
+      "source": "c_bhm",
+      "target": "gov_ssc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bhm_gov_banking",
+      "source": "c_bhm",
+      "target": "gov_banking",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bhm_gov_railway",
+      "source": "c_bhm",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bdes_gov_upsc",
+      "source": "c_bdes",
+      "target": "gov_upsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bdes_gov_statepsc",
+      "source": "c_bdes",
+      "target": "gov_statepsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bdes_gov_ssc",
+      "source": "c_bdes",
+      "target": "gov_ssc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bdes_gov_banking",
+      "source": "c_bdes",
+      "target": "gov_banking",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bdes_gov_railway",
+      "source": "c_bdes",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsw_gov_upsc",
+      "source": "c_bsw",
+      "target": "gov_upsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsw_gov_statepsc",
+      "source": "c_bsw",
+      "target": "gov_statepsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsw_gov_ssc",
+      "source": "c_bsw",
+      "target": "gov_ssc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsw_gov_banking",
+      "source": "c_bsw",
+      "target": "gov_banking",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsw_gov_railway",
+      "source": "c_bsw",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_barch_gov_upsc",
+      "source": "c_barch",
+      "target": "gov_upsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_barch_gov_statepsc",
+      "source": "c_barch",
+      "target": "gov_statepsc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_barch_gov_ssc",
+      "source": "c_barch",
+      "target": "gov_ssc",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_barch_gov_banking",
+      "source": "c_barch",
+      "target": "gov_banking",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_barch_gov_railway",
+      "source": "c_barch",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bca_gov_nic",
+      "source": "c_bca",
+      "target": "gov_nic",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bca_gov_drdo",
+      "source": "c_bca",
+      "target": "gov_drdo",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bca_gov_psu",
+      "source": "c_bca",
+      "target": "gov_psu",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_gov_nic",
+      "source": "c_bsc_cs",
+      "target": "gov_nic",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_gov_drdo",
+      "source": "c_bsc_cs",
+      "target": "gov_drdo",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_cs_gov_psu",
+      "source": "c_bsc_cs",
+      "target": "gov_psu",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_it_gov_nic",
+      "source": "c_bsc_it",
+      "target": "gov_nic",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_it_gov_drdo",
+      "source": "c_bsc_it",
+      "target": "gov_drdo",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bsc_it_gov_psu",
+      "source": "c_bsc_it",
+      "target": "gov_psu",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_btech_lateral_gov_nic",
+      "source": "btech_lateral",
+      "target": "gov_nic",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_btech_lateral_gov_drdo",
+      "source": "btech_lateral",
+      "target": "gov_drdo",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_btech_lateral_gov_psu",
+      "source": "btech_lateral",
+      "target": "gov_psu",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_pg_mca_gov_nic",
+      "source": "pg_mca",
+      "target": "gov_nic",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_pg_mca_gov_drdo",
+      "source": "pg_mca",
+      "target": "gov_drdo",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_pg_mca_gov_psu",
+      "source": "pg_mca",
+      "target": "gov_psu",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_pg_mtech_gov_nic",
+      "source": "pg_mtech",
+      "target": "gov_nic",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_pg_mtech_gov_drdo",
+      "source": "pg_mtech",
+      "target": "gov_drdo",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_pg_mtech_gov_psu",
+      "source": "pg_mtech",
+      "target": "gov_psu",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_pg_msc_gov_nic",
+      "source": "pg_msc",
+      "target": "gov_nic",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_pg_msc_gov_drdo",
+      "source": "pg_msc",
+      "target": "gov_drdo",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_pg_msc_gov_psu",
+      "source": "pg_msc",
+      "target": "gov_psu",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "technical_government_opportunity"
+      }
+    },
+    {
+      "id": "e_iti_employment_gov_railway",
+      "source": "iti_employment",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_iti_employment_gov_defence",
+      "source": "iti_employment",
+      "target": "gov_defence",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_iti_employment_gov_psu",
+      "source": "iti_employment",
+      "target": "gov_psu",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_diploma_employment_gov_railway",
+      "source": "diploma_employment",
+      "target": "gov_railway",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_diploma_employment_gov_defence",
+      "source": "diploma_employment",
+      "target": "gov_defence",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_diploma_employment_gov_psu",
+      "source": "diploma_employment",
+      "target": "gov_psu",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "government_opportunity"
+      }
+    },
+    {
+      "id": "e_c_bba_entrepreneurship",
+      "source": "c_bba",
+      "target": "entrepreneurship",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "entrepreneurship"
+      }
+    },
+    {
+      "id": "e_c_bcom_entrepreneurship",
+      "source": "c_bcom",
+      "target": "entrepreneurship",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "entrepreneurship"
+      }
+    },
+    {
+      "id": "e_c_bca_entrepreneurship",
+      "source": "c_bca",
+      "target": "entrepreneurship",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "entrepreneurship"
+      }
+    },
+    {
+      "id": "e_c_bdes_entrepreneurship",
+      "source": "c_bdes",
+      "target": "entrepreneurship",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "entrepreneurship"
+      }
+    },
+    {
+      "id": "e_c_bhm_entrepreneurship",
+      "source": "c_bhm",
+      "target": "entrepreneurship",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "entrepreneurship"
+      }
+    },
+    {
+      "id": "e_c_bsc_agri_entrepreneurship",
+      "source": "c_bsc_agri",
+      "target": "entrepreneurship",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "entrepreneurship"
+      }
+    },
+    {
+      "id": "e_c_bpharm_entrepreneurship",
+      "source": "c_bpharm",
+      "target": "entrepreneurship",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "entrepreneurship"
+      }
+    },
+    {
+      "id": "e_iti_employment_entrepreneurship",
+      "source": "iti_employment",
+      "target": "entrepreneurship",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "entrepreneurship"
+      }
+    },
+    {
+      "id": "e_skill_worker_entrepreneurship",
+      "source": "skill_worker",
+      "target": "entrepreneurship",
+      "type": "smoothstep",
+      "animated": false,
+      "data": {
+        "relation": "entrepreneurship"
+      }
+    }
+  ]
+}

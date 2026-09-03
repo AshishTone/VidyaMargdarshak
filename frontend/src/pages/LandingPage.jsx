@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, ClipboardList, School, Sparkles, X } from "lucide-react";
+import { ArrowRight, BookOpen, ClipboardList, School, Compass, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../components/ui/Button";
@@ -144,7 +144,7 @@ export default function LandingPage() {
               <h3 className="mt-5 text-xl font-bold text-slate-900 group-hover:text-blue-900 transition-colors">{card.title}</h3>
               <p className="mt-3 text-sm leading-6 text-slate-600">{card.copy}</p>
               <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-blue-800 group-hover:text-blue-600 transition-colors">
-                <Sparkles className="h-4 w-4 animate-pulse" />
+                <ArrowRight className="h-4 w-4" />
                 Click to explore
               </div>
             </button>

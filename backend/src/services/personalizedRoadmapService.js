@@ -1,5 +1,6 @@
 const RoadmapNode = require("../models/RoadmapNode");
 const { ApiError } = require("../utils/ApiError");
+const courseCatalog = require("../data/after12CourseCatalog");
 
 const routeDefinitions = {
   "11th–12th Science": ["after-10th", "science-stream", "12th-science-pcm", "btech-cse"],
@@ -39,4 +40,27 @@ async function buildRoadmap({ result, structuredRecommendations, aiExplanation, 
   validateRoadmap(roadmap, selected);
   return roadmap;
 }
-module.exports = { buildRoadmap };
+
+function readableDomain(domain) {
+  return domain.replaceAll("_", " ").toLowerCase().replace(/\b\w/g, letter => letter.toUpperCase());
+}
+
+function buildAfter12Roadmap({ result, structuredRecommendations, aiExplanation }) {
+  const selected = structuredRecommendations.recommendations.slice(0, 2);
+  if (selected.length < 2) throw new ApiError(409, "At least two eligible course recommendations are needed to build a roadmap.");
+  const aiByPathway = new Map((aiExplanation?.recommendations || []).map(item => [item.pathway, item]));
+  const pathways = selected.map((recommendation, index) => {
+    const course = courseCatalog.find(item => item.id === recommendation.courseId);
+    const domainNames = Object.keys(course?.domains || {}).slice(0, 2).map(readableDomain).join(" and ");
+    const requiredSubjects = Object.keys(course?.required || {}).map(subject => subject[0].toUpperCase() + subject.slice(1)).join(", ");
+    const ai = aiByPathway.get(recommendation.pathway);
+    const nodes = [
+      { id: `${index}-course`, type: "NEXT_STEP", title: recommendation.pathway, description: `Review eligibility, entrance examinations, fees, and approved colleges for ${recommendation.pathway}.` },
+      { id: `${index}-preparation`, type: "SPECIALIZATION", title: "Prepare for admission", description: `Strengthen ${requiredSubjects || "the required subjects"} and plan for the relevant entrance or admission process.` },
+      { id: `${index}-explore`, type: "HIGHER_EDUCATION", title: "Explore course outcomes", description: `Compare specializations, practical learning opportunities, higher studies, and careers connected to ${recommendation.pathway}.` },
+    ];
+    return { rank: index + 1, pathwayName: recommendation.pathway, matchScore: recommendation.matchScore, matchLevel: matchLevel(recommendation.matchScore), whyItMatches: ai?.why || `This course is eligible for your ${structuredRecommendations.stream} stream and aligns with your measured interest in ${domainNames || "the relevant domains"}, academic marks, and available preferences.`, nodes, edges: nodes.map((node, nodeIndex) => ({ from: nodeIndex ? nodes[nodeIndex - 1].id : "after12", to: node.id })), nextSteps: ai?.nextSteps || [`Verify the current eligibility and entrance requirements for ${recommendation.pathway}.`, "Compare approved colleges, curriculum, cost, and location options.", "Discuss your shortlist with a teacher, parent, or qualified counsellor before applying."] };
+  });
+  return { schemaVersion: "AFTER12_ROADMAP_V1", generatedAt: new Date(), title: "Your Personalized Roadmap", intro: `This ${structuredRecommendations.stream} roadmap uses your deterministic interest scores, Class-12 academic information, and course eligibility. It is guidance for exploration, not a guarantee of admission or a career outcome.`, currentStage: { id: "after12", title: `12th Standard · ${structuredRecommendations.stream}`, description: "You are planning your higher-education options after Class 12." }, pathways, explorationNote: result.results.filter(item => item.uncertaintyRate >= 30).map(item => readableDomain(item.categoryId)), disclaimer: "Always verify current admission eligibility, entrance requirements, and college information from official sources before applying." };
+}
+module.exports = { buildRoadmap, buildAfter12Roadmap };
