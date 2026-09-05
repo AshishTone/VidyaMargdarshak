@@ -23,6 +23,7 @@ export const fetchColleges = async (params = {}) =>
 export const fetchDeadlines = async () => (await api.get("/deadlines")).data.deadlines;
 export const saveCourse = async (courseId) => api.post(`/me/saved/courses/${courseId}`);
 export const saveCollege = async (collegeId) => api.post(`/me/saved/colleges/${collegeId}`);
+export const removeSavedCollege = async (collegeId) => api.delete(`/me/saved/colleges/${collegeId}`);
 export const fetchPublicRoadmap = async (level = "12") => (await api.get(`/roadmaps/public?level=${level}`)).data;
 export const fetchRoadmap10th = async () => (await api.get("/roadmaps/10th")).data;
 export const fetchRoadmap12th = async () => (await api.get("/roadmaps/12th")).data;

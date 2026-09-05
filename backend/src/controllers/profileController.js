@@ -75,7 +75,55 @@ const removeSavedCourse = asyncHandler(async (req, res) => {
 });
 
 const addSavedCollege = asyncHandler(async (req, res) => {
-  const college = await College.findById(req.params.collegeId);
+  const mongoose = require("mongoose");
+  const collegeId = req.params.collegeId;
+  let college = null;
+
+  if (mongoose.Types.ObjectId.isValid(collegeId)) {
+    college = await College.findById(collegeId);
+  }
+
+  if (!college) {
+    const slug = collegeId.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    college = await College.findOne({ slug });
+  }
+
+  if (!college) {
+    const { loadCatalogColleges } = require("../modules/collegesCatalog/catalogDataService");
+    const catalog = await loadCatalogColleges();
+    const found = catalog.find(
+      (c) => c.collegeId === collegeId || c._id === collegeId
+    );
+
+    if (found) {
+      const slug = (found.collegeId || found.name)
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-");
+
+      college = await College.findOne({ slug });
+      if (!college) {
+        college = await College.create({
+          name: found.name,
+          slug,
+          location: {
+            state: found.address?.state || "Maharashtra",
+            city: found.address?.district || "",
+            address: found.address?.full || "",
+            lat: found.location?.coordinates?.[1] || 0,
+            lng: found.location?.coordinates?.[0] || 0,
+          },
+          type: found.institutionType || "College",
+          contact: {
+            website: found.website || "",
+            email: found.email || "",
+            phone: found.phone || "",
+          },
+          facilities: found.categories || [],
+          feesRange: "Government / Prescribed Norms",
+        });
+      }
+    }
+  }
 
   if (!college) {
     throw new ApiError(404, "College not found.");
@@ -90,8 +138,18 @@ const addSavedCollege = asyncHandler(async (req, res) => {
 });
 
 const removeSavedCollege = asyncHandler(async (req, res) => {
+  const mongoose = require("mongoose");
+  const collegeId = req.params.collegeId;
+  let targetId = collegeId;
+
+  if (!mongoose.Types.ObjectId.isValid(collegeId)) {
+    const slug = collegeId.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    const found = await College.findOne({ slug });
+    if (found) targetId = found._id.toString();
+  }
+
   req.user.savedColleges = req.user.savedColleges.filter(
-    (id) => id.toString() !== req.params.collegeId
+    (id) => id.toString() !== targetId && id.toString() !== collegeId
   );
   await req.user.save();
 
