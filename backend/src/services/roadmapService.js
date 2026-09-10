@@ -237,7 +237,27 @@ async function getPersonalizedRoadmap(user) {
     throw new ApiError(401, "Please log in to view your personalized roadmap.");
   }
 
-  // 1. Check if roadmap was already generated and saved in MongoDB
+  // 1. Fetch student's assessment results in strictly read-only mode (.lean())
+  const [interestResult, assessmentAttempt, responses] = await Promise.all([
+    InterestResult.findOne({ studentId: user._id }).sort({ createdAt: -1 }).lean(),
+    AssessmentAttempt.findOne({ studentId: user._id, status: "COMPLETED" })
+      .sort({ completedAt: -1, createdAt: -1 })
+      .lean(),
+    AssessmentResponse.find({
+      studentId: user._id,
+      responseType: "PROFILE",
+    }).lean(),
+  ]);
+
+  // If student has not completed an assessment, do not show any flowchart
+  if (!interestResult && !assessmentAttempt) {
+    throw new ApiError(
+      404,
+      "ASSESSMENT_REQUIRED: Please complete your assessment first to generate your personalized roadmap."
+    );
+  }
+
+  // 2. Check if roadmap was already generated and saved in MongoDB
   const cachedGraphDoc = await PersonalizedRoadmapGraph.findOne({
     userId: user._id,
   }).lean();
@@ -259,18 +279,6 @@ async function getPersonalizedRoadmap(user) {
       generatedAt: cachedGraphDoc.generatedAt,
     };
   }
-
-  // 2. Fetch student's assessment result in strictly read-only mode (.lean())
-  const [interestResult, assessmentAttempt, responses] = await Promise.all([
-    InterestResult.findOne({ studentId: user._id }).sort({ createdAt: -1 }).lean(),
-    AssessmentAttempt.findOne({ studentId: user._id, status: "COMPLETED" })
-      .sort({ completedAt: -1, createdAt: -1 })
-      .lean(),
-    AssessmentResponse.find({
-      studentId: user._id,
-      responseType: "PROFILE",
-    }).lean(),
-  ]);
 
   const assessmentData = { ...(interestResult || {}) };
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/ui/Button";
 import SectionCard from "../components/ui/SectionCard";
 import MermaidViewer from "../components/roadmap/MermaidViewer";
@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 
 export default function PersonalizedRoadmapPage() {
+  const navigate = useNavigate();
   const [personalizedData, setPersonalizedData] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -24,16 +25,18 @@ export default function PersonalizedRoadmapPage() {
   useEffect(() => {
     fetchPersonalizedRoadmap()
       .then((data) => {
+        if (!data || !data.mermaidChart) {
+          navigate("/assessment", { replace: true });
+          return;
+        }
         setPersonalizedData(data);
       })
       .catch((err) => {
-        setError(
-          err.response?.data?.message ||
-            "Unable to generate personalized roadmap. Please complete your assessment first."
-        );
+        // Redirect directly to assessment if assessment not yet completed
+        navigate("/assessment", { replace: true });
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [navigate]);
 
   if (loading) {
     return (

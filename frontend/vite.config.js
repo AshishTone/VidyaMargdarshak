@@ -9,7 +9,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "icons.svg"],
+      includeAssets: ["logo.png", "favicon.svg", "icons.svg"],
       manifest: {
         name: "VidyaMargdarshak",
         short_name: "VidyaMargdarshak",
@@ -20,9 +20,9 @@ export default defineConfig({
         start_url: "/",
         icons: [
           {
-            src: "/favicon.svg",
+            src: "/logo.png",
             sizes: "any",
-            type: "image/svg+xml",
+            type: "image/png",
           },
         ],
       },

@@ -1,4 +1,5 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import VidyaAIChatWidget from "./modules/vidyaai/VidyaAIChatWidget.jsx";
 import AppShell from "./layouts/AppShell.jsx";
 import ProtectedRoute from "./layouts/ProtectedRoute.jsx";
 import CollegesPage from "./pages/CollegesPage.jsx";
@@ -18,35 +19,42 @@ import SignupPage from "./pages/SignupPage.jsx";
 import PersonalizedRoadmapPage from "./pages/PersonalizedRoadmapPage.jsx";
 
 function App() {
+  const location = useLocation();
+
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<SignupPage />} />
-      <Route path="/roadmaps/public" element={<RoadmapsPage publicOnly />} />
-      <Route
-        element={
-          <ProtectedRoute>
-            <AppShell />
-          </ProtectedRoute>
-        }
-      >
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/assessment" element={<AssessmentPage />} />
-        <Route path="/results" element={<ResultsPage />} />
-        <Route path="/my-roadmap" element={<PersonalizedRoadmapPage />} />
-        <Route path="/roadmaps" element={<RoadmapsPage />} />
-        <Route path="/courses" element={<CoursesPage />} />
-        <Route path="/courses/:id" element={<CourseDetailsPage />} />
-        <Route path="/colleges" element={<CollegesPage />} />
-        <Route path="/deadlines" element={<DeadlinesPage />} />
-        <Route path="/saved" element={<SavedPage />} />
-      </Route>
-      <Route path="/quiz" element={<Navigate to="/assessment" replace />} />
-      <Route path="/home" element={<Navigate to="/dashboard" replace />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/roadmaps/public" element={<RoadmapsPage publicOnly />} />
+        <Route
+          element={
+            <ProtectedRoute>
+              <AppShell />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/assessment" element={<AssessmentPage />} />
+          <Route path="/results" element={<ResultsPage />} />
+          <Route path="/my-roadmap" element={<PersonalizedRoadmapPage />} />
+          <Route path="/roadmaps" element={<RoadmapsPage />} />
+          <Route path="/courses" element={<CoursesPage />} />
+          <Route path="/courses/:id" element={<CourseDetailsPage />} />
+          <Route path="/colleges" element={<CollegesPage />} />
+          <Route path="/deadlines" element={<DeadlinesPage />} />
+          <Route path="/saved" element={<SavedPage />} />
+        </Route>
+        <Route path="/quiz" element={<Navigate to="/assessment" replace />} />
+        <Route path="/home" element={<Navigate to="/dashboard" replace />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+
+      {/* Floating VidyaAI Chatbot Widget on all pages except the landing page */}
+      {location.pathname !== "/" && <VidyaAIChatWidget />}
+    </>
   );
 }
 

@@ -124,10 +124,8 @@ export default function CollegesPage() {
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
             Find Colleges Near You
           </h1>
-          <p className="text-sm text-slate-500 max-w-xl">
-            {is10th
-              ? 'Personalized for 10th Standard: Discover nearby Polytechnic Diploma and Junior Colleges (Science, Commerce, Arts).'
-              : 'Personalized for 12th Standard: Discover accredited undergraduate engineering, pharmacy, medical, and degree colleges.'}
+          <p className="text-xs sm:text-sm text-slate-500 max-w-xl">
+            Discover verified colleges, polytechnics, and institutes near your location.
           </p>
         </div>
 

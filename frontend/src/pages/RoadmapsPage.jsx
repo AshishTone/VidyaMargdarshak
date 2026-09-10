@@ -15,6 +15,7 @@ import {
   BookOpen,
   Briefcase,
   Layers,
+  ArrowLeft,
   ArrowRight,
   Target,
   FileCheck2,
@@ -29,11 +30,8 @@ export default function RoadmapsPage({ publicOnly = false }) {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  // Tab states: "12th" | "10th" | "personalized"
+  // Default to 10th or 12th master roadmap initially so new users don't see an empty or premature personalized chart
   const [activeTab, setActiveTab] = useState(() => {
-    if (user && !publicOnly) {
-      return "personalized";
-    }
     if (user?.classLevel === "10") {
       return "10th";
     }
@@ -103,6 +101,15 @@ export default function RoadmapsPage({ publicOnly = false }) {
       });
   }, [publicOnly, user]);
 
+  // If user opens personalized tab without having completed assessment, redirect to assessment
+  useEffect(() => {
+    if (activeTab === "personalized" && !publicOnly && user && !loading) {
+      if (!personalizedRoadmap?.mermaidChart && personalizedError) {
+        navigate("/assessment");
+      }
+    }
+  }, [activeTab, publicOnly, user, loading, personalizedRoadmap, personalizedError, navigate]);
+
   // Current personalized track
   const currentPersonalizedPath = useMemo(() => {
     if (!personalizedRoadmap?.recommendedPaths?.length) return null;
@@ -130,8 +137,31 @@ export default function RoadmapsPage({ publicOnly = false }) {
     setSelectedNode(nodeData);
   };
 
-  return (
+  const content = (
     <div className="space-y-6">
+      {/* Public Top Header Bar with Back Button */}
+      {publicOnly && (
+        <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-200 bg-white p-4 rounded-2xl shadow-xs">
+          <div className="flex items-center gap-3">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs sm:text-sm font-semibold transition cursor-pointer"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              <span>Back to Home</span>
+            </Link>
+            <div className="flex items-center gap-2">
+              <img src="/logo.png" alt="VidyaMargdarshak logo" className="h-8 w-auto" />
+              <span className="font-bold text-slate-900 hidden sm:inline">VidyaMargdarshak</span>
+            </div>
+          </div>
+          <div>
+            <Link to="/login">
+              <Button className="text-xs sm:text-sm px-4 py-2">Sign In</Button>
+            </Link>
+          </div>
+        </div>
+      )}
       {/* Hero Header */}
       <SectionCard className="overflow-hidden border border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 text-white shadow-2xl">
         <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
@@ -143,8 +173,8 @@ export default function RoadmapsPage({ publicOnly = false }) {
             <h1 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
               Complete Education & Career Pathways
             </h1>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-blue-100/90">
-              Explore verified Indian education pathways mapped from foundational streams into undergraduate and postgraduate courses, vocational trades, polytechnic diplomas, and public sector careers with clean, one-career-at-a-time flow.
+            <p className="mt-2.5 max-w-xl text-sm leading-relaxed text-blue-100/90">
+              Explore verified Indian education pathways across degrees, polytechnics, entrance exams, and career domains.
             </p>
           </div>
 
@@ -170,8 +200,8 @@ export default function RoadmapsPage({ publicOnly = false }) {
             </p>
             <p className="text-xs leading-relaxed text-blue-100">
               {activeTab === "personalized"
-                ? "Extracted strictly from verified pathways based on your aptitude score and chosen stream."
-                : "Select any career track to view its streamlined, non-colliding milestone journey."}
+                ? "Tailored roadmap based on your assessment results."
+                : "Select any track to inspect its verified milestone sequence."}
             </p>
           </div>
         </div>
@@ -191,7 +221,7 @@ export default function RoadmapsPage({ publicOnly = false }) {
                     setSelectedNode(roadmap12th.nodes[0].data || roadmap12th.nodes[0]);
                   }
                 }}
-                className={`flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-extrabold transition ${
+                className={`flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-extrabold transition cursor-pointer ${
                   activeTab === "12th"
                     ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30 scale-[1.02]"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300"
@@ -212,7 +242,7 @@ export default function RoadmapsPage({ publicOnly = false }) {
                     setSelectedNode(roadmap10th.nodes[0].data || roadmap10th.nodes[0]);
                   }
                 }}
-                className={`flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-extrabold transition ${
+                className={`flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-extrabold transition cursor-pointer ${
                   activeTab === "10th"
                     ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30 scale-[1.02]"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300"
@@ -227,9 +257,13 @@ export default function RoadmapsPage({ publicOnly = false }) {
               <button
                 type="button"
                 onClick={() => {
-                  setActiveTab("personalized");
+                  if (!personalizedRoadmap?.mermaidChart) {
+                    navigate("/assessment");
+                  } else {
+                    setActiveTab("personalized");
+                  }
                 }}
-                className={`flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-extrabold transition ${
+                className={`flex items-center gap-2 rounded-2xl px-5 py-3 text-sm font-extrabold transition cursor-pointer ${
                   activeTab === "personalized"
                     ? "bg-indigo-600 text-white shadow-lg shadow-indigo-500/30 scale-[1.02]"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300"
@@ -321,149 +355,27 @@ export default function RoadmapsPage({ publicOnly = false }) {
         )
       ) : (
         /* Master Roadmap Views (12th or 10th) with Clean One-Career Flow */
-        <div className="grid gap-6 xl:grid-cols-[1fr_340px]">
-          <div className="space-y-4">
-            <RoadmapGraph
-              nodes={activeGraph.nodes}
-              edges={activeGraph.edges}
-              onSelectNode={handleSelectNode}
-              selectedNodeId={selectedNode?.id}
-              isClass10={activeTab === "10th"}
-              title={activeTab === "10th" ? "Class 10 Master Roadmap" : "Class 12 Master Roadmap"}
-            />
-          </div>
-
-          {/* Node Inspector Panel */}
-          <NodeInspectorCard node={selectedNode} />
+        <div className="w-full space-y-4">
+          <RoadmapGraph
+            nodes={activeGraph.nodes}
+            edges={activeGraph.edges}
+            onSelectNode={handleSelectNode}
+            selectedNodeId={selectedNode?.id}
+            isClass10={activeTab === "10th"}
+            title={activeTab === "10th" ? "Class 10 Master Roadmap" : "Class 12 Master Roadmap"}
+          />
         </div>
       )}
     </div>
   );
-}
 
-// Node Inspector Sidebar Component
-function NodeInspectorCard({ node }) {
-  if (!node) {
+  if (publicOnly) {
     return (
-      <SectionCard className="h-fit">
-        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500">
-          <Info className="h-4 w-4 text-blue-500" />
-          <span>Interactive Inspector</span>
-        </div>
-        <div className="mt-6 text-center py-8">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-100 text-slate-400 dark:bg-slate-800">
-            <Target className="h-6 w-6" />
-          </div>
-          <p className="mt-3 text-sm font-bold text-slate-800 dark:text-slate-200">
-            Select Any Milestone
-          </p>
-          <p className="mt-1 text-xs text-slate-500">
-            Click on any stream gateway, course, entrance exam, or career node to inspect its complete progression details.
-          </p>
-        </div>
-      </SectionCard>
+      <div className="min-h-screen bg-slate-50/50 py-6 px-4 sm:px-6 lg:px-8 max-w-[96rem] mx-auto space-y-6">
+        {content}
+      </div>
     );
   }
 
-  const category = (node.category || node.type || "course").toUpperCase();
-  const label = node.label || node.title || node.id;
-
-  return (
-    <SectionCard className="h-fit space-y-4 sticky top-24">
-      <div>
-        <div className="flex items-center justify-between gap-2">
-          <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-[10px] font-black tracking-wide text-blue-800 dark:bg-blue-950 dark:text-blue-300">
-            {category}
-          </span>
-          {node.stream && (
-            <span className="rounded bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-600 dark:bg-slate-800 dark:text-slate-400">
-              {node.stream}
-            </span>
-          )}
-        </div>
-
-        <h3 className="mt-3 text-xl font-black text-slate-900 dark:text-white">
-          {label}
-        </h3>
-
-        {node.description && (
-          <p className="mt-2 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
-            {node.description}
-          </p>
-        )}
-        {node.combination && (
-          <p className="mt-2 text-xs leading-relaxed text-slate-600 dark:text-slate-400">
-            <strong>Subjects:</strong> {node.combination}
-          </p>
-        )}
-      </div>
-
-      <div className="space-y-2 border-t border-slate-200 pt-3 text-xs text-slate-600 dark:border-slate-800 dark:text-slate-400">
-        {node.duration && (
-          <div className="flex justify-between">
-            <span className="font-semibold text-slate-500">Duration:</span>
-            <span className="font-bold text-slate-800 dark:text-slate-200">{node.duration}</span>
-          </div>
-        )}
-        {node.entry_after && (
-          <div className="flex justify-between">
-            <span className="font-semibold text-slate-500">Eligibility:</span>
-            <span className="font-bold text-slate-800 dark:text-slate-200">After Class {node.entry_after}</span>
-          </div>
-        )}
-        {node.level && (
-          <div className="flex justify-between">
-            <span className="font-semibold text-slate-500">Degree Level:</span>
-            <span className="font-bold capitalize text-slate-800 dark:text-slate-200">{node.level}</span>
-          </div>
-        )}
-      </div>
-
-      {node.entrance && node.entrance.length > 0 && (
-        <div className="rounded-2xl bg-amber-50 p-3 text-xs dark:bg-amber-950/30">
-          <div className="flex items-center gap-1.5 font-bold text-amber-900 dark:text-amber-300">
-            <FileCheck2 className="h-3.5 w-3.5" />
-            <span>Key Entrance Exams:</span>
-          </div>
-          <p className="mt-1 text-amber-800 dark:text-amber-200">
-            {Array.isArray(node.entrance) ? node.entrance.join(", ") : node.entrance}
-          </p>
-        </div>
-      )}
-
-      {node.pathway_requirements && (
-        <div className="rounded-2xl bg-slate-50 p-3 text-xs dark:bg-slate-800/50">
-          <p className="font-bold text-slate-700 dark:text-slate-300">Required Pathways:</p>
-          <p className="mt-1 text-slate-600 dark:text-slate-400">
-            {node.pathway_requirements.join(" • ")}
-          </p>
-        </div>
-      )}
-
-      {node.examples && (
-        <div className="rounded-2xl bg-slate-50 p-3 text-xs dark:bg-slate-800/50">
-          <p className="font-bold text-slate-700 dark:text-slate-300">Roles / Examples:</p>
-          <p className="mt-1 text-slate-600 dark:text-slate-400">
-            {node.examples.join(", ")}
-          </p>
-        </div>
-      )}
-
-      {node.note && (
-        <p className="text-[11px] italic text-slate-500">
-          Note: {node.note}
-        </p>
-      )}
-
-      <div className="pt-2">
-        <Link
-          to={`/courses`}
-          className="flex w-full items-center justify-center gap-2 rounded-2xl bg-blue-600 px-4 py-2.5 text-xs font-bold text-white shadow-md transition hover:bg-blue-700"
-        >
-          <span>Explore Related Courses</span>
-          <ArrowRight className="h-3.5 w-3.5" />
-        </Link>
-      </div>
-    </SectionCard>
-  );
+  return content;
 }

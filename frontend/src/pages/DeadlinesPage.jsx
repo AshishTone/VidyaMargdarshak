@@ -104,30 +104,11 @@ export default function DeadlinesPage() {
 
   return (
     <div className="space-y-6 animate-in fade-in duration-200 pb-8">
-      {/* Header Banner */}
-      <div className="panel rounded-3xl p-6 sm:p-8 bg-white border border-slate-200 shadow-sm">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-2.5">
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                Admission & Exam Deadlines
-              </h1>
-              {/* Info Icon Button */}
-              <button
-                type="button"
-                onClick={() => setShowInfoModal(true)}
-                title="How deadlines are displayed"
-                className="p-1.5 rounded-full text-blue-700 bg-blue-50 hover:bg-blue-100 hover:text-blue-900 transition-colors"
-                aria-label="Information on how deadlines work"
-              >
-                <Info className="w-5 h-5" />
-              </button>
-            </div>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
-              Discover upcoming entrance examinations, centralized counselling rounds, and application milestones verified directly from official conducting authorities for {isTenth ? 'Class 10 (Post-SSC)' : 'Class 12 (Post-HSC)'} students.
-            </p>
-          </div>
-        </div>
+      {/* Clean compact heading */}
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Deadlines
+        </h1>
       </div>
 
       {/* Refresh alert banner */}
@@ -135,31 +116,6 @@ export default function DeadlinesPage() {
         <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center gap-2 animate-in fade-in">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
           <span>{statusMessage}</span>
-        </div>
-      )}
-
-      {/* Dedicated FYJC Guidance Banner for 10th Standard Only */}
-      {isTenth && (
-        <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-2xl p-4 sm:p-5 border border-sky-200 flex items-start gap-3.5 shadow-sm">
-          <div className="w-9 h-9 rounded-xl bg-blue-700 text-white flex items-center justify-center shrink-0 mt-0.5">
-            <GraduationCap className="w-5 h-5" />
-          </div>
-          <div>
-            <h3 className="text-sm font-bold text-blue-950 mb-1">
-              Maharashtra Std. 11 Centralized Online Admission (FYJC) Gateway
-            </h3>
-            <p className="text-xs text-blue-900 leading-relaxed">
-              For Class 10 graduates entering Science, Commerce, Arts, or Vocational junior colleges. Timelines aggregate Part 1 student registration, Part 2 college option form submission, and centralized merit list rounds directly from{' '}
-              <a
-                href="https://mahafyjcadmissions.in/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-bold underline hover:text-blue-950"
-              >
-                mahafyjcadmissions.in
-              </a>.
-            </p>
-          </div>
         </div>
       )}
 
@@ -210,7 +166,7 @@ export default function DeadlinesPage() {
       {/* Bottom Action: Refresh Official Portals */}
       <div className="pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
         <p>
-          Showing official deadlines strictly tailored for <strong className="text-slate-700">{isTenth ? 'Class 10 (Post-SSC)' : 'Class 12 (Post-HSC)'}</strong> students.
+          Showing verified deadlines for <strong className="text-slate-700">Class {isTenth ? '10' : '12'}</strong>.
         </p>
 
         <button
