@@ -1,0 +1,171 @@
+import { ArrowRight, BookOpen, ClipboardList, School, Compass, X } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import Button from "../components/ui/Button";
+import useAuth from "../hooks/useAuth";
+
+const featureCards = [
+  {
+    title: "Take my up-to-date assessment",
+    copy: "Answer guided questions about mathematics, design, people, computers, and work style.",
+    icon: ClipboardList,
+    detail:
+      "The assessment is the first intelligence layer in VidyaMargdarshak. It scores your interests and aptitude in an explainable way so later recommendations and roadmaps feel earned, not random.",
+  },
+  {
+    title: "Explore real course paths",
+    copy: "Understand what each course teaches, the jobs it opens up, and the exams or higher studies linked to it.",
+    icon: BookOpen,
+    detail:
+      "Every course path shows what you study, what it can lead to, which exams matter, and how to think about the next step after graduation or diploma completion.",
+  },
+  {
+    title: "Find nearby colleges",
+    copy: "Browse curated college cards with facilities, fees range, language options, and source labels.",
+    icon: School,
+    detail:
+      "Browse curated college cards with facilities, fee ranges, language options, and source levels.",
+  },
+];
+
+export default function LandingPage() {
+  const [activeFeature, setActiveFeature] = useState(null);
+  const { user } = useAuth();
+
+  return (
+    <div className="min-h-screen px-3 py-5 sm:px-8">
+      {activeFeature ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/40 p-4 backdrop-blur-md">
+          <div className="panel relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-2xl sm:rounded-[2rem] p-5 sm:p-8">
+            <button
+              className="absolute right-4 top-4 sm:right-5 sm:top-5 rounded-xl border border-slate-200 p-2 cursor-pointer hover:bg-slate-100"
+              onClick={() => setActiveFeature(null)}
+              aria-label="Close feature details"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <activeFeature.icon className="h-10 w-10 sm:h-12 sm:w-12 rounded-2xl bg-blue-100 p-2.5 sm:p-3 text-blue-900" />
+            <h3 className="mt-4 sm:mt-5 text-2xl sm:text-3xl font-bold text-slate-950">{activeFeature.title}</h3>
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm leading-6 sm:leading-7 text-slate-600">{activeFeature.detail}</p>
+          </div>
+        </div>
+      ) : null}
+
+      <div className="mx-auto max-w-[96%] xl:max-w-[115rem]">
+        <header className="flex flex-wrap items-center justify-between gap-3 rounded-2xl sm:rounded-3xl border border-white/60 bg-white/80 px-3.5 py-3 sm:px-5 sm:py-4 shadow-sm backdrop-blur">
+          <Link to="/" className="flex items-center gap-2.5 sm:gap-4">
+            <img src="/logo.png" alt="VidyaMargdarshak logo" className="h-9 sm:h-12 w-auto shrink-0" />
+            <div>
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-blue-800">
+                VidyaMargdarshak
+              </p>
+              <h1 className="text-sm sm:text-xl font-bold text-slate-900 hidden sm:block">Career & Education Advisor</h1>
+            </div>
+          </Link>
+
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-3">
+            {user ? (
+              <Link to="/dashboard">
+                <Button className="px-3 py-1.5 text-xs sm:px-4 sm:py-2.5 sm:text-sm">Dashboard</Button>
+              </Link>
+            ) : null}
+            <Link to="/roadmaps/public">
+              <Button variant="secondary" className="px-3 py-1.5 text-xs sm:px-4 sm:py-2.5 sm:text-sm">
+                <span className="hidden min-[400px]:inline">Public </span>Roadmap
+              </Button>
+            </Link>
+            {!user ? (
+              <Link to="/login">
+                <Button variant="secondary" className="px-3 py-1.5 text-xs sm:px-4 sm:py-2.5 sm:text-sm">
+                  Login
+                </Button>
+              </Link>
+            ) : null}
+            {!user ? (
+              <Link to="/signup">
+                <Button className="px-3 py-1.5 text-xs sm:px-4 sm:py-2.5 sm:text-sm">
+                  Sign up
+                </Button>
+              </Link>
+            ) : null}
+          </div>
+        </header>
+
+        <section className="grid gap-8 py-8 sm:gap-10 sm:py-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div>
+            <p className="mb-3 sm:mb-4 inline-flex rounded-full bg-blue-100 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-blue-900">
+              Built for students and parents
+            </p>
+            <h2 className="max-w-3xl text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-tight">
+              Find your right career path with clarity, not confusion.
+            </h2>
+            <p className="mt-4 sm:mt-6 max-w-2xl text-sm sm:text-lg leading-6 sm:leading-8 text-slate-600">
+              VidyaMargdarshak guides students from self-discovery to stream fit, course choices,
+              college discovery, and admission timelines in one clean workflow.
+            </p>
+
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <Link to="/signup" className="w-full sm:w-auto">
+                <Button className="w-full sm:w-auto gap-2 px-5 py-3 text-sm font-bold shadow-sm">
+                  Start your guidance journey
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+              <a href="#features" className="w-full sm:w-auto">
+                <Button variant="secondary" className="w-full sm:w-auto px-5 py-3 text-sm">
+                  See what&apos;s included
+                </Button>
+              </a>
+            </div>
+
+            <div className="mt-8 sm:mt-10 grid gap-3 sm:gap-4 sm:grid-cols-3">
+              <div className="panel rounded-2xl sm:rounded-3xl p-4 sm:p-5">
+                <p className="text-2xl sm:text-3xl font-bold text-blue-900">Personalized</p>
+                <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-slate-600">Guidance that adapts to your education level and profile.</p>
+              </div>
+              <div className="panel rounded-2xl sm:rounded-3xl p-4 sm:p-5">
+                <p className="text-2xl sm:text-3xl font-bold text-blue-900">Explainable</p>
+                <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-slate-600">Rule-based recommendations students can actually understand.</p>
+              </div>
+              <div className="panel rounded-2xl sm:rounded-3xl p-4 sm:p-5">
+                <p className="text-2xl sm:text-3xl font-bold text-blue-900">Practical</p>
+                <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-slate-600">Explore pathways, courses, and next steps with confidence.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="panel rounded-2xl sm:rounded-[2rem] p-4 sm:p-6">
+            <div className="rounded-xl sm:rounded-[1.5rem] bg-slate-950 p-5 sm:p-6 text-white">
+              <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-blue-200 font-bold">Student Flow</p>
+              <ol className="mt-4 sm:mt-6 space-y-3 sm:space-y-4 text-xs sm:text-sm text-slate-200">
+                <li>1. Sign up and fill in your class, interests, language, and location.</li>
+                <li>2. Take a short aptitude and interest assessment, one question at a time.</li>
+                <li>3. Unlock personalized suggestions and a student-specific roadmap graph.</li>
+                <li>4. Explore matched courses, career outcomes, colleges, and deadlines.</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" className="grid gap-6 pb-12 md:grid-cols-3">
+          {featureCards.map((card) => (
+            <button
+              key={card.title}
+              type="button"
+              onClick={() => setActiveFeature(card)}
+              className="panel group rounded-[1.8rem] p-6 text-left transition-all duration-300 hover:-translate-y-2 hover:shadow-2.5xl hover:border-blue-400 hover:bg-white hover:ring-4 hover:ring-blue-100/70 cursor-pointer"
+            >
+              <card.icon className="h-10 w-10 rounded-2xl bg-blue-100 p-2 text-blue-900 transition-transform duration-300 group-hover:scale-110" />
+              <h3 className="mt-5 text-xl font-bold text-slate-900 group-hover:text-blue-900 transition-colors">{card.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-600">{card.copy}</p>
+              <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-blue-800 group-hover:text-blue-600 transition-colors">
+                <ArrowRight className="h-4 w-4" />
+                Click to explore
+              </div>
+            </button>
+          ))}
+        </section>
+      </div>
+    </div>
+  );
+}

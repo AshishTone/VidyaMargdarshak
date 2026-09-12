@@ -1,0 +1,182 @@
+[
+  {
+    "pathwayId": "COMPUTING_TECHNOLOGY",
+    "pathwayName": "Computing & Technology",
+    "category": "Technology",
+    "educationLevels": ["after_10th", "after_12th"],
+    "description": "Software development, artificial intelligence, cybersecurity, IT infrastructure and computing systems.",
+    "icon": "Cpu",
+    "courses": [
+      "computer_engineering",
+      "computer_science_engineering",
+      "information_technology",
+      "artificial_intelligence",
+      "data_science",
+      "computer_applications",
+      "bca",
+      "mca",
+      "cyber_security",
+      "cloud_computing"
+    ],
+    "keywords": [
+      "computer", "computing", "software", "information technology", "cse", "it", "bca", "ai", "artificial intelligence", "data science", "cyber", "coding", "web"
+    ]
+  },
+  {
+    "pathwayId": "ENGINEERING",
+    "pathwayName": "Core Engineering",
+    "category": "Engineering",
+    "educationLevels": ["after_10th", "after_12th"],
+    "description": "Mechanical, civil, electrical, electronics, chemical and infrastructure engineering disciplines.",
+    "icon": "Wrench",
+    "courses": [
+      "mechanical_engineering",
+      "civil_engineering",
+      "electrical_engineering",
+      "electronics_telecommunication",
+      "chemical_engineering",
+      "automobile_engineering",
+      "mechatronics",
+      "robotics",
+      "production_engineering",
+      "instrumentation"
+    ],
+    "keywords": [
+      "engineering", "mechanical", "civil", "electrical", "electronics", "chemical", "automobile", "mechatronics", "robotics", "instrumentation", "telecommunication"
+    ]
+  },
+  {
+    "pathwayId": "HEALTHCARE_MEDICAL",
+    "pathwayName": "Healthcare & Medicine",
+    "category": "Medicine",
+    "educationLevels": ["after_12th"],
+    "description": "Clinical medicine, surgery, dentistry, ayurveda, homeopathy and healthcare sciences.",
+    "icon": "HeartPulse",
+    "courses": [
+      "mbbs",
+      "bds",
+      "bams",
+      "bhms",
+      "nursing",
+      "md",
+      "ms",
+      "medical_laboratory_technology",
+      "physiotherapy"
+    ],
+    "keywords": [
+      "medical", "mbbs", "medicine", "surgery", "bds", "dental", "bams", "ayurveda", "bhms", "nursing", "health", "clinical", "hospital"
+    ]
+  },
+  {
+    "pathwayId": "PHARMACY",
+    "pathwayName": "Pharmacy & Pharma Sciences",
+    "category": "Pharmacy",
+    "educationLevels": ["after_10th", "after_12th"],
+    "description": "Drug discovery, pharmaceutics, pharmacology, clinical pharmacy and dispensing.",
+    "icon": "Pill",
+    "courses": [
+      "b_pharm",
+      "d_pharm",
+      "m_pharm",
+      "pharm_d",
+      "diploma_pharmacy",
+      "pharmaceutical_chemistry"
+    ],
+    "keywords": [
+      "pharmacy", "pharm", "b.pharm", "d.pharm", "m.pharm", "pharm.d", "medicines", "drug", "pharmacology"
+    ]
+  },
+  {
+    "pathwayId": "ARCHITECTURE_DESIGN",
+    "pathwayName": "Architecture & Built Environment",
+    "category": "Design",
+    "educationLevels": ["after_10th", "after_12th"],
+    "description": "Architectural design, interior architecture, urban planning and structural aesthetics.",
+    "icon": "Compass",
+    "courses": [
+      "bachelor_of_architecture",
+      "b_arch",
+      "diploma_architecture",
+      "interior_design",
+      "urban_planning"
+    ],
+    "keywords": [
+      "architecture", "b.arch", "barch", "interior", "planning", "design", "building design"
+    ]
+  },
+  {
+    "pathwayId": "LAW_LEGAL",
+    "pathwayName": "Law & Legal Studies",
+    "category": "Law",
+    "educationLevels": ["after_12th"],
+    "description": "Constitutional law, corporate advocacy, criminal jurisprudence and judicial practice.",
+    "icon": "Scale",
+    "courses": [
+      "3_year_llb",
+      "5_year_ba_llb",
+      "5_year_bba_llb",
+      "5_year_b_com_llb",
+      "llm"
+    ],
+    "keywords": [
+      "law", "llb", "ba llb", "bba llb", "legal", "advocate", "bar council", "jurisprudence"
+    ]
+  },
+  {
+    "pathwayId": "SCIENCE_MATHEMATICS",
+    "pathwayName": "Science & Junior College (Science)",
+    "category": "Basic Sciences",
+    "educationLevels": ["after_10th"],
+    "description": "Foundational pure sciences, PCM/PCB junior college curricula for scientific and medical preparation.",
+    "icon": "FlaskConical",
+    "courses": [
+      "science",
+      "science_general",
+      "physics",
+      "chemistry",
+      "mathematics",
+      "biology"
+    ],
+    "keywords": [
+      "science", "pcm", "pcb", "physics", "chemistry", "maths", "biology", "general science"
+    ]
+  },
+  {
+    "pathwayId": "COMMERCE_MANAGEMENT",
+    "pathwayName": "Commerce & Business Management",
+    "category": "Management",
+    "educationLevels": ["after_10th", "after_12th"],
+    "description": "Accounting, financial markets, banking, business administration and trade.",
+    "icon": "Briefcase",
+    "courses": [
+      "commerce",
+      "bba",
+      "b_com",
+      "mba",
+      "banking_finance",
+      "accounting"
+    ],
+    "keywords": [
+      "commerce", "bba", "bcom", "b.com", "finance", "accounting", "business", "trade", "marketing", "management"
+    ]
+  },
+  {
+    "pathwayId": "ARTS_HUMANITIES",
+    "pathwayName": "Arts, Humanities & Social Sciences",
+    "category": "Humanities",
+    "educationLevels": ["after_10th", "after_12th"],
+    "description": "Psychology, literature, sociology, history, creative arts and civil services foundations.",
+    "icon": "BookOpen",
+    "courses": [
+      "arts",
+      "ba",
+      "psychology",
+      "sociology",
+      "history",
+      "literature"
+    ],
+    "keywords": [
+      "arts", "humanities", "ba", "literature", "history", "sociology", "psychology", "languages"
+    ]
+  }
+]
